@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Salud bucal de 2 a 5 años — Charla para padres</title>
+<style>
+  :root {
+    --bg: #f6f9f8;
+    --ink: #1a2e2b;
+    --ink-soft: #4a5d5a;
+    --accent: #1f8a7a;
+    --accent-soft: #d8ebe6;
+    --warm: #e07a5f;
+    --warm-soft: #fbe6df;
+    --rule: #cfdedb;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .deck {
+    width: 100vw; height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    padding: 6vh 8vw;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .slide.active { display: flex; }
+  .eyebrow {
+    font-size: 0.95rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+  h1 {
+    font-size: clamp(2.4rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin: 0 0 1.5rem 0;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
+    line-height: 1.15;
+    margin: 0 0 1.8rem 0;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  p, li {
+    font-size: clamp(1.05rem, 1.5vw, 1.4rem);
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  ul { padding-left: 1.2em; margin: 0.5rem 0; }
+  li { margin-bottom: 0.7rem; }
+  li strong { color: var(--ink); font-weight: 600; }
+  .big {
+    font-size: clamp(5rem, 14vw, 11rem);
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 0.95;
+    letter-spacing: -0.04em;
+    margin: 0;
+  }
+  .big.warm { color: var(--warm); }
+  .caption {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    color: var(--ink);
+    font-weight: 500;
+    max-width: 70%;
+    margin-top: 1.5rem;
+  }
+  .grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 1rem;
+  }
+  .card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 1.8rem;
+  }
+  .card .age {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.8rem;
+  }
+  .card h3 {
+    margin: 0 0 0.8rem 0;
+    font-size: 1.4rem;
+    color: var(--ink);
+  }
+  .card p { font-size: 1rem; margin: 0.3rem 0; }
+  .pill {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent);
+    padding: 0.3rem 0.8rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+  .pill.warm { background: var(--warm-soft); color: var(--warm); }
+  .myth {
+    border-left: 4px solid var(--warm);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    margin-bottom: 2rem;
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.2vw, 1.8rem);
+    color: var(--ink);
+  }
+  .reality {
+    border-left: 4px solid var(--accent);
+    padding: 0.5rem 0 0.5rem 1.5rem;
+    font-size: clamp(1.1rem, 1.8vw, 1.5rem);
+  }
+  .footer {
+    position: absolute;
+    bottom: 2.5vh;
+    left: 8vw; right: 8vw;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--rule);
+    padding-top: 0.8rem;
+  }
+  .nav {
+    position: fixed;
+    bottom: 1rem; right: 1.5rem;
+    display: flex; gap: 0.5rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    z-index: 10;
+  }
+  .nav button {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 0.4rem 0.8rem;
+    cursor: pointer;
+    color: var(--ink);
+    font-family: inherit;
+  }
+  .nav button:hover { background: var(--accent-soft); }
+  .counter {
+    position: fixed;
+    bottom: 1.4rem; left: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .quantity-demo {
+    display: flex; gap: 3rem; margin-top: 2rem;
+    align-items: flex-end;
+  }
+  .quantity-demo .item { text-align: center; }
+  .quantity-demo .blob {
+    background: var(--accent);
+    border-radius: 50%;
+    margin: 0 auto 0.8rem;
+  }
+  .quantity-demo .small .blob { width: 18px; height: 8px; border-radius: 50%; }
+  .quantity-demo .big-blob .blob { width: 36px; height: 18px; border-radius: 50%; }
+  .quantity-demo .label { font-weight: 600; color: var(--ink); }
+  .quantity-demo .age-label { font-size: 0.85rem; color: var(--ink-soft); }
+
+  .title-slide {
+    background: linear-gradient(135deg, var(--accent) 0%, #2da690 100%);
+    color: white;
+    justify-content: flex-end;
+    padding-bottom: 12vh;
+  }
+  .title-slide h1 { color: white; max-width: 90%; }
+  .title-slide .eyebrow { color: rgba(255,255,255,0.85); }
+  .title-slide p { color: rgba(255,255,255,0.9); font-size: 1.3rem; }
+
+  .closing { background: var(--accent-soft); }
+  .closing h2 { color: var(--ink); }
+  .closing .takeaways {
+    margin-top: 1rem;
+    display: grid; gap: 1.2rem;
+  }
+  .closing .takeaway {
+    display: flex; gap: 1.5rem; align-items: flex-start;
+    background: white; padding: 1.5rem; border-radius: 12px;
+  }
+  .closing .num {
+    font-size: 2.5rem; font-weight: 700;
+    color: var(--accent); line-height: 1;
+    min-width: 3rem;
+  }
+  .closing .takeaway p {
+    font-size: 1.2rem; color: var(--ink);
+    margin: 0; font-weight: 500;
+  }
+
+  @media print {
+    .slide { display: flex !important; page-break-after: always; height: 100vh; }
+    .nav, .counter { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="deck" id="deck">
+
+  <!-- 1. Portada -->
+  <section class="slide title-slide active">
+    <div class="eyebrow">Charla para padres</div>
+    <h1>La boca de tu hijo<br>en los años que más importan</h1>
+    <p>Educación para la salud bucal — niños de 2 a 5 años</p>
+  </section>
+
+  <!-- 2. Hook -->
+  <section class="slide">
+    <div class="eyebrow">Para empezar</div>
+    <p class="big">5×</p>
+    <p class="caption">La caries es <strong>5 veces más común que el asma</strong> en la infancia. Es la enfermedad crónica más frecuente en niños.</p>
+  </section>
+
+  <!-- 3. El mito -->
+  <section class="slide">
+    <div class="eyebrow">El mito más caro</div>
+    <div class="myth">"Total, los dientes de leche se caen igual…"</div>
+    <div class="reality">
+      <strong>La posta:</strong> los dientes de leche guían la posición de los permanentes,
+      permiten masticar bien, hablar, y su esmalte es <strong>la mitad de grueso</strong> que el del adulto:
+      la caries avanza mucho más rápido.
+    </div>
+  </section>
+
+  <!-- 4. Por qué importan -->
+  <section class="slide">
+    <h2>Por qué los dientes de leche sí importan</h2>
+    <div class="grid-2">
+      <ul>
+        <li><strong>Guían</strong> la erupción de los permanentes.</li>
+        <li>Permiten <strong>masticar</strong> bien → desarrollo del maxilar.</li>
+        <li>Son clave para el <strong>habla</strong> y la pronunciación.</li>
+      </ul>
+      <ul>
+        <li>Una caries no tratada puede dañar el <strong>germen</strong> del diente permanente debajo.</li>
+        <li>El dolor afecta <strong>sueño, alimentación y aprendizaje</strong>.</li>
+        <li>Una boca sana es también una cuestión de <strong>autoestima</strong>.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 5. Higiene por edad -->
+  <section class="slide">
+    <div class="eyebrow">Higiene oral, paso a paso</div>
+    <h2>Qué hacer según la edad</h2>
+    <div class="grid-3">
+      <div class="card">
+        <div class="age">0 a 1 año</div>
+        <h3>Desde el primer diente</h3>
+        <p>Gasa o dedal humedecido, <strong>2 veces al día</strong>.</p>
+        <p>Sin pasta o cantidad mínima.</p>
+      </div>
+      <div class="card">
+        <div class="age">1 a 3 años</div>
+        <h3>Cepillo + flúor 1000 ppm</h3>
+        <p>Pasta tamaño <strong>grano de arroz</strong>.</p>
+        <p>Cepillado <strong>hecho por el adulto</strong>.</p>
+      </div>
+      <div class="card">
+        <div class="age">3 a 6 años</div>
+        <h3>Mismo flúor, más pasta</h3>
+        <p>Pasta tamaño <strong>arveja</strong>.</p>
+        <p>El chico participa, pero el adulto <strong>repasa</strong> hasta los 7-8 años.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Cantidad de pasta -->
+  <section class="slide">
+    <div class="eyebrow">Lo que casi nadie sabe</div>
+    <h2>Cuánta pasta usar</h2>
+    <p>La cantidad correcta es mucho menor de la que se ve en las publicidades.</p>
+    <div class="quantity-demo">
+      <div class="item small">
+        <div class="blob"></div>
+        <div class="label">Grano de arroz</div>
+        <div class="age-label">1 a 3 años</div>
+      </div>
+      <div class="item big-blob">
+        <div class="blob"></div>
+        <div class="label">Arveja</div>
+        <div class="age-label">3 a 6 años</div>
+      </div>
+    </div>
+    <p style="margin-top:2.5rem;"><strong>Importante:</strong> enseñarle a <strong>escupir, no enjuagar</strong>. El flúor que queda en la boca sigue protegiendo.</p>
+  </section>
+
+  <!-- 7. Las 2 reglas de oro -->
+  <section class="slide">
+    <h2>Las 2 reglas de oro del cepillado</h2>
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div>
+        <div class="pill">Regla 1</div>
+        <h3 style="font-size:1.5rem; margin:0 0 0.8rem;">Antes de dormir, sí o sí</h3>
+        <p>Durante el sueño baja la saliva (que es el escudo natural del esmalte). Si solo se cepilla 1 vez al día, <strong>que sea de noche</strong>.</p>
+      </div>
+      <div>
+        <div class="pill">Regla 2</div>
+        <h3 style="font-size:1.5rem; margin:0 0 0.8rem;">El adulto cepilla o repasa</h3>
+        <p>Hasta los <strong>7-8 años</strong> no tienen destreza motora fina para cepillarse bien solos. Si no lo repasa un adulto, queda mal cepillado.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 8. Alimentación -->
+  <section class="slide">
+    <div class="eyebrow">Alimentación y caries</div>
+    <h2>Lo importante no es la cantidad. Es la <em>frecuencia</em>.</h2>
+    <p style="margin-top:1.5rem;">Cada vez que comemos azúcar, el pH de la boca baja durante <strong>30 a 40 minutos</strong>. En ese tiempo, el esmalte se desmineraliza.</p>
+    <div class="grid-2" style="margin-top:2rem;">
+      <div class="card">
+        <h3 style="color:var(--warm);">Peor</h3>
+        <p>Una galletita cada hora durante toda la tarde → boca ácida casi todo el día.</p>
+      </div>
+      <div class="card">
+        <h3 style="color:var(--accent);">Mejor</h3>
+        <p>Postre como cierre de la comida → una sola "ventana" ácida, con saliva ayudando.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 9. Azúcares ocultos -->
+  <section class="slide">
+    <h2>Azúcares ocultos a vigilar</h2>
+    <div class="grid-2">
+      <ul>
+        <li><strong>Yogures infantiles</strong> con sabor</li>
+        <li><strong>Jugos y aguas saborizadas</strong>, incluso "naturales"</li>
+        <li><strong>Galletitas</strong> de salvado o "saludables"</li>
+        <li><strong>Cereales</strong> para el desayuno</li>
+      </ul>
+      <ul>
+        <li><strong>Gomitas de vitaminas</strong> (¡son caramelos!)</li>
+        <li><strong>Leches saborizadas</strong> y chocolatadas</li>
+        <li><strong>Snacks de frutas deshidratadas</strong> (se pegan al diente)</li>
+        <li><strong>Salsas y aderezos</strong> con azúcar agregado</li>
+      </ul>
+    </div>
+    <p style="margin-top:2rem;"><strong>Recomendado entre comidas:</strong> agua, fruta entera, lácteos sin azúcar, frutos secos (según edad).</p>
+  </section>
+
+  <!-- 10. Caries de mamadera -->
+  <section class="slide">
+    <div class="pill warm">Ojo con esto</div>
+    <h2>Caries de mamadera</h2>
+    <p>Dejar al chico dormirse con la <strong>mamadera</strong> (leche, jugo o cualquier líquido azucarado) es una de las principales causas de caries severa antes de los 3 años.</p>
+    <p style="margin-top:1.5rem;">Afecta sobre todo a los <strong>incisivos superiores</strong> y puede destruir varios dientes en pocos meses.</p>
+    <div class="reality" style="margin-top:2rem;">
+      <strong>Pauta:</strong> si toma de noche, pasarle una gasa o cepillito antes de volver a dormir. Después del año, evitar líquidos azucarados en la mamadera.
+    </div>
+  </section>
+
+  <!-- 11. Chupete y dedo -->
+  <section class="slide">
+    <h2>Chupete y succión del dedo</h2>
+    <div class="grid-2">
+      <div>
+        <p><strong>Hasta los 3 años:</strong> es funcional, calma, no preocupa.</p>
+        <p><strong>De 3 a 4:</strong> empezar a retirarlo de a poco.</p>
+        <p><strong>Después de los 4:</strong> puede deformar el paladar y la mordida (mordida abierta anterior).</p>
+      </div>
+      <div>
+        <p><strong>Cómo sacarlo bien:</strong></p>
+        <ul>
+          <li>Sin retos ni vergüenza pública.</li>
+          <li>Acompañar con una "historia" (el Ratón Pérez, el hada del chupete).</li>
+          <li>Ir bajando de a poco: primero solo para dormir, después nada.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 12. Respiración bucal -->
+  <section class="slide">
+    <div class="eyebrow">Una señal silenciosa</div>
+    <h2>¿Respira por la boca?</h2>
+    <p>Muchos chicos con problemas dentales y de desarrollo facial son, en realidad, <strong>respiradores bucales</strong>.</p>
+    <div class="grid-2" style="margin-top:1.5rem;">
+      <div>
+        <p><strong>Señales de alerta:</strong></p>
+        <ul>
+          <li>Duerme con la boca abierta</li>
+          <li>Ronca o babea la almohada</li>
+          <li>Ojeras marcadas</li>
+          <li>Resfríos y otitis frecuentes</li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Por qué importa:</strong></p>
+        <ul>
+          <li>Altera el desarrollo del paladar</li>
+          <li>Provoca mordida abierta o cruzada</li>
+          <li>Empeora el sueño y el rendimiento</li>
+        </ul>
+        <p style="margin-top:1rem;"><strong>Derivar a otorrinolaringólogo</strong>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. Traumatismo -->
+  <section class="slide">
+    <div class="pill warm">Saber esto puede salvar un diente</div>
+    <h2>Se golpeó la boca, ¿qué hago?</h2>
+    <div class="grid-2">
+      <div>
+        <h3 style="font-size:1.3rem; color:var(--ink);">Diente de leche</h3>
+        <ul>
+          <li>Si se cae completo, <strong>no se reimplanta</strong>.</li>
+          <li>Si está flojo o desplazado, consulta en 24 hs.</li>
+          <li>Frío local, controlar dolor.</li>
+        </ul>
+      </div>
+      <div>
+        <h3 style="font-size:1.3rem; color:var(--ink);">Diente permanente</h3>
+        <ul>
+          <li>Si se cae completo, <strong>sí se reimplanta</strong>.</li>
+          <li>Agarrarlo de la <strong>corona</strong>, no de la raíz.</li>
+          <li>Guardarlo en <strong>leche o suero fisiológico</strong>, no en agua.</li>
+          <li>Al consultorio ya: cuenta cada minuto.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 14. Mancha blanca -->
+  <section class="slide">
+    <div class="eyebrow">No es solo una manchita</div>
+    <h2>La mancha blanca</h2>
+    <p>Una línea o mancha blanca cerca de la encía no es estética: es <strong>caries en su etapa más temprana</strong>.</p>
+    <p style="margin-top:1.5rem;">La buena noticia: en esta etapa, <strong>todavía es reversible</strong> con flúor profesional y mejoras en la higiene. Si se ignora, se convierte en una cavidad.</p>
+    <div class="reality" style="margin-top:2rem;">
+      Si la ves: consulta sin esperar a la revisión anual.
+    </div>
+  </section>
+
+  <!-- 15. Primera consulta -->
+  <section class="slide">
+    <h2>¿Cuándo es la primera consulta?</h2>
+    <p class="big">1<span style="font-size:0.4em;"> año</span></p>
+    <p class="caption">Con el <strong>primer diente</strong>, o antes de que cumpla un año. No esperar a los 3 ni a que "duela algo".</p>
+    <p style="margin-top:2rem;">El objetivo de las primeras visitas no es curar, sino <strong>prevenir, familiarizar y enseñar</strong>. Cuanto antes, menos miedo y menos tratamientos.</p>
+  </section>
+
+  <!-- 16. Cierre -->
+  <section class="slide closing">
+    <h2>3 mensajes para llevarse a casa</h2>
+    <div class="takeaways">
+      <div class="takeaway">
+        <div class="num">1</div>
+        <p>La caries <strong>se previene, no se trata</strong>. Cada visita evitada hoy es un tratamiento mañana.</p>
+      </div>
+      <div class="takeaway">
+        <div class="num">2</div>
+        <p>Cepillado <strong>nocturno, asistido por el adulto</strong>. Innegociable.</p>
+      </div>
+      <div class="takeaway">
+        <div class="num">3</div>
+        <p>Con el azúcar, la <strong>frecuencia</strong> importa más que la cantidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 17. Preguntas -->
+  <section class="slide" style="text-align:center; align-items:center;">
+    <h1 style="text-align:center;">Gracias.</h1>
+    <p class="caption" style="text-align:center; max-width:100%;">¿Preguntas?</p>
+  </section>
+
+</div>
+
+<div class="counter"><span id="cur">1</span> / <span id="total">17</span></div>
+<div class="nav">
+  <button onclick="prev()">←</button>
+  <button onclick="next()">→</button>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let i = 0;
+  document.getElementById('total').textContent = slides.length;
+  function show(n) {
+    slides[i].classList.remove('active');
+    i = (n + slides.length) % slides.length;
+    slides[i].classList.add('active');
+    document.getElementById('cur').textContent = i + 1;
+  }
+  function next() { show(i + 1); }
+  function prev() { show(i - 1); }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') next();
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') prev();
+    else if (e.key === 'Home') show(0);
+    else if (e.key === 'End') show(slides.length - 1);
+  });
+</script>
+</body>
+</html>
