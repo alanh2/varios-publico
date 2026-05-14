@@ -196,6 +196,23 @@
   .title-slide h1 { color: white; max-width: 90%; }
   .title-slide .eyebrow { color: rgba(255,255,255,0.85); }
   .title-slide p { color: rgba(255,255,255,0.9); font-size: 1.3rem; }
+  .title-slide .presenter {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.3);
+    max-width: 70%;
+  }
+  .title-slide .presenter-name {
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0 0 0.3rem 0;
+  }
+  .title-slide .presenter-affiliation {
+    color: rgba(255,255,255,0.8);
+    font-size: 1rem;
+    margin: 0;
+  }
 
   .closing { background: var(--accent-soft); }
   .closing h2 { color: var(--ink); }
@@ -217,6 +234,63 @@
     margin: 0; font-weight: 500;
   }
 
+  .hidden-sugars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin: 0.5rem 0 1rem;
+  }
+  .sugar-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 0.9rem 0.5rem 0.8rem;
+  }
+  .sugar-item svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 0.4rem;
+  }
+  .sugar-item .label {
+    font-size: 0.9rem;
+    line-height: 1.2;
+    color: var(--ink);
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .clinical {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+    margin-top: 1rem;
+  }
+  .clinical-photos {
+    display: grid;
+    gap: 0.8rem;
+  }
+  .clinical-photos img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--rule);
+    display: block;
+    max-height: 32vh;
+    object-fit: cover;
+  }
+  .credit {
+    font-size: 0.7rem;
+    color: var(--ink-soft);
+    margin: 0.3rem 0 0;
+    text-align: right;
+    line-height: 1.3;
+  }
+  .credit a { color: inherit; }
+
   @media print {
     .slide { display: flex !important; page-break-after: always; height: 100vh; }
     .nav, .counter { display: none; }
@@ -231,6 +305,10 @@
     <div class="eyebrow">Charla para padres</div>
     <h1>La boca de tu hijo<br>en los años que más importan</h1>
     <p>Educación para la salud bucal — niños de 2 a 5 años</p>
+    <div class="presenter">
+      <p class="presenter-name">Dra. Camila Lorena Guber</p>
+      <p class="presenter-affiliation">HIGA Petrona Villegas de Cordero — San Fernando</p>
+    </div>
   </section>
 
   <!-- 2. Hook -->
@@ -351,31 +429,135 @@
   <!-- 9. Azúcares ocultos -->
   <section class="slide">
     <h2>Azúcares ocultos a vigilar</h2>
-    <div class="grid-2">
-      <ul>
-        <li><strong>Yogures infantiles</strong> con sabor</li>
-        <li><strong>Jugos y aguas saborizadas</strong>, incluso "naturales"</li>
-        <li><strong>Galletitas</strong> de salvado o "saludables"</li>
-        <li><strong>Cereales</strong> para el desayuno</li>
-      </ul>
-      <ul>
-        <li><strong>Gomitas de vitaminas</strong> (¡son caramelos!)</li>
-        <li><strong>Leches saborizadas</strong> y chocolatadas</li>
-        <li><strong>Snacks de frutas deshidratadas</strong> (se pegan al diente)</li>
-        <li><strong>Salsas y aderezos</strong> con azúcar agregado</li>
-      </ul>
+    <div class="hidden-sugars">
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Yogur">
+          <path d="M22 32 L58 32 L54 70 L26 70 Z" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2" stroke-linejoin="round"/>
+          <ellipse cx="40" cy="32" rx="18" ry="3.5" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <path d="M40 14 L46 22 L40 28 L34 22 Z" fill="#e07a5f" stroke="#1a2e2b" stroke-width="1.5" stroke-linejoin="round"/>
+          <path d="M37 14 L43 14 L40 9 Z" fill="#1f8a7a" stroke="#1a2e2b" stroke-width="1.5" stroke-linejoin="round"/>
+          <circle cx="38" cy="20" r="0.9" fill="#1a2e2b"/>
+          <circle cx="42" cy="22" r="0.9" fill="#1a2e2b"/>
+        </svg>
+        <p class="label">Yogures infantiles</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Jugo">
+          <rect x="24" y="22" width="32" height="48" rx="2" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2"/>
+          <rect x="24" y="42" width="32" height="10" fill="#1f8a7a" stroke="#1a2e2b" stroke-width="2"/>
+          <rect x="43" y="6" width="3.5" height="20" fill="#e07a5f" stroke="#1a2e2b" stroke-width="1.5"/>
+          <circle cx="40" cy="32" r="3.5" fill="#e07a5f" stroke="#1a2e2b" stroke-width="1.5"/>
+        </svg>
+        <p class="label">Jugos saborizados</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Galletita">
+          <circle cx="40" cy="42" r="24" fill="#d9a567" stroke="#1a2e2b" stroke-width="2"/>
+          <circle cx="30" cy="35" r="3" fill="#5a3a20"/>
+          <circle cx="46" cy="32" r="2.5" fill="#5a3a20"/>
+          <circle cx="50" cy="46" r="3" fill="#5a3a20"/>
+          <circle cx="33" cy="50" r="2.5" fill="#5a3a20"/>
+          <circle cx="42" cy="50" r="2" fill="#5a3a20"/>
+          <circle cx="38" cy="40" r="1.2" fill="#5a3a20"/>
+        </svg>
+        <p class="label">Galletitas</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Cereal">
+          <rect x="20" y="14" width="40" height="56" rx="2" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2"/>
+          <rect x="24" y="18" width="32" height="4" fill="#e07a5f"/>
+          <rect x="24" y="26" width="32" height="20" fill="#1f8a7a"/>
+          <circle cx="32" cy="36" r="2.5" fill="#fffaf7"/>
+          <circle cx="40" cy="36" r="2.5" fill="#fffaf7"/>
+          <circle cx="48" cy="36" r="2.5" fill="#fffaf7"/>
+          <path d="M26 58 Q40 66 54 58" fill="none" stroke="#1a2e2b" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="32" cy="56" r="1.5" fill="#d9a567"/>
+          <circle cx="40" cy="55" r="1.5" fill="#d9a567"/>
+          <circle cx="48" cy="56" r="1.5" fill="#d9a567"/>
+        </svg>
+        <p class="label">Cereales</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Gomita">
+          <circle cx="32" cy="18" r="4" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <circle cx="48" cy="18" r="4" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <circle cx="40" cy="26" r="10" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <ellipse cx="40" cy="50" rx="14" ry="16" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <ellipse cx="26" cy="46" rx="4.5" ry="6" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <ellipse cx="54" cy="46" rx="4.5" ry="6" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <ellipse cx="34" cy="66" rx="5" ry="4" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <ellipse cx="46" cy="66" rx="5" ry="4" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <circle cx="36" cy="25" r="1" fill="#1a2e2b"/>
+          <circle cx="44" cy="25" r="1" fill="#1a2e2b"/>
+        </svg>
+        <p class="label">Gomitas</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Leche saborizada">
+          <path d="M30 22 L30 14 L50 14 L50 22 L54 28 L54 70 L26 70 L26 28 Z" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="28" y="8" width="24" height="7" rx="1" fill="#e07a5f" stroke="#1a2e2b" stroke-width="2"/>
+          <path d="M27 40 L53 40 L53 67 Q40 70 27 67 Z" fill="#7a4a2a"/>
+          <rect x="29" y="48" width="22" height="11" fill="#fffaf7" stroke="#1a2e2b" stroke-width="1.5"/>
+          <text x="40" y="56" text-anchor="middle" font-size="6" fill="#1a2e2b" font-family="sans-serif" font-weight="700">CHOC</text>
+        </svg>
+        <p class="label">Leches saborizadas</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Frutas deshidratadas">
+          <path d="M22 24 L58 24 L58 70 L22 70 Z" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M20 24 L60 24 L56 14 L24 14 Z" fill="#1f8a7a" stroke="#1a2e2b" stroke-width="2" stroke-linejoin="round"/>
+          <ellipse cx="32" cy="38" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+          <ellipse cx="44" cy="42" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+          <ellipse cx="50" cy="34" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+          <ellipse cx="36" cy="52" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+          <ellipse cx="46" cy="58" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+          <ellipse cx="30" cy="62" rx="4" ry="3" fill="#5a3a20" stroke="#1a2e2b" stroke-width="1"/>
+        </svg>
+        <p class="label">Frutas deshidratadas</p>
+      </div>
+
+      <div class="sugar-item">
+        <svg viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg" aria-label="Salsas">
+          <rect x="32" y="10" width="16" height="7" rx="1" fill="#1a2e2b"/>
+          <rect x="34" y="17" width="12" height="10" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2"/>
+          <path d="M32 26 L48 26 L52 36 L52 70 L28 70 L28 36 Z" fill="#fffaf7" stroke="#1a2e2b" stroke-width="2" stroke-linejoin="round"/>
+          <rect x="30" y="44" width="20" height="18" fill="#e07a5f" stroke="#1a2e2b" stroke-width="1.5"/>
+          <circle cx="40" cy="53" r="4.5" fill="#fffaf7"/>
+          <path d="M38 50 Q40 48 42 50" fill="none" stroke="#1f8a7a" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        <p class="label">Salsas y aderezos</p>
+      </div>
+
     </div>
-    <p style="margin-top:2rem;"><strong>Recomendado entre comidas:</strong> agua, fruta entera, lácteos sin azúcar, frutos secos (según edad).</p>
+    <p><strong>Recomendado entre comidas:</strong> agua, fruta entera, lácteos sin azúcar, frutos secos (según edad).</p>
   </section>
 
   <!-- 10. Caries de mamadera -->
   <section class="slide">
     <div class="pill warm">Ojo con esto</div>
     <h2>Caries de mamadera</h2>
-    <p>Dejar al chico dormirse con la <strong>mamadera</strong> (leche, jugo o cualquier líquido azucarado) es una de las principales causas de caries severa antes de los 3 años.</p>
-    <p style="margin-top:1.5rem;">Afecta sobre todo a los <strong>incisivos superiores</strong> y puede destruir varios dientes en pocos meses.</p>
-    <div class="reality" style="margin-top:2rem;">
-      <strong>Pauta:</strong> si toma de noche, pasarle una gasa o cepillito antes de volver a dormir. Después del año, evitar líquidos azucarados en la mamadera.
+    <div class="clinical">
+      <div>
+        <p>Dejar al chico dormirse con la <strong>mamadera</strong> (leche, jugo o cualquier líquido azucarado) es una de las principales causas de caries severa antes de los 3 años.</p>
+        <p style="margin-top:1.2rem;">Afecta sobre todo a los <strong>incisivos superiores</strong> y puede destruir varios dientes en pocos meses.</p>
+        <div class="reality" style="margin-top:1.5rem;">
+          <strong>Pauta:</strong> si toma de noche, pasarle una gasa o cepillito antes de volver a dormir. Después del año, evitar líquidos azucarados en la mamadera.
+        </div>
+      </div>
+      <div>
+        <div class="clinical-photos">
+          <img src="imagenes/caries-mamadera-1.jpg" alt="Caries severa con pérdida de dientes en arcada superior">
+          <img src="imagenes/caries-mamadera-2.jpg" alt="Cavidad por caries en incisivo superior">
+        </div>
+        <p class="credit">Fotos: Wikimedia Commons · CC BY-SA 4.0</p>
+      </div>
     </div>
   </section>
 
