@@ -1115,6 +1115,29 @@
     else if (e.key === 'Home') show(0);
     else if (e.key === 'End') show(slides.length - 1);
   });
+
+  // Swipe navigation (touch screens)
+  const deck = document.getElementById('deck');
+  let touchStartX = 0, touchStartY = 0, touchStartT = 0;
+  const SWIPE_MIN_X = 50;
+  const SWIPE_MAX_Y = 60;
+  const SWIPE_MAX_T = 600;
+  deck.addEventListener('touchstart', e => {
+    const t = e.changedTouches[0];
+    touchStartX = t.clientX;
+    touchStartY = t.clientY;
+    touchStartT = Date.now();
+  }, { passive: true });
+  deck.addEventListener('touchend', e => {
+    const t = e.changedTouches[0];
+    const dx = t.clientX - touchStartX;
+    const dy = t.clientY - touchStartY;
+    const dt = Date.now() - touchStartT;
+    if (dt > SWIPE_MAX_T) return;
+    if (Math.abs(dy) > SWIPE_MAX_Y) return;
+    if (Math.abs(dx) < SWIPE_MIN_X) return;
+    if (dx < 0) next(); else prev();
+  }, { passive: true });
 </script>
 </body>
 </html>
