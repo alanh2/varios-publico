@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>autoBIMATION × Grupo del Pilar</title>
+<style>
+  :root{
+    --bg:#ffffff; --panel:#f8fafc; --ink:#0f172a; --muted:#64748b;
+    --accent:#3b82f6; --accent2:#8b5cf6; --good:#10b981; --warn:#f59e0b;
+    --line:#e2e8f0; --deep:#172554;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);
+    font:16px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif}
+  .deck{height:100vh;overflow:hidden}
+  .slide{height:100vh;width:100vw;padding:48px 72px;display:none;
+    flex-direction:column;overflow:auto}
+  .slide.active{display:flex}
+  h1{font-size:42px;margin:0 0 8px;letter-spacing:-.02em}
+  h2{font-size:28px;margin:24px 0 8px;color:var(--accent)}
+  h3{font-size:20px;margin:16px 0 6px;color:var(--accent2)}
+  p,li{font-size:17px;color:var(--ink)}
+  .muted{color:var(--muted);font-size:14px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:32px}
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .compact h3{font-size:18px;margin:0 0 8px}
+  .compact .card p{margin:0;color:var(--muted)}
+  .card{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:24px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04)}
+  .stat{font-size:36px;font-weight:700;color:var(--accent)}
+  .stat.alt{color:var(--accent2)}
+  .stat.good{color:var(--good)}
+  .stat.warn{color:var(--warn)}
+  .kicker{text-transform:uppercase;letter-spacing:.12em;
+    font-size:12px;color:var(--muted);margin-bottom:8px}
+  ul{margin:6px 0 0;padding-left:20px}
+  li{margin:6px 0}
+  .footer{position:fixed;bottom:18px;right:24px;color:var(--muted);
+    font-size:12px;display:flex;gap:16px;align-items:center}
+  .nav{position:fixed;bottom:18px;left:24px;color:var(--muted);font-size:12px}
+  .brand{display:flex;align-items:center;gap:12px;margin-bottom:24px}
+  .logo{width:36px;height:36px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent2))}
+  .pill{display:inline-block;padding:4px 12px;border-radius:999px;
+    background:#eff6ff;color:var(--accent);font-size:13px;margin-right:6px;
+    border:1px solid #dbeafe}
+  .row{display:flex;gap:24px;flex-wrap:wrap}
+  .row > *{flex:1;min-width:260px}
+  .divider{height:1px;background:var(--line);margin:18px 0}
+  .founder{background:var(--panel);border:1px solid var(--line);
+    border-radius:14px;padding:28px}
+  .founder h3{color:var(--accent);margin-top:0;font-size:22px}
+  .founder .role{color:var(--accent2);font-weight:600;margin-bottom:12px}
+  .big-num{font-size:54px;font-weight:800;letter-spacing:-.02em;line-height:1}
+  .label{color:var(--muted);font-size:13px;margin-top:4px}
+  .lead{font-size:19px;color:var(--ink);max-width:980px}
+  .highlight{background:linear-gradient(120deg,transparent 0,
+    rgba(59,130,246,.14) 0);padding:2px 6px;border-radius:4px;
+    color:var(--deep);font-weight:600}
+  .cover{justify-content:center;align-items:flex-start}
+  .cover h1{font-size:64px}
+  .cover .tag{font-size:22px;color:var(--accent2);margin-bottom:48px}
+  .checks li::marker{color:var(--good)}
+  .x li::marker{color:var(--warn)}
+  table{width:100%;border-collapse:collapse;margin-top:12px;font-size:15px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line)}
+  th{color:var(--muted);font-weight:600;font-size:12px;
+    text-transform:uppercase;letter-spacing:.08em}
+</style>
+</head>
+<body>
+<div class="deck">
+
+<!-- SLIDE 0 -->
+<section class="slide active cover">
+  <div class="brand"><div class="logo"></div>
+    <div><strong>autoBIMATION</strong>
+      <div class="muted">× Grupo del Pilar</div></div></div>
+  <h1>Quiénes somos</h1>
+  <div class="tag">Co-Founders</div>
+  <div class="grid2" style="width:100%">
+    <div class="founder">
+      <h3>Javier Ursino</h3>
+      <div class="role">Co-Founder & CEO</div>
+      <ul>
+        <li>Emprendedor y constructor de productos digitales.</li>
+        <li>+20 años en el rubro de los distribuidores.</li>
+        <li>Conozco cada trabajo relacionado al rubro.</li>
+        <li>Trabajé con diferentes distribuidoras construyendo tecnología.</li>
+      </ul>
+    </div>
+    <div class="founder">
+      <h3>Alan Helouani</h3>
+      <div class="role">Co-Founder & CTO</div>
+      <ul>
+        <li>Emprendedor y constructor de productos impulsados por IA.</li>
+        <li>+10 años liderando desarrollo de software y equipos tech.</li>
+        <li>ex-Co-Founder & CTO de Aument.</li>
+        <li>Ingeniero en Informática, UBA.</li>
+        <li>Especializado en IA, automatización, arquitecturas escalables y sistemas de agentes.</li>
+        <li>Mentor, speaker y miembro activo de comunidades de CTOs en LATAM.</li>
+      </ul>
+      <p class="muted" style="margin-top:14px;font-style:italic">
+        "Mi foco es transformar oportunidades de negocio en productos
+        tecnológicos escalables y ejecutables."</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 1 -->
+<section class="slide">
+  <div class="kicker">Slide 1 · El problema</div>
+  <h1>¿Qué es autoBIMATION?</h1>
+  <p class="lead">Un <span class="highlight">hub / suite de agentes
+    semiautónomos</span> diseñados para alcanzar todo lo que no pueden las
+    personas dentro de una organización. Hoy 100% orientados a
+    <strong>distribuidores de consumo masivo (FMCG)</strong>.</p>
+
+  <h2 style="margin-top:32px">La realidad del sector: un desierto digital</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="big-num">90%+</div>
+      <div class="label">de la venta del distribuidor sigue siendo analógica
+        (preventistas presenciales o telefonistas).</div>
+    </div>
+    <div class="card">
+      <div class="big-num" style="color:var(--warn)">Genérico</div>
+      <div class="label">Los pocos que digitalizan caen en e-commerce
+        tradicionales: rígidos, fríos, sin personalización ni estrategia
+        híbrida con el preventista.</div>
+    </div>
+  </div>
+
+  <h2>La paradoja del silencio: ceguera operativa</h2>
+  <div class="grid3">
+    <div class="card">
+      <div class="stat">120 min</div>
+      <div class="label">Interacción real mensual entre distribuidor y minorista
+        (≈ 1 hora).</div>
+    </div>
+    <div class="card">
+      <div class="stat warn">9.480 min</div>
+      <div class="label">de silencio absoluto al mes (95%+ del tiempo,
+        >150 horas) monopolizadas por el vendedor.</div>
+    </div>
+    <div class="card">
+      <div class="kicker">El distribuidor opera a ciegas ante</div>
+      <ul>
+        <li>Clientes que cerraron o no existen.</li>
+        <li>Teléfonos inválidos o incorrectos.</li>
+        <li>Contactos sin nombre para personalizar.</li>
+        <li>Clientes desatendidos o molestos con servicio/precio.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 2 -->
+<section class="slide">
+  <div class="kicker">Slide 2 · Tracción</div>
+  <h1>¿Qué logramos?</h1>
+  <p class="lead">Validación de <strong>bootstrapping</strong> en Mes 1 con
+    Mitre Distribución — casi cero caja, motor de inyección digital neta
+    sobre cartera tradicional analógica.</p>
+
+  <div class="grid3" style="margin-top:18px">
+    <div class="card">
+      <div class="stat">$478.932.699</div>
+      <div class="label">Facturación base analógica (2.895 órdenes
+        tradicionales).</div>
+    </div>
+    <div class="card">
+      <div class="stat good">$14.320.590</div>
+      <div class="label">Inyección digital neta autoBIMATION.</div>
+    </div>
+    <div class="card">
+      <div class="stat alt">3,0%</div>
+      <div class="label">Share digital del total de la distribuidora en su
+        primer mes.</div>
+    </div>
+  </div>
+
+  <h2>Estrategia de inyección dual</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Canal autónomo · virtual-seller</h3>
+      <ul>
+        <li>1.067 aperturas (17,34%)</li>
+        <li>120 órdenes · 11,25% de conversión</li>
+        <li>Inyectó <strong>$11.756.395</strong></li>
+        <li>Ticket promedio $97.969 (–41,6% vs. analógico)</li>
+        <li>+4,2% sobre las 2.895 órdenes analógicas</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Venta IA asistida · ticket-PLUS</h3>
+      <ul>
+        <li>441 aperturas (19,01%)</li>
+        <li>50 órdenes · 11,34% de conversión</li>
+        <li>Aportó <strong>$2.584.165</strong> extras</li>
+        <li>Ticket promedio $51.283 (+30% por orden)</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>El GAP del distribuidor</h2>
+  <div class="row">
+    <div class="card">
+      <div class="stat warn">30%</div>
+      <div class="label">Efectividad promedio del preventista en la calle.</div>
+    </div>
+    <div class="card">
+      <div class="stat">40%</div>
+      <div class="label">No-compradores activos sobre la base — captura core.</div>
+    </div>
+    <div class="card">
+      <div class="stat alt">70%</div>
+      <div class="label">Pedidos que hoy <em>no</em> se están generando.</div>
+    </div>
+    <div class="card">
+      <div class="kicker">Perfil adoptante</div>
+      <p>Almacenes y kioscos: mayor tasa de adopción activa, interactividad
+        recurrente y conversión.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDE 3 -->
+<section class="slide">
+  <div class="kicker">Slide 3 · Oportunidad</div>
+  <h1>El contexto de escala: ARG + LATAM</h1>
+
+  <h2>Dominio del canal tradicional</h2>
+  <div class="card">
+    <p>Los minoristas de proximidad (almacenes, bodegas, kioscos) controlan
+      entre el <strong>50% y el 67%</strong> de las ventas de consumo masivo
+      en LATAM.</p>
+  </div>
+
+  <h2>Capacidad logística ociosa</h2>
+  <div class="grid2">
+    <div class="card">
+      <div class="stat">30–40%</div>
+      <div class="label">Uso real de capacidad de entrega y despacho.</div>
+    </div>
+    <div class="card">
+      <div class="stat good">60–70%</div>
+      <div class="label">Gap logístico: pedidos extra en camiones ya en ruta,
+        con costo de distribución hundido.</div>
+    </div>
+  </div>
+
+  <h2>Multiplicador: redes exclusivas en LATAM</h2>
+  <p class="muted">No vendemos a minoristas individuales — apuntamos a los
+    distribuidores exclusivos de multinacionales que buscan un "sistema
+    operativo agéntico" de supervivencia.</p>
+  <table>
+    <thead><tr><th>Red</th><th>Argentina</th><th>Brasil</th><th>México</th></tr></thead>
+    <tbody>
+      <tr><td>DOU · Distribuidor Oficial Unilever</td><td>50–60</td><td>150–180</td><td>80–100</td></tr>
+      <tr><td>DEX · Distribuidor Exclusivo Mondelēz</td><td>75–90</td><td>250–300</td><td>—</td></tr>
+      <tr><td>DES · PepsiCo · DOA · Arcor · DOQ · Quilmes</td><td colspan="3">Redes adicionales activas en toda la región</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:18px"><span class="pill">+2.000</span>
+    macro-distribuidores de alta rotación en el ecosistema potencial LATAM.</p>
+</section>
+
+<!-- SLIDE 4 -->
+<section class="slide">
+  <div class="kicker">Slide 4 · Asociación</div>
+  <h1>¿Por qué asociarnos?</h1>
+
+  <h2>La simbiosis perfecta</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>autoBIMATION aporta</h3>
+      <ul>
+        <li>Agilidad para programar software propio.</li>
+        <li>Capacidad de integración con ERPs rígidos.</li>
+        <li>Historial impecable de desarrollo casi sin caja.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Grupo del Pilar aporta</h3>
+      <ul>
+        <li>Laboratorio transaccional masivo: 13 distribuidoras oficiales.</li>
+        <li>Contratos exclusivos con marcas líderes mundiales:
+          PepsiCo, Heineken, P&G, CCU, Peñaflor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Destino del capital — en qué se invierte</h2>
+  <div class="card">
+    <ul>
+      <li><strong>CTO & Arquitectura de IA</strong> — diseño estratégico y
+        dirección técnica del sistema de agentes.</li>
+      <li><strong>Ingeniería de integraciones ERP</strong> — dedicación
+        full-time a conectores para las 13 distribuidoras de GDP.</li>
+      <li><strong>Célula de ingeniería core</strong> — desarrolladores
+        senior/semi-senior dedicados exclusivamente al producto.</li>
+      <li><strong>Soporte técnico y onboarding</strong> — capacitación y
+        onboarding de minoristas en cada distribuidora.</li>
+      <li><strong>Infraestructura cloud & APIs de IA</strong> — servidores de
+        inferencia, tokens, hosting y observabilidad.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SLIDE 5 -->
+<section class="slide compact">
+  <div class="kicker">Slide 5 · Roadmap</div>
+  <h1>¿Qué desarrollamos en ≤ 24 meses?</h1>
+  <p>La <strong>Suite de Operación Autónoma Integral</strong> —
+    ocho agentes/módulos que cubren toda la operación del distribuidor.</p>
+
+  <div class="grid4">
+    <div class="card">
+      <h3>Atención automatizada</h3>
+      <p>Soporte 24/7 predictivo: reclamos, estado de cuenta y consultas de
+        minoristas.</p>
+    </div>
+    <div class="card">
+      <h3>Tomador de pedidos · Virtual Seller</h3>
+      <p>Interfaz conversacional que optimiza el mix de compra según perfil.</p>
+    </div>
+    <div class="card">
+      <h3>Agente de ventas · 100% IA</h3>
+      <p>Reactivación de inactivos, preventa digital y ofertas relámpago.</p>
+    </div>
+    <div class="card">
+      <h3>Cobranzas predictivo</h3>
+      <p>Alertas de pago automatizadas y conciliación inteligente de cuentas
+        corrientes.</p>
+    </div>
+    <div class="card">
+      <h3>Abastecimiento B2B</h3>
+      <p>Monitoreo predictivo de stock y órdenes de compra automáticas hacia
+        fabricantes.</p>
+    </div>
+    <div class="card">
+      <h3>Logística y repartos</h3>
+      <p>Soporte en tiempo real para choferes, optimización dinámica y registro
+        de incidentes.</p>
+    </div>
+    <div class="card">
+      <h3>BI & Asistente Directivo</h3>
+      <p>Dashboard de márgenes con auditoría interactiva en lenguaje natural
+        para mesa gerencial.</p>
+    </div>
+    <div class="card">
+      <h3>Soluciones financieras</h3>
+      <p>Evaluación inteligente de riesgo crediticio para optimizar capital de
+        trabajo.</p>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="nav">← → · espacio</div>
+<div class="footer">
+  <span id="pageNum">1 / 6</span>
+  <span>autoBIMATION × Grupo del Pilar · 2026</span>
+</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let i = 0;
+  const show = n => {
+    i = Math.max(0, Math.min(slides.length - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('pageNum').textContent = `${i + 1} / ${slides.length}`;
+  };
+  document.addEventListener('keydown', e => {
+    if (['ArrowRight', 'PageDown', ' '].includes(e.key)) show(i + 1);
+    if (['ArrowLeft', 'PageUp'].includes(e.key)) show(i - 1);
+    if (e.key === 'Home') show(0);
+    if (e.key === 'End') show(slides.length - 1);
+  });
+  document.addEventListener('click', e => {
+    if (e.target.closest('a,button,input,textarea')) return;
+    show(i + (e.clientX > window.innerWidth / 2 ? 1 : -1));
+  });
+</script>
+</body>
+</html>
