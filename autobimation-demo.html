@@ -140,6 +140,25 @@
   .highlight-row{background:#fef3c7;margin:0 -14px;padding:8px 14px;
     border-left:3px solid #f59e0b;animation:flash 1.2s ease}
   @keyframes flash{0%{background:#fde68a}100%{background:#fef3c7}}
+  .kpi-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px}
+  .kpi{background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:10px 12px}
+  .kpi .num{font-size:16px;font-weight:700;color:var(--ink);line-height:1.1}
+  .kpi .lbl{font-size:10px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.06em;margin-top:3px}
+  .kpi .delta{font-size:10px;font-weight:600;margin-left:4px}
+  .kpi .delta.up{color:var(--good)}
+  .kpi .delta.dn{color:#dc2626}
+  .chart-wrap{padding:6px 0 0}
+  .chart-meta{display:flex;justify-content:space-between;font-size:10px;
+    color:var(--muted);margin-bottom:6px}
+  .chart-meta strong{color:var(--ink);font-size:11px}
+  .chart{width:100%;height:90px;display:block}
+  .chart .bar{fill:#cbd5e1;transition:fill .2s}
+  .chart .bar.last{fill:var(--accent)}
+  .chart .grid{stroke:#f1f5f9;stroke-width:1}
+  .x-labels{display:flex;justify-content:space-between;margin-top:4px;
+    font-size:9px;color:var(--muted)}
 
   /* === order view === */
   .order-head{background:var(--good);color:#fff;padding:52px 14px 14px;
@@ -282,6 +301,55 @@
         </div>
       </div>
       <div class="info-body">
+        <div class="kpi-grid">
+          <div class="kpi">
+            <div class="num">cada 14 d</div>
+            <div class="lbl">Frecuencia de pedido</div>
+          </div>
+          <div class="kpi">
+            <div class="num">2 <span class="delta up">▲ vs may</span></div>
+            <div class="lbl">Compras del mes</div>
+          </div>
+          <div class="kpi">
+            <div class="num">$278.500</div>
+            <div class="lbl">Ticket promedio</div>
+          </div>
+          <div class="kpi">
+            <div class="num">$3,2 M</div>
+            <div class="lbl">Acumulado YTD</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>Últimos 10 pedidos</h4>
+          <div class="chart-wrap">
+            <div class="chart-meta">
+              <span>Valor por pedido · <strong>$230k–$330k</strong></span>
+              <span>Último: <strong>$284.500</strong></span>
+            </div>
+            <svg class="chart" viewBox="0 0 300 90" preserveAspectRatio="none">
+              <line class="grid" x1="0" y1="22" x2="300" y2="22"/>
+              <line class="grid" x1="0" y1="45" x2="300" y2="45"/>
+              <line class="grid" x1="0" y1="68" x2="300" y2="68"/>
+              <rect class="bar" x="6"   y="60" width="20" height="28" rx="3"/>
+              <rect class="bar" x="36"  y="48" width="20" height="40" rx="3"/>
+              <rect class="bar" x="66"  y="52" width="20" height="36" rx="3"/>
+              <rect class="bar" x="96"  y="40" width="20" height="48" rx="3"/>
+              <rect class="bar" x="126" y="44" width="20" height="44" rx="3"/>
+              <rect class="bar" x="156" y="34" width="20" height="54" rx="3"/>
+              <rect class="bar" x="186" y="38" width="20" height="50" rx="3"/>
+              <rect class="bar" x="216" y="28" width="20" height="60" rx="3"/>
+              <rect class="bar" x="246" y="20" width="20" height="68" rx="3"/>
+              <rect class="bar last" x="276" y="36" width="20" height="52" rx="3"/>
+            </svg>
+            <div class="x-labels">
+              <span>31/ene</span><span>14/feb</span><span>28/feb</span>
+              <span>14/mar</span><span>28/mar</span><span>11/abr</span>
+              <span>25/abr</span><span>09/may</span><span>23/may</span><span>06/jun</span>
+            </div>
+          </div>
+        </div>
+
         <div class="info-card">
           <h4>Productos frecuentes</h4>
           <div class="info-row"><span><img class="prod-thumb" src="https://static.cotodigital3.com.ar/sitios/fotos/full/00204100/00204113.jpg" alt="">Cerveza Quilmes 1L</span><span class="qty" id="qtyQuilmes">20 cajas/mes</span></div>
