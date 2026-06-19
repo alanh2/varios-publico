@@ -50,9 +50,15 @@
   .row > *{flex:1;min-width:260px}
   .divider{height:1px;background:var(--line);margin:18px 0}
   .founder{background:var(--panel);border:1px solid var(--line);
-    border-radius:14px;padding:28px}
+    border-radius:14px;padding:28px;
+    box-shadow:0 1px 2px rgba(15,23,42,.04)}
   .founder h3{color:var(--accent);margin-top:0;font-size:22px}
   .founder .role{color:var(--accent2);font-weight:600;margin-bottom:12px}
+  .founder-head{display:flex;align-items:center;gap:18px;margin-bottom:14px}
+  .founder-head .photo{width:84px;height:84px;border-radius:50%;
+    object-fit:cover;border:3px solid var(--accent);flex-shrink:0;
+    background:#e2e8f0}
+  .founder-head h3,.founder-head .role{margin:0}
   .big-num{font-size:54px;font-weight:800;letter-spacing:-.02em;line-height:1}
   .label{color:var(--muted);font-size:13px;margin-top:4px}
   .lead{font-size:19px;color:var(--ink);max-width:980px}
@@ -82,18 +88,36 @@
   <div class="tag">Co-Founders</div>
   <div class="grid2" style="width:100%">
     <div class="founder">
-      <h3>Javier Ursino</h3>
-      <div class="role">Co-Founder & CEO</div>
+      <div class="founder-head">
+        <img class="photo" alt="Javier Ursino"
+          src="https://media.licdn.com/dms/image/v2/D4D03AQHAXfr-8cLO1g/profile-displayphoto-scale_400_400/B4DZqWUx.HGQAg-/0/1763458623435?e=1783555200&v=beta&t=5OsFjTXtZCCdZAdyLcNjxiZSXVosQm4dZJ-f3KlkxRc">
+        <div>
+          <h3>Javier Ursino</h3>
+          <div class="role">Founder</div>
+        </div>
+      </div>
+      <p style="margin-bottom:12px">Emprendedor en serie con foco en canales de
+        distribución, consumo masivo y modelos de negocio escalables para el
+        mercado minorista.</p>
       <ul>
-        <li>Emprendedor y constructor de productos digitales.</li>
-        <li>+20 años en el rubro de los distribuidores.</li>
-        <li>Conozco cada trabajo relacionado al rubro.</li>
-        <li>Trabajé con diferentes distribuidoras construyendo tecnología.</li>
+        <li>+10 años construyendo y operando negocios en el canal tradicional, retail y plataformas digitales B2B.</li>
+        <li>Founder de <strong>RegalamosYa</strong> · <strong>Central de Ofertas</strong> (Growth Suppliers).</li>
+        <li>Especializado en estrategia comercial, operaciones de canal y desarrollo de cuentas en consumo masivo.</li>
+        <li>Trayectoria directa en el mundo del distribuidor — el puente entre la tecnología de autoBIMATION y la realidad del negocio en terreno.</li>
       </ul>
+      <p class="muted" style="margin-top:14px;font-style:italic">
+        "Entiendo el canal desde adentro. Mi rol es asegurar que cada agente
+        construido resuelva un problema real del negocio, no uno de laboratorio."</p>
     </div>
     <div class="founder">
-      <h3>Alan Helouani</h3>
-      <div class="role">Co-Founder & CTO</div>
+      <div class="founder-head">
+        <img class="photo" alt="Alan Helouani"
+          src="https://media.licdn.com/dms/image/v2/D4E03AQHrKLf1xQ6KWQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1645554175450?e=1783555200&v=beta&t=rfmwD6rrtdrArpO-e-5ehG1XtgEJ6MEuLbxKgtJ-Gs0">
+        <div>
+          <h3>Alan Helouani</h3>
+          <div class="role">Co-Founder & CTO</div>
+        </div>
+      </div>
       <ul>
         <li>Emprendedor y constructor de productos impulsados por IA.</li>
         <li>+10 años liderando desarrollo de software y equipos tech.</li>
