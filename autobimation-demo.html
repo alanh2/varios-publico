@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>autoBIMATION — Demo</title>
+<style>
+  :root{
+    --bg:#eff6ff; --ink:#0f172a; --muted:#64748b;
+    --accent:#3b82f6; --good:#10b981; --line:#e2e8f0;
+    --wa-green:#075e54; --wa-bg:#ece5dd; --wa-bubble-in:#fff;
+    --wa-bubble-out:#dcf8c6;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%;background:linear-gradient(135deg,#eff6ff,#e0e7ff);
+    font:15px/1.4 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,system-ui,sans-serif;
+    color:var(--ink);display:grid;place-items:center;overflow:hidden}
+
+  /* === iPhone 17 frame === */
+  .phone{position:relative;width:340px;height:700px;
+    background:linear-gradient(160deg,#1c1c1e,#2c2c2e);
+    border-radius:54px;padding:11px;
+    box-shadow:0 30px 80px rgba(15,23,42,.35),
+      inset 0 0 0 2px #3a3a3c,
+      inset 0 0 0 4px #1c1c1e}
+  .phone::before{content:"";position:absolute;top:0;left:0;right:0;height:54px;
+    pointer-events:none}
+  .screen{position:relative;width:100%;height:100%;
+    border-radius:43px;overflow:hidden;background:#000}
+  .island{position:absolute;top:10px;left:50%;transform:translateX(-50%);
+    width:108px;height:32px;background:#000;border-radius:18px;z-index:50}
+
+  /* === views === */
+  .view{position:absolute;inset:0;display:flex;flex-direction:column;
+    opacity:0;pointer-events:none;transition:opacity .35s ease;background:#fff}
+  .view.on{opacity:1;pointer-events:auto}
+
+  /* === chat header (WhatsApp style) === */
+  .head{background:var(--wa-green);color:#fff;padding:52px 14px 12px;
+    display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .avatar{width:36px;height:36px;border-radius:50%;
+    background:linear-gradient(135deg,#fbbf24,#f59e0b);
+    display:grid;place-items:center;font-weight:700;color:#7c2d12}
+  .head .name{font-weight:600;font-size:15px}
+  .head .sub{font-size:11px;opacity:.85}
+  .head .right{margin-left:auto;display:flex;gap:14px;font-size:18px}
+
+  /* === chat body === */
+  .chat{flex:1;background:var(--wa-bg);
+    background-image:
+      radial-gradient(circle at 20% 30%,rgba(255,255,255,.4) 0,transparent 2px),
+      radial-gradient(circle at 70% 60%,rgba(255,255,255,.3) 0,transparent 2px);
+    padding:14px 12px;overflow-y:auto;display:flex;flex-direction:column;gap:8px}
+  .bubble{max-width:78%;padding:8px 11px;border-radius:8px;
+    font-size:13.5px;line-height:1.35;position:relative;
+    box-shadow:0 1px 0 rgba(0,0,0,.06);
+    opacity:0;transform:translateY(8px);transition:all .3s ease;
+    word-wrap:break-word}
+  .bubble.show{opacity:1;transform:translateY(0)}
+  .bubble.in{background:var(--wa-bubble-in);align-self:flex-start;
+    border-top-left-radius:2px}
+  .bubble.out{background:var(--wa-bubble-out);align-self:flex-end;
+    border-top-right-radius:2px}
+  .bubble.bot{background:#e0f2fe;align-self:flex-end;
+    border-top-right-radius:2px;border-left:3px solid var(--accent)}
+  .bubble .meta{font-size:10px;color:var(--muted);
+    margin-top:3px;text-align:right}
+  .bot-tag{display:inline-block;font-size:9px;padding:1px 6px;
+    background:var(--accent);color:#fff;border-radius:8px;
+    margin-bottom:3px;letter-spacing:.05em;font-weight:600}
+
+  .typing{align-self:flex-start;background:#fff;padding:10px 14px;
+    border-radius:8px;border-top-left-radius:2px;display:none;gap:3px;
+    box-shadow:0 1px 0 rgba(0,0,0,.06)}
+  .typing.show{display:flex}
+  .typing span{width:6px;height:6px;background:#9ca3af;border-radius:50%;
+    animation:typing 1s infinite}
+  .typing span:nth-child(2){animation-delay:.15s}
+  .typing span:nth-child(3){animation-delay:.3s}
+  @keyframes typing{0%,60%,100%{opacity:.3;transform:translateY(0)}
+    30%{opacity:1;transform:translateY(-3px)}}
+
+  /* === input bar === */
+  .inputbar{background:#f0f0f0;padding:8px 10px;display:flex;gap:8px;
+    align-items:center;flex-shrink:0;border-top:1px solid #e5e7eb}
+  .inputbar .field{flex:1;background:#fff;border-radius:20px;
+    padding:8px 14px;font-size:13px;color:var(--muted);
+    display:flex;align-items:center;min-height:34px}
+  .inputbar .send{width:38px;height:38px;border-radius:50%;
+    background:var(--wa-green);color:#fff;display:grid;place-items:center;
+    font-size:16px;flex-shrink:0}
+  .cmd-chip{display:inline-block;background:var(--accent);color:#fff;
+    padding:3px 10px;border-radius:12px;font-size:12px;font-weight:600;
+    margin-right:4px;opacity:0;transition:opacity .3s}
+  .cmd-chip.show{opacity:1}
+
+  /* === control banner === */
+  .banner{background:#fef3c7;border-top:1px solid #f59e0b;
+    color:#92400e;padding:8px 14px;font-size:11.5px;font-weight:600;
+    display:flex;align-items:center;gap:8px;
+    transform:translateY(-100%);transition:transform .35s ease;
+    flex-shrink:0}
+  .banner.show{transform:translateY(0)}
+  .banner .dot{width:8px;height:8px;background:#10b981;border-radius:50%;
+    animation:pulse 1.4s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+
+  /* === client info view === */
+  .info-head{background:var(--accent);color:#fff;padding:52px 14px 14px;
+    display:flex;align-items:center;gap:12px;flex-shrink:0}
+  .info-head .back{font-size:20px;cursor:pointer}
+  .info-head .title{font-weight:600;font-size:15px}
+  .info-body{flex:1;overflow-y:auto;background:#f8fafc;padding:14px}
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:12px;
+    padding:14px;margin-bottom:12px}
+  .info-card h4{font-size:11px;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px}
+  .info-row{display:flex;justify-content:space-between;align-items:center;
+    padding:8px 0;border-bottom:1px solid #f1f5f9;font-size:13px}
+  .info-row:last-child{border:none}
+  .info-row .qty{color:var(--accent);font-weight:600}
+  .highlight-row{background:#fef3c7;margin:0 -14px;padding:8px 14px;
+    border-left:3px solid #f59e0b;animation:flash 1.2s ease}
+  @keyframes flash{0%{background:#fde68a}100%{background:#fef3c7}}
+
+  /* === order view === */
+  .order-head{background:var(--good);color:#fff;padding:52px 14px 14px;
+    flex-shrink:0;display:flex;align-items:center;gap:12px}
+  .order-head .title{font-weight:600;font-size:15px}
+  .order-body{flex:1;padding:14px;background:#f8fafc;overflow-y:auto}
+  .order-item{background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:12px;margin-bottom:10px;display:flex;align-items:center;gap:10px;
+    opacity:0;transform:translateX(20px);transition:all .35s ease}
+  .order-item.show{opacity:1;transform:translateX(0)}
+  .order-item .icon{width:36px;height:36px;border-radius:8px;
+    background:#dbeafe;display:grid;place-items:center;font-size:18px;
+    flex-shrink:0}
+  .order-item .name{flex:1;font-size:13px;font-weight:500}
+  .order-item .name small{display:block;color:var(--muted);
+    font-size:11px;font-weight:400;margin-top:2px}
+  .order-item .qty{background:#eff6ff;color:var(--accent);
+    padding:4px 10px;border-radius:8px;font-weight:700;font-size:13px}
+  .total{background:#fff;border:1px solid var(--line);border-radius:10px;
+    padding:14px;margin-top:6px;display:flex;justify-content:space-between;
+    align-items:center}
+  .total .label{font-size:12px;color:var(--muted)}
+  .total .num{font-size:18px;font-weight:700;color:var(--ink)}
+  .confirm{background:var(--good);color:#fff;padding:14px;
+    text-align:center;border-radius:10px;font-weight:600;
+    margin-top:14px;font-size:14px;
+    box-shadow:0 6px 16px rgba(16,185,129,.3);
+    transition:all .3s ease}
+  .confirm.pulse{animation:btnpulse 1s infinite}
+  @keyframes btnpulse{0%,100%{transform:scale(1);
+    box-shadow:0 6px 16px rgba(16,185,129,.3)}
+    50%{transform:scale(1.04);
+    box-shadow:0 10px 24px rgba(16,185,129,.5)}}
+  .success{position:absolute;inset:0;background:rgba(255,255,255,.97);
+    display:grid;place-items:center;opacity:0;pointer-events:none;
+    transition:opacity .3s;z-index:60}
+  .success.on{opacity:1}
+  .success .check{width:80px;height:80px;border-radius:50%;
+    background:var(--good);display:grid;place-items:center;color:#fff;
+    font-size:42px;margin-bottom:14px;animation:popin .4s ease}
+  .success-wrap{text-align:center}
+  .success-wrap h3{color:var(--ink);margin-bottom:6px}
+  .success-wrap p{color:var(--muted);font-size:13px}
+  @keyframes popin{0%{transform:scale(0)}70%{transform:scale(1.15)}
+    100%{transform:scale(1)}}
+
+  /* === side caption === */
+  .caption{position:fixed;top:30px;left:30px;max-width:280px}
+  .caption .step{display:none;animation:fade .3s ease}
+  .caption .step.on{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}
+    to{opacity:1;transform:translateY(0)}}
+  .caption h2{font-size:14px;color:var(--accent);
+    text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
+  .caption p{font-size:18px;line-height:1.45;color:var(--ink)}
+  .caption .num{font-size:11px;color:var(--muted);margin-bottom:6px;
+    font-weight:600;letter-spacing:.1em}
+
+  .restart{position:fixed;bottom:30px;right:30px;
+    background:var(--accent);color:#fff;border:none;padding:10px 18px;
+    border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;
+    box-shadow:0 4px 12px rgba(59,130,246,.3)}
+</style>
+</head>
+<body>
+
+<div class="caption">
+  <div class="step on" data-step="0">
+    <div class="num">01 / 06</div>
+    <h2>Cliente</h2>
+    <p>Don Juan abre WhatsApp y dicta su pedido por mensaje.</p>
+  </div>
+  <div class="step" data-step="1">
+    <div class="num">02 / 06</div>
+    <h2>Bot autoBIMATION</h2>
+    <p>El agente reconoce productos y cantidades, confirma al instante.</p>
+  </div>
+  <div class="step" data-step="2">
+    <div class="num">03 / 06</div>
+    <h2>Mensaje confuso</h2>
+    <p>El cliente agrega algo abreviado. El bot duda — el vendedor toma el control.</p>
+  </div>
+  <div class="step" data-step="3">
+    <div class="num">04 / 06</div>
+    <h2>Ficha del cliente</h2>
+    <p>El vendedor ve los productos que Don Juan suele comprar y deduce la intención.</p>
+  </div>
+  <div class="step" data-step="4">
+    <div class="num">05 / 06</div>
+    <h2>Confirmación humana</h2>
+    <p>Repregunta al cliente con la hipótesis. Don Juan confirma.</p>
+  </div>
+  <div class="step" data-step="5">
+    <div class="num">06 / 06</div>
+    <h2>Pedido cargado</h2>
+    <p>Con un toque, el pedido entra al sistema de la distribuidora.</p>
+  </div>
+</div>
+
+<div class="phone">
+  <div class="screen">
+    <div class="island"></div>
+
+    <!-- CHAT VIEW -->
+    <div class="view on" id="chatView">
+      <div class="head">
+        <div class="avatar">DJ</div>
+        <div>
+          <div class="name">Don Juan · Almacén</div>
+          <div class="sub" id="chatStatus">en línea</div>
+        </div>
+        <div class="right">📞 ⋮</div>
+      </div>
+      <div class="banner" id="banner">
+        <span class="dot"></span> Vendedor tomó el control
+      </div>
+      <div class="chat" id="chatBody"></div>
+      <div class="inputbar">
+        <div class="field" id="inputField">Mensaje</div>
+        <div class="send">➤</div>
+      </div>
+    </div>
+
+    <!-- CLIENT INFO VIEW -->
+    <div class="view" id="infoView">
+      <div class="info-head">
+        <div class="back">←</div>
+        <div>
+          <div class="title">Don Juan — Almacén La Esquina</div>
+          <div style="font-size:11px;opacity:.85">Cliente desde 2019 · Ruta 4</div>
+        </div>
+      </div>
+      <div class="info-body">
+        <div class="info-card">
+          <h4>Productos frecuentes</h4>
+          <div class="info-row"><span>🍺 Cerveza Quilmes 1L</span><span class="qty" id="qtyQuilmes">20 cajas/mes</span></div>
+          <div class="info-row"><span>🧼 Jabón Zorro</span><span class="qty">12 cajas/mes</span></div>
+          <div class="info-row"><span>🧴 Detergente Magistral</span><span class="qty">10 cajas/mes</span></div>
+          <div class="info-row"><span>🥤 Coca-Cola 1.5L</span><span class="qty">15 cajas/mes</span></div>
+          <div class="info-row"><span>🍞 Pan lactal Bimbo</span><span class="qty">8 cajas/mes</span></div>
+        </div>
+        <div class="info-card">
+          <h4>Último pedido</h4>
+          <div class="info-row"><span>Hace 12 días</span><span class="qty">$284.500</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ORDER VIEW -->
+    <div class="view" id="orderView">
+      <div class="order-head">
+        <div style="font-size:20px">←</div>
+        <div>
+          <div class="title">Cargar pedido</div>
+          <div style="font-size:11px;opacity:.85">Don Juan · Almacén</div>
+        </div>
+      </div>
+      <div class="order-body" id="orderBody">
+        <div class="order-item" data-item="1">
+          <div class="icon">🧼</div>
+          <div class="name">Jabón Zorro<small>Caja x 24 un.</small></div>
+          <div class="qty">12</div>
+        </div>
+        <div class="order-item" data-item="2">
+          <div class="icon">🧴</div>
+          <div class="name">Detergente Magistral<small>Caja x 12 un.</small></div>
+          <div class="qty">10</div>
+        </div>
+        <div class="order-item" data-item="3">
+          <div class="icon">🍺</div>
+          <div class="name">Cerveza Quilmes 1L<small>Caja x 12 un.</small></div>
+          <div class="qty">20</div>
+        </div>
+        <div class="total">
+          <div class="label">Total estimado</div>
+          <div class="num">$612.840</div>
+        </div>
+        <div class="confirm" id="confirmBtn">Confirmar pedido</div>
+      </div>
+      <div class="success" id="successOverlay">
+        <div class="success-wrap">
+          <div class="check">✓</div>
+          <h3>Pedido enviado</h3>
+          <p>Cargado al ERP — ruta 4, mañana</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<button class="restart" onclick="run()">↻ Reiniciar demo</button>
+
+<script>
+const chat = document.getElementById('chatBody');
+const banner = document.getElementById('banner');
+const inputField = document.getElementById('inputField');
+const chatStatus = document.getElementById('chatStatus');
+const views = {chat:document.getElementById('chatView'),
+  info:document.getElementById('infoView'),
+  order:document.getElementById('orderView')};
+const steps = document.querySelectorAll('.caption .step');
+
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+
+function setStep(n){
+  steps.forEach(s => s.classList.toggle('on', +s.dataset.step === n));
+}
+function show(view){
+  Object.values(views).forEach(v => v.classList.remove('on'));
+  views[view].classList.add('on');
+}
+function bubble({kind, text, time, isBot}){
+  const b = document.createElement('div');
+  b.className = `bubble ${kind}`;
+  if (isBot) b.innerHTML = `<span class="bot-tag">BOT</span><br>${text}<div class="meta">${time} ✓✓</div>`;
+  else b.innerHTML = `${text}<div class="meta">${time} ✓✓</div>`;
+  chat.appendChild(b);
+  chat.scrollTop = chat.scrollHeight;
+  requestAnimationFrame(() => b.classList.add('show'));
+  return b;
+}
+function typing(){
+  const t = document.createElement('div');
+  t.className = 'typing show';
+  t.innerHTML = '<span></span><span></span><span></span>';
+  chat.appendChild(t);
+  chat.scrollTop = chat.scrollHeight;
+  return t;
+}
+function reset(){
+  chat.innerHTML = '';
+  banner.classList.remove('show');
+  inputField.textContent = 'Mensaje';
+  inputField.style.color = '';
+  chatStatus.textContent = 'en línea';
+  document.querySelectorAll('.order-item').forEach(i => i.classList.remove('show'));
+  document.getElementById('successOverlay').classList.remove('on');
+  document.getElementById('confirmBtn').classList.remove('pulse');
+  document.getElementById('qtyQuilmes').parentElement.classList.remove('highlight-row');
+  show('chat');
+  setStep(0);
+}
+
+async function run(){
+  reset();
+
+  await sleep(800);
+  bubble({kind:'in', text:'Hola, buen día 👋', time:'09:14'});
+  await sleep(900);
+  bubble({kind:'in', text:'Necesito <b>12 cajas de Jabón Zorro</b> y <b>10 cajas de Detergente Magistral</b>', time:'09:14'});
+
+  await sleep(1200);
+  setStep(1);
+  const t1 = typing();
+  await sleep(1400);
+  t1.remove();
+  bubble({kind:'bot', isBot:true, text:'¡Hola Don Juan! 📝 Anoté:<br>✅ 12 × Jabón Zorro<br>✅ 10 × Detergente Magistral<br><br>¿Algo más?', time:'09:14'});
+
+  await sleep(2000);
+  setStep(2);
+  bubble({kind:'in', text:'Si dale, ponele 20 caj qlms', time:'09:15'});
+
+  await sleep(1600);
+  const t2 = typing();
+  await sleep(1200);
+  t2.remove();
+  bubble({kind:'bot', isBot:true, text:'🤔 No identifiqué bien el último ítem. Derivo al vendedor.', time:'09:15'});
+
+  await sleep(1200);
+  inputField.innerHTML = '<span class="cmd-chip show">/tomar-control</span>';
+  inputField.style.color = 'var(--ink)';
+  await sleep(1200);
+  banner.classList.add('show');
+  chatStatus.textContent = 'vendedor activo';
+  inputField.innerHTML = 'Escribí como vendedor…';
+
+  await sleep(1600);
+  setStep(3);
+  show('info');
+  await sleep(2000);
+  document.getElementById('qtyQuilmes').parentElement.classList.add('highlight-row');
+  await sleep(2200);
+
+  show('chat');
+  setStep(4);
+  await sleep(800);
+  bubble({kind:'out', text:'Don Juan, ¿se refería a <b>20 cajas de Cerveza Quilmes</b>?', time:'09:16'});
+  await sleep(1800);
+  const t3 = typing();
+  await sleep(1100);
+  t3.remove();
+  bubble({kind:'in', text:'Si exacto! 👍', time:'09:16'});
+
+  await sleep(1400);
+  setStep(5);
+  show('order');
+  const items = document.querySelectorAll('.order-item');
+  for (const it of items){
+    it.classList.add('show');
+    await sleep(350);
+  }
+  await sleep(800);
+  document.getElementById('confirmBtn').classList.add('pulse');
+  await sleep(1600);
+  document.getElementById('confirmBtn').classList.remove('pulse');
+  document.getElementById('successOverlay').classList.add('on');
+
+  await sleep(3500);
+  run();
+}
+
+run();
+</script>
+</body>
+</html>
