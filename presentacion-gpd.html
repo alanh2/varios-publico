@@ -26,6 +26,11 @@
   .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
   .compact h3{font-size:18px;margin:0 0 8px}
   .compact .card p{margin:0;color:var(--muted)}
+  .demo-link{display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent);color:#fff;text-decoration:none;
+    padding:12px 22px;border-radius:10px;font-weight:600;font-size:15px;
+    box-shadow:0 6px 16px rgba(59,130,246,.3);transition:transform .2s}
+  .demo-link:hover{transform:translateY(-2px)}
   .card{background:var(--panel);border:1px solid var(--line);
     border-radius:14px;padding:24px;
     box-shadow:0 1px 2px rgba(15,23,42,.04)}
@@ -380,6 +385,11 @@
       <p>Evaluación inteligente de riesgo crediticio para optimizar capital de
         trabajo.</p>
     </div>
+  </div>
+  <div style="flex:1;display:flex;align-items:center;justify-content:center">
+    <a class="demo-link" href="autobimation-demo.html" target="_blank">
+      ▶ Ver demo en vivo
+    </a>
   </div>
 </section>
 
