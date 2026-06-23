@@ -18,10 +18,15 @@
   body{
     margin:0; background:#000; color:#fff;
     font-family:'Montserrat',system-ui,sans-serif;
-    display:flex; align-items:center; justify-content:center;
+    display:flex; align-items:flex-start; justify-content:center;
+    padding-top:40vh; box-sizing:border-box;
     overflow:hidden;
   }
-  .stage{display:flex; flex-direction:column; align-items:center; gap:clamp(28px,5vw,64px);}
+  .stage{
+    display:flex; flex-direction:column; align-items:center;
+    transform:translateY(-50%); /* centra "MUY PRONTO" sobre el 25% */
+    gap:calc(2em + clamp(8px,1.5vw,18px)); /* ~2 renglones */
+  }
 
   .pronto{
     font-weight:900;
@@ -42,7 +47,12 @@
     60%{transform:scale(1.04);}
   }
 
-  .brand{display:flex; align-items:center; justify-content:center;}
+  .brand{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-top:10vh;
+  }
   .brand img{
     width:clamp(180px, 32vw, 420px);
     height:auto; display:block;
