@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gooby — Muy pronto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c1:#ff2bd6;   /* magenta */
+    --c2:#a259ff;   /* violeta */
+    --c3:#22e6ff;   /* cyan   */
+    --grad: linear-gradient(90deg, var(--c1) 0%, var(--c2) 50%, var(--c3) 100%);
+  }
+  html,body{height:100%;}
+  body{
+    margin:0; background:#000; color:#fff;
+    font-family:'Montserrat',system-ui,sans-serif;
+    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+  }
+  .stage{display:flex; flex-direction:column; align-items:center; gap:clamp(28px,5vw,64px);}
+
+  .pronto{
+    font-weight:900;
+    font-size:clamp(40px, 9vw, 110px);
+    letter-spacing:.02em;
+    background:var(--grad);
+    -webkit-background-clip:text; background-clip:text;
+    color:transparent;
+    animation:beat 3.2s ease-in-out infinite;
+    transform-origin:center;
+    line-height:1;
+    white-space:nowrap;
+  }
+  @keyframes beat{
+    0%,100%{transform:scale(1);}
+    20%{transform:scale(1.08);}
+    40%{transform:scale(.98);}
+    60%{transform:scale(1.04);}
+  }
+
+  .brand{display:flex; align-items:center; justify-content:center;}
+  .brand img{
+    width:clamp(180px, 32vw, 420px);
+    height:auto; display:block;
+  }
+
+  /* brillo: máscara que se mueve sobre el logo+texto */
+  .shine{
+    position:relative;
+    -webkit-mask-image:linear-gradient(120deg,
+        #000 0%, #000 38%, rgba(0,0,0,.25) 50%, #000 62%, #000 100%);
+            mask-image:linear-gradient(120deg,
+        #000 0%, #000 38%, rgba(0,0,0,.25) 50%, #000 62%, #000 100%);
+    -webkit-mask-size:250% 100%;
+            mask-size:250% 100%;
+    animation:shine 5.6s linear infinite;
+    filter:drop-shadow(0 0 18px rgba(162,89,255,.35));
+  }
+  @keyframes shine{
+    0%{ -webkit-mask-position:120% 0; mask-position:120% 0;}
+    100%{-webkit-mask-position:-20% 0; mask-position:-20% 0;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .pronto,.shine{animation:none;}
+  }
+</style>
+</head>
+<body>
+  <main class="stage">
+    <div class="pronto">MUY PRONTO</div>
+
+    <div class="brand shine">
+      <img src="logo.png" alt="Gooby">
+    </div>
+  </main>
+</body>
+</html>
