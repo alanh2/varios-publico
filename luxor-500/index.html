@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUXOR 500 · El Cangrejo, Panamá</title>
+<meta name="description" content="LUXOR 500 — La obra maestra de El Cangrejo. Residencias de 64 a 136 m² con amenidades de resort en el corazón de Panamá.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brown:#3E3023; --brown-2:#2C2119; --terra:#C37358; --terra-dark:#A36B5A;
+  --cream:#E8E7E3; --sand:#E7DBC1; --muted:#8A7B6D;
+  --display:"Cormorant Garamond",Georgia,serif;
+  --body:"Jost",-apple-system,Segoe UI,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-weight:300;color:var(--brown);background:var(--cream);line-height:1.65;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:.02em;line-height:1.1;margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--terra)}
+section{padding:88px 0}
+section[id]{scroll-margin-top:76px}
+
+/* --- nav --- */
+nav{position:fixed;inset:0 0 auto;z-index:40;display:flex;justify-content:space-between;align-items:center;
+    gap:16px;padding:16px 24px;transition:background .3s,box-shadow .3s;color:var(--cream)}
+nav.solid{background:var(--brown);box-shadow:0 1px 20px rgba(0,0,0,.25)}
+.brand{font-family:var(--display);font-size:1.35rem;letter-spacing:.14em}
+.brand small{display:block;font-family:var(--body);font-size:.55rem;letter-spacing:.4em;opacity:.75;margin-top:-2px}
+.nav-right{display:flex;align-items:center;gap:18px}
+.langs{display:flex;gap:2px;font-size:.7rem;letter-spacing:.16em}
+.langs button{background:none;border:0;color:inherit;font-family:var(--body);cursor:pointer;padding:6px 7px;opacity:.55;text-transform:uppercase}
+.langs button[aria-current="true"]{opacity:1;border-bottom:1px solid var(--terra)}
+.langs span{opacity:.35}
+.btn{display:inline-block;border:1px solid var(--terra);background:var(--terra);color:#fff;
+     font-size:.75rem;letter-spacing:.18em;text-transform:uppercase;padding:13px 26px;
+     text-decoration:none;cursor:pointer;font-family:var(--body);transition:.25s}
+.btn:hover{background:transparent;color:var(--terra)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{background:var(--terra);border-color:var(--terra);color:#fff}
+
+/* --- hero --- */
+header.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;color:#fff;overflow:hidden}
+header.hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  background:url(img/torre-19-piscina-n600-lux3-jpg.jpg) center/cover;
+  filter:blur(1.5px);transform:scale(1.03)}  /* el blur tapa el pixelado; el scale come los bordes */
+header.hero::after{content:"";position:absolute;inset:0;z-index:1;
+  background:linear-gradient(180deg,rgba(30,22,16,.75),rgba(30,22,16,.45) 45%,rgba(30,22,16,.85))}
+/* si el sistema pide menos movimiento, se queda en el poster */
+@media(prefers-reduced-motion:reduce){header.hero .hero-bg{display:none}
+  header.hero{background:url(img/torre-19-piscina-n600-lux3-jpg.jpg) center/cover}}
+.hero-inner{position:relative;z-index:2;padding:120px 24px 64px}
+.hero-inner h1{font-size:clamp(2.6rem,9vw,5.5rem);letter-spacing:.06em}
+.hero-inner h1 em{font-style:normal;font-family:var(--display)}
+.hero-sub{font-size:clamp(.8rem,2.4vw,1rem);letter-spacing:.32em;text-transform:uppercase;margin:18px 0 6px}
+.hero-tag{font-family:var(--display);font-size:clamp(1.1rem,3.5vw,1.7rem);opacity:.92}
+.hero-cta{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px}
+
+/* --- intro --- */
+.intro{background:var(--brown);color:var(--cream)}
+.intro h2{font-size:clamp(1.9rem,5vw,3.2rem);margin-bottom:8px}
+.intro .en{font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);margin-bottom:36px}
+.cols{display:grid;gap:28px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));max-width:900px}
+.cols p{margin:0 0 16px;opacity:.9}
+
+/* --- números --- */
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1px;background:rgba(255,255,255,.15);margin-top:56px}
+.facts div{background:var(--brown);padding:26px 18px;text-align:center}
+.facts b{display:block;font-family:var(--display);font-size:2.2rem;font-weight:400;color:var(--sand)}
+.facts span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;opacity:.7}
+
+
+/* --- galería --- */
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin:28px 0 32px}
+.tabs button{font-family:var(--body);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  background:none;border:1px solid rgba(62,48,35,.25);color:var(--brown);padding:11px 20px;cursor:pointer;transition:.2s}
+.tabs button[aria-selected="true"]{background:var(--brown);border-color:var(--brown);color:var(--cream)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.grid figure{margin:0;position:relative;cursor:zoom-in;overflow:hidden;background:var(--sand)}
+.grid img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .6s ease}
+.grid[data-fit="contain"] img{aspect-ratio:3/4;object-fit:contain;background:var(--sand)}
+.grid figure:hover img{transform:scale(1.04)}
+.grid figcaption{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;color:#fff;font-size:.78rem;
+  letter-spacing:.08em;background:linear-gradient(transparent,rgba(30,22,16,.8))}
+.grid[data-fit="contain"] figcaption{position:static;color:var(--brown);background:none;text-align:center;padding:10px}
+
+/* --- amenidades --- */
+.amen{background:var(--terra);color:#fff}
+.amen h2{font-size:clamp(1.8rem,5vw,3rem)}
+.amen ul{list-style:none;padding:0;margin:34px 0 0;column-width:230px;column-gap:40px}
+.amen li{padding:9px 0;border-bottom:1px solid rgba(255,255,255,.22);break-inside:avoid;font-size:.95rem}
+.amen h3{font-size:1.4rem;margin-top:44px}
+
+/* --- form --- */
+.lead-sec{background:var(--sand)}
+.lead-grid{display:grid;gap:56px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));align-items:start}
+form{display:grid;gap:16px}
+.row{display:grid;gap:16px;grid-template-columns:1fr 1fr}
+label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:.95rem;font-weight:300;color:var(--brown);
+  background:transparent;border:0;border-bottom:1px solid rgba(62,48,35,.35);padding:9px 0;border-radius:0}
+input:focus,select,textarea:focus{outline:none;border-bottom-color:var(--terra)}
+textarea{resize:vertical;min-height:76px}
+select{cursor:pointer}
+.legal{font-size:.72rem;color:var(--muted);line-height:1.5}
+.msg{padding:14px 16px;font-size:.88rem;display:none}
+.msg.ok{display:block;background:rgba(62,48,35,.06);border-left:3px solid var(--terra)}
+.msg.err{display:block;background:#f6e2dd;border-left:3px solid #b5442e;color:#7d2e1e}
+
+/* --- footer --- */
+footer{background:var(--brown-2);color:var(--cream);padding:64px 0 34px;text-align:center}
+footer .btn{margin:20px 0 28px}
+footer p{opacity:.55;font-size:.72rem;max-width:640px;margin:0 auto;line-height:1.6}
+.sep{height:1px;background:rgba(255,255,255,.14);margin:34px 0 22px}
+
+/* --- lightbox --- */
+dialog{border:0;padding:0;background:transparent;max-width:100vw;max-height:100vh;width:100%;height:100%}
+dialog::backdrop{background:rgba(24,17,12,.94)}
+.lb{display:grid;place-items:center;height:100%;position:relative}
+.lb img{max-width:92vw;max-height:82vh;object-fit:contain}
+.lb figcaption{color:var(--cream);text-align:center;padding:16px;font-size:.85rem;letter-spacing:.1em}
+.lb button{position:absolute;background:none;border:0;color:#fff;font-size:2.4rem;cursor:pointer;opacity:.6;padding:12px;line-height:1}
+.lb button:hover{opacity:1}
+.lb .prev{left:8px}.lb .next{right:8px}.lb .close{top:8px;right:8px;font-size:1.8rem}
+@media(max-width:640px){section{padding:60px 0}.row{grid-template-columns:1fr}
+  nav .btn{display:none}}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <a class="brand" href="#top" style="text-decoration:none">LUXOR 500<small>EL CANGREJO</small></a>
+  <div class="nav-right">
+    <div class="langs" id="langs"></div>
+    <a class="btn" href="#contacto" data-i18n="nav.cta">Quiero información</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <video class="hero-bg" autoplay muted loop playsinline preload="auto"
+         poster="img/torre-19-piscina-n600-lux3-jpg.jpg">
+    <source src="video/hero.mp4" type="video/mp4">
+    <source src="video/hero.webm" type="video/webm">
+  </video>
+  <div class="hero-inner">
+    <p class="hero-sub" data-i18n="hero.sub">Live the rhythm, own the view</p>
+    <h1>LUXOR <em>500</em></h1>
+    <p class="hero-tag" data-i18n="hero.tag">La obra maestra de El Cangrejo</p>
+    <div class="hero-cta">
+      <a class="btn" href="#contacto" data-i18n="hero.cta1">Recibir el brochure</a>
+      <a class="btn ghost" href="#galeria" data-i18n="hero.cta2">Ver el proyecto</a>
+    </div>
+  </div>
+</header>
+
+<section class="intro">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="intro.eyebrow">El proyecto</p>
+    <h2 data-i18n="intro.h2">Vibrante afuera, sereno adentro</h2>
+    <p class="en" data-i18n="intro.en">Vibrant outside. Calm inside.</p>
+    <div class="cols">
+      <div>
+        <p data-i18n="intro.p1"></p>
+        <p data-i18n="intro.p2"></p>
+      </div>
+      <div>
+        <p data-i18n="intro.p3"></p>
+        <p data-i18n="intro.p4"></p>
+      </div>
+    </div>
+    <div class="facts">
+      <div><b>64–136</b><span data-i18n="facts.m2">m² por residencia</span></div>
+      <div><b>2–3</b><span data-i18n="facts.rooms">recámaras</span></div>
+      <div><b>18+</b><span data-i18n="facts.amen">amenidades</span></div>
+      <div><b>El Cangrejo</b><span data-i18n="facts.place">Panamá</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="galeria">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="gal.eyebrow">Galería</p>
+    <h2 style="font-size:clamp(1.8rem,5vw,3rem)" data-i18n="gal.h2">Auténtico, sensorial y elevado</h2>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="grid" id="grid"></div>
+  </div>
+</section>
+
+<section class="amen">
+  <div class="wrap">
+    <p class="eyebrow" style="color:rgba(255,255,255,.75)" data-i18n="amen.eyebrow">Lifestyle</p>
+    <h2 data-i18n-html="amen.h2">Amenidades y experiencias<br>de vida inigualables</h2>
+    <ul>
+      <li>Co-working Space</li>
+      <li>Fitness Center</li>
+      <li data-i18n="amen.pool">Piscina</li>
+      <li data-i18n="amen.jacuzzi">Jacuzzi de hidroterapia</li>
+      <li>Kids' Club</li>
+      <li data-i18n-html="amen.spa">Beauty &amp; Spa Lounge</li>
+      <li data-i18n="amen.cinema">Cine privado</li>
+      <li data-i18n="amen.terraces">Terrazas y jardines panorámicos</li>
+      <li>Game Room &amp; Wine Bar</li>
+      <li>Event Lounge</li>
+      <li>Mindfulness Room</li>
+      <li>Pet Wash Station</li>
+      <li data-i18n-html="amen.bbq">Chef's Table y áreas BBQ</li>
+      <li data-i18n="amen.court">Cancha multiuso</li>
+      <li data-i18n="amen.padel">Cancha de pádel</li>
+    </ul>
+    <h3 data-i18n="amen.services">Servicios</h3>
+    <ul>
+      <li>Pet Stylist</li>
+      <li>Pet Walker</li>
+      <li data-i18n-html="amen.laundry">Laundry pick up &amp; delivery</li>
+      <li data-i18n="amen.recycle">Reciclaje</li>
+    </ul>
+  </div>
+</section>
+
+<section class="lead-sec" id="contacto">
+  <div class="wrap lead-grid">
+    <div>
+      <p class="eyebrow" data-i18n="form.eyebrow">Contacto</p>
+      <h2 style="font-size:clamp(1.8rem,5vw,2.8rem)" data-i18n="form.h2">Descarga el brochure completo</h2>
+      <p style="margin-top:18px" data-i18n="form.lead"></p>
+      <p class="legal" style="margin-top:26px">
+        <span data-i18n="form.whatsapp"></span>
+        <a href="https://wa.me/50762046321">+507 6204.6321</a>.
+      </p>
+    </div>
+
+    <form id="lead-form" novalidate>
+      <div class="row">
+        <div><label for="nombre" data-i18n="form.nombre">Nombre *</label><input id="nombre" name="nombre" required autocomplete="given-name"></div>
+        <div><label for="apellido" data-i18n="form.apellido">Apellido *</label><input id="apellido" name="apellido" required autocomplete="family-name"></div>
+      </div>
+      <div class="row">
+        <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="telefono" data-i18n="form.telefono">Teléfono / WhatsApp</label><input id="telefono" name="telefono" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="row">
+        <div>
+          <label for="pais" data-i18n="form.pais">País *</label>
+          <input id="pais" name="pais" list="paises" required autocomplete="country-name">
+          <datalist id="paises"></datalist>
+        </div>
+        <div>
+          <label for="interes" data-i18n="form.interes">Me interesa *</label>
+          <select id="interes" name="interes" required>
+            <option value="" data-i18n="opt.placeholder"></option>
+            <option data-i18n="opt.vivir"></option>
+            <option data-i18n="opt.inversion"></option>
+            <option data-i18n="opt.precios"></option>
+            <option data-i18n="opt.visita"></option>
+            <option data-i18n="opt.broker"></option>
+            <option data-i18n="opt.brochure"></option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="mensaje" data-i18n="form.mensaje">Cuéntanos qué buscas</label>
+        <textarea id="mensaje" name="mensaje" data-i18n-ph="form.mensajePh"></textarea>
+      </div>
+      <p class="legal" data-i18n="form.legal"></p>
+      <button class="btn" type="submit" id="submit-btn" data-i18n="form.submit">Enviar y descargar brochure</button>
+      <div class="msg" id="msg"></div>
+    </form>
+  </div>
+</section>
+
+<footer>
+  <p class="eyebrow" style="color:var(--terra)" data-i18n="footer.eyebrow">Para más información</p>
+  <h2 style="font-size:clamp(1.6rem,4vw,2.4rem);margin-top:10px">+507 6204.6321</h2>
+  <a class="btn" href="https://wa.me/50762046321" data-i18n="footer.cta">Escribir por WhatsApp</a>
+  <div><a href="https://pacifichills.com" style="letter-spacing:.2em;font-size:.8rem">pacifichills.com</a></div>
+  <div class="wrap">
+    <div class="sep"></div>
+    <p data-i18n="footer.legal"></p>
+  </div>
+</footer>
+
+<dialog id="lb">
+  <figure class="lb" style="margin:0">
+    <button class="close" aria-label="✕">✕</button>
+    <button class="prev" aria-label="‹">‹</button>
+    <img id="lb-img" alt="">
+    <figcaption id="lb-cap"></figcaption>
+    <button class="next" aria-label="›">›</button>
+  </figure>
+</dialog>
+
+<script src="i18n.js"></script>
+<script src="gallery.js"></script>
+<script>
+/* ---------- idioma ---------- */
+const LANGS = ['es', 'en', 'pt'];
+// Los nombres de país los genera el navegador (Intl), no hace falta traducirlos a mano.
+const COUNTRIES = ['PA','AR','BO','BR','CA','CL','CO','CR','CU','DO','EC','SV','ES','US','GT','HN','IT','MX','NI','PY','PE','PT','PR','UY','VE'];
+
+let lang = localStorage.getItem('lang')
+        || (LANGS.includes(navigator.language.slice(0, 2)) ? navigator.language.slice(0, 2) : 'es');
+
+const t = k => (I18N[lang] || I18N.es)[k] ?? k;
+
+const langsEl = document.getElementById('langs');
+LANGS.forEach((l, i) => {
+  if (i) langsEl.insertAdjacentHTML('beforeend', '<span>·</span>');
+  const b = document.createElement('button');
+  b.textContent = l;
+  b.onclick = () => setLang(l);
+  langsEl.append(b);
+});
+
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('lang', l);
+  document.documentElement.lang = l;
+  document.querySelectorAll('[data-i18n]').forEach(e => e.textContent = t(e.dataset.i18n));
+  document.querySelectorAll('[data-i18n-html]').forEach(e => e.innerHTML = t(e.dataset.i18nHtml));
+  document.querySelectorAll('[data-i18n-ph]').forEach(e => e.placeholder = t(e.dataset.i18nPh));
+  [...langsEl.querySelectorAll('button')].forEach(b => b.setAttribute('aria-current', b.textContent === l));
+
+  const names = new Intl.DisplayNames([l], { type: 'region' });
+  document.getElementById('paises').innerHTML =
+    COUNTRIES.map(c => `<option value="${names.of(c)}">`).join('') + `<option value="${t('country.other')}">`;
+
+  render(current);   // los pies de foto también cambian
+}
+
+/* ---------- galería + lightbox ---------- */
+const tabsEl = document.getElementById('tabs');
+const gridEl = document.getElementById('grid');
+const keys = Object.keys(GALLERY);
+let current = keys[0], items = [], idx = 0;
+
+keys.forEach(k => {
+  const b = document.createElement('button');
+  b.setAttribute('role', 'tab');
+  b.onclick = () => render(k);
+  tabsEl.append(b);
+});
+
+function render(k) {
+  current = k;
+  items = GALLERY[k].items;
+  [...tabsEl.children].forEach((b, i) => {
+    b.textContent = GALLERY[keys[i]].label[lang];
+    b.setAttribute('aria-selected', keys[i] === k);
+  });
+  gridEl.dataset.fit = k === 'plantas' ? 'contain' : 'cover';   // las plantas no se recortan
+  gridEl.innerHTML = items.map((it, i) => `
+    <figure data-i="${i}">
+      <img src="${it.src}" alt="${it.cap[lang]}" loading="lazy">
+      <figcaption>${it.cap[lang]}</figcaption>
+    </figure>`).join('');
+  gridEl.querySelectorAll('figure').forEach(f => f.onclick = () => openLb(+f.dataset.i));
+}
+
+const lb = document.getElementById('lb'), lbImg = document.getElementById('lb-img'), lbCap = document.getElementById('lb-cap');
+const openLb = i => { show(i); lb.showModal(); };
+const show = i => {
+  idx = (i + items.length) % items.length;
+  lbImg.src = items[idx].src;
+  lbImg.alt = lbCap.textContent = items[idx].cap[lang];
+};
+lb.querySelector('.next').onclick = e => { e.stopPropagation(); show(idx + 1); };
+lb.querySelector('.prev').onclick = e => { e.stopPropagation(); show(idx - 1); };
+lb.querySelector('.close').onclick = () => lb.close();
+lb.onclick = e => { if (e.target === lb) lb.close(); };
+addEventListener('keydown', e => {
+  if (!lb.open) return;
+  if (e.key === 'ArrowRight') show(idx + 1);
+  if (e.key === 'ArrowLeft') show(idx - 1);
+});
+
+setLang(lang);   // pinta textos, países y galería
+
+/* el hero arranca solo; si el navegador lo bloquea, reintenta al primer toque */
+const heroBg = document.querySelector('.hero-bg');
+const playHero = () => heroBg?.play().catch(() => {});
+playHero();
+['click', 'touchstart', 'scroll', 'keydown'].forEach(ev =>
+  addEventListener(ev, function once() {
+    playHero();
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => removeEventListener(e, once));
+  }, { passive: true }));
+
+/* nav sólido al bajar */
+addEventListener('scroll', () => document.getElementById('nav').classList.toggle('solid', scrollY > 80));
+
+/* ---------- formulario → Google Sheet ---------- */
+// PENDIENTE DE PRUEBAS: pegar acá la URL del Web App de Apps Script (Implementar > Nueva implementación >
+// Aplicación web, ejecutar como "yo", acceso "cualquier persona"). El script del Sheet está en apps-script.gs.
+const SHEET_ENDPOINT = '';
+
+async function submitToSheet(data) {
+  if (!SHEET_ENDPOINT) {
+    // ponytail: sin endpoint todavía; guardamos local para no perder el lead durante las pruebas.
+    const q = JSON.parse(localStorage.getItem('leads') || '[]');
+    q.push(data); localStorage.setItem('leads', JSON.stringify(q));
+    console.warn('SHEET_ENDPOINT vacío — lead guardado en localStorage:', data);
+    return;
+  }
+  // text/plain evita el preflight CORS que Apps Script no responde.
+  const res = await fetch(SHEET_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data)
+  });
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+}
+
+const form = document.getElementById('lead-form');
+const msg = document.getElementById('msg');
+const btn = document.getElementById('submit-btn');
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  msg.className = 'msg';
+  if (!form.reportValidity()) return;
+
+  const data = Object.fromEntries(new FormData(form));
+  data.fecha = new Date().toISOString();
+  data.idioma = lang;
+  data.origen = location.href;
+
+  btn.disabled = true; btn.textContent = t('form.sending');
+  try {
+    await submitToSheet(data);
+    form.hidden = true;
+    msg.className = 'msg ok';
+    msg.innerHTML = `${t('form.thanks').replace('{nombre}', data.nombre)}<br><br>
+      <a class="btn" href="brochure-luxor-500.pdf" download>${t('form.download')}</a>`;
+    msg.querySelector('a').click();
+  } catch (err) {
+    msg.className = 'msg err';
+    msg.textContent = t('form.error');
+    console.error(err);
+  } finally {
+    btn.disabled = false; btn.textContent = t('form.submit');
+  }
+});
+</script>
+</body>
+</html>
