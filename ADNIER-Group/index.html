@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pacific Hills · Landings de proyectos</title>
+<meta name="description" content="Índice de las landings de los proyectos de Pacific Hills.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--dark:#23282B;--bg:#F2F1ED;--muted:#7E8386}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter",-apple-system,Segoe UI,sans-serif;font-weight:300;
+  color:var(--dark);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+header{max-width:1240px;margin:0 auto;padding:64px 24px 34px}
+.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:0}
+h1{font-family:"Jost",Futura,sans-serif;font-weight:200;letter-spacing:.04em;
+   font-size:clamp(2rem,5vw,3.2rem);margin:.25em 0 .1em}
+header p{max-width:62ch;margin:0;color:var(--muted);font-size:.95rem}
+.grid{max-width:1240px;margin:0 auto;padding:0 24px 80px;display:grid;gap:22px;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.card{background:#fff;overflow:hidden;display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.14)}
+.shot{position:relative;overflow:hidden;background:#ddd}
+.shot img{aspect-ratio:16/10;object-fit:cover;width:100%;transition:transform .6s ease}
+.card:hover .shot img{transform:scale(1.05)}
+.badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;
+  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px}
+.meta{padding:18px 20px 22px;border-top:3px solid var(--c);flex:1}
+.meta h2{font-family:"Jost",Futura,sans-serif;font-weight:300;font-size:1.3rem;
+  letter-spacing:.1em;margin:0 0 10px;line-height:1.15}
+.meta h2 small{display:block;font-family:inherit;font-size:.56rem;letter-spacing:.34em;
+  color:var(--muted);margin-top:4px}
+.meta p{margin:0;font-size:.85rem;color:var(--muted);line-height:1.55}
+footer{border-top:1px solid rgba(0,0,0,.1);padding:26px 24px 44px;
+  color:var(--muted);font-size:.75rem}
+.foot-in{max-width:1240px;margin:0 auto;display:flex;align-items:center;
+  justify-content:space-between;gap:24px}
+.foot-in p{margin:0}
+/* el PNG del logo viene en blanco: acá va sobre fondo claro, así que se invierte */
+.foot-logo{width:116px;height:auto;flex:none;filter:brightness(0);opacity:.38}
+@media(max-width:640px){header{padding:44px 20px 26px}.grid{padding:0 20px 56px}
+  .foot-in{flex-direction:column-reverse;text-align:center;gap:18px}}
+</style>
+</head>
+<body>
+
+<header>
+  <p class="eyebrow">Pacific Hills</p>
+  <h1>Landings de proyectos</h1>
+  <p>19 proyectos. Cada landing es una carpeta autocontenida y se puede publicar por separado.</p>
+</header>
+
+<div class="grid">
+    <a class="card" href="costanera-aqua/" style="--c:#4FA3DC">
+      <div class="shot"><img src="assets/thumbs/costanera-aqua.jpg" alt="AQUA" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>AQUA<small>COSTANERA</small></h2>
+        <p>COSTANERA AQUA — Everyday wanderlust. Residencias de 85 a 350 m² frente al mar en la Cinta Costera, con 4 pisos de amenidades.</p>
+      </div>
+    </a>
+    <a class="card" href="aura-green-city/" style="--c:#6E8B57">
+      <div class="shot"><img src="assets/thumbs/aura-green-city.jpg" alt="AURA" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>AURA<small>GREEN CITY</small></h2>
+        <p>AURA — Vive la energía. Casas de 152 a 211 m² en una eco comunidad de Green City, a 20 minutos de la ciudad de Panamá.</p>
+      </div>
+    </a>
+    <a class="card" href="deluxe/" style="--c:#B4985D">
+      <div class="shot"><img src="assets/thumbs/deluxe.jpg" alt="DELUXE" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>DELUXE<small>PUNTA PAITILLA</small></h2>
+        <p>DELUXE Residences — Lujo a tu medida. Apartamentos de 177 m² y penthouses de 307 m² en el corazón de Punta Paitilla.</p>
+      </div>
+    </a>
+    <a class="card" href="edison-corporate-center/" style="--c:#9C7A16">
+      <div class="shot"><img src="assets/thumbs/edison-corporate-center.jpg" alt="EDISON" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>EDISON<small>CORPORATE CENTER</small></h2>
+        <p>Edificio boutique corporativo de baja densidad entre la Ricardo J. Alfaro y la Transístmica. Oficinas desde 60 m² hasta 697 m², en venta y alquiler.</p>
+      </div>
+    </a>
+    <a class="card" href="edison-gardens/" style="--c:#5C8A33">
+      <div class="shot"><img src="assets/thumbs/edison-gardens.jpg" alt="EDISON" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>EDISON<small>GARDENS</small></h2>
+        <p>EDISON GARDENS — Lujo accesible. Apartamentos y penthouses loft de 47 a 221 m² con vida tipo resort en el corazón de la ciudad.</p>
+      </div>
+    </a>
+    <a class="card" href="elite-400/" style="--c:#4C7EA6">
+      <div class="shot"><img src="assets/thumbs/elite-400.jpg" alt="ELITE 400" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>ELITE 400<small>PENTHOUSE 37</small></h2>
+        <p>Último penthouse de Elite 400: 590 m², 4 recámaras + den, 4½ baños, 4 estacionamientos y vista de 360 grados sobre la ciudad de Panamá.</p>
+      </div>
+    </a>
+    <a class="card" href="elite-500/" style="--c:#4C7EA6">
+      <div class="shot"><img src="assets/thumbs/elite-500.jpg" alt="ELITE 500" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>ELITE 500<small>LOCAL COMERCIAL</small></h2>
+        <p>Local comercial de 204,05 m² con 3 estacionamientos en la torre ELITE 500. Se entrega en crudo, en venta o alquiler.</p>
+      </div>
+    </a>
+    <a class="card" href="greenwood-plaza/" style="--c:#C0264A">
+      <div class="shot"><img src="assets/thumbs/greenwood-plaza.jpg" alt="GREENWOOD" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>GREENWOOD<small>PLAZA</small></h2>
+        <p>Locales comerciales en alquiler frente a la Ricardo J. Alfaro, en la entrada de Greenwood District. Desde 75 m², con opción de mezzanine.</p>
+      </div>
+    </a>
+    <a class="card" href="luxor-500/" style="--c:#8A8A8A">
+      <div class="shot"><img src="assets/thumbs/luxor-500.jpg" alt="LUXOR 500" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>LUXOR 500<small>EL CANGREJO</small></h2>
+        <p>LUXOR 500 — La obra maestra de El Cangrejo. Residencias de 64 a 136 m² con amenidades de resort en el corazón de Panamá.</p>
+      </div>
+    </a>
+    <a class="card" href="ocean-front/" style="--c:#A5851A">
+      <div class="shot"><img src="assets/thumbs/ocean-front.jpg" alt="OCEAN FRONT" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>OCEAN FRONT<small>PUNTA PAITILLA</small></h2>
+        <p>A living masterpiece. 67 residencias de 320 a 610 m² frente al mar en Punta Paitilla, con amenidades de resort y vistas panorámicas.</p>
+      </div>
+    </a>
+    <a class="card" href="ocean-waves/" style="--c:#2F7BAB">
+      <div class="shot"><img src="assets/thumbs/ocean-waves.jpg" alt="OCEAN WAVES" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>OCEAN WAVES<small>PLAYA MALIBÚ</small></h2>
+        <p>Luxury beachfront residences. Apartamentos, lofts y penthouses de 81 a 445 m² en primera línea frente al mar, a 45 minutos de la ciudad de Panamá.</p>
+      </div>
+    </a>
+    <a class="card" href="pacific-park/" style="--c:#C0392B">
+      <div class="shot"><img src="assets/thumbs/pacific-park.jpg" alt="PACIFIC PARK" loading="lazy">
+        <span class="badge">video</span></div>
+      <div class="meta">
+        <h2>PACIFIC PARK<small>TOWERS</small></h2>
+        <p>Elegancia, comodidad y ubicación. Apartamentos de 89 a 244 m² con más de 5,000 m² de zonas verdes y áreas sociales con vistas panorámicas.</p>
+      </div>
+    </a>
+    <a class="card" href="panorama-360-green-city/" style="--c:#2E7D4F">
+      <div class="shot"><img src="assets/thumbs/panorama-360-green-city.jpg" alt="PANORAMA 360" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>PANORAMA 360<small>GREEN CITY</small></h2>
+        <p>El perfecto equilibrio entre diseño y funcionalidad. Apartamentos de 52 y 70 m², de 2 y 3 recámaras, en el corazón verde de Green City.</p>
+      </div>
+    </a>
+    <a class="card" href="riverwalk-villas-green-city/" style="--c:#2F7A57">
+      <div class="shot"><img src="assets/thumbs/riverwalk-villas-green-city.jpg" alt="RIVERWALK" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>RIVERWALK<small>VILLAS · GREEN CITY</small></h2>
+        <p>Villas de 175 a 277 m² junto al río, dentro del master plan Green City, con Club House, piscinas, gimnasio y spa.</p>
+      </div>
+    </a>
+    <a class="card" href="senza/" style="--c:#6E7439">
+      <div class="shot"><img src="assets/thumbs/senza.jpg" alt="SENZA" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>SENZA<small>GREEN CITY</small></h2>
+        <p>Less noise, more life. Apartamentos de 2 y 3 recámaras desde 73 m² alrededor de The Halo, con 25 amenidades de wellness en Green City.</p>
+      </div>
+    </a>
+    <a class="card" href="sky-point/" style="--c:#17787D">
+      <div class="shot"><img src="assets/thumbs/sky-point.jpg" alt="SKY POINT" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>SKY POINT<small>TOWER</small></h2>
+        <p>Apartamentos de 82, 99 y 110 m² con áreas sociales, piscina panorámica y locales comerciales, sobre la Vía Ricardo J. Alfaro.</p>
+      </div>
+    </a>
+    <a class="card" href="edificio-comercial-en-transistmica/" style="--c:#2F6FA8">
+      <div class="shot"><img src="assets/thumbs/edificio-comercial-en-transistmica.jpg" alt="TRANSÍSTMICA" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>TRANSÍSTMICA<small>EDIFICIO COMERCIAL</small></h2>
+        <p>3,337 m² de superficie en dos plantas sobre Vía Transístmica. Ideal para multinacionales, escuelas, universidades y oficinas. $15,00/m².</p>
+      </div>
+    </a>
+    <a class="card" href="vida/" style="--c:#B4552F">
+      <div class="shot"><img src="assets/thumbs/vida.jpg" alt="VIDA" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>VIDA<small>GREEN CITY</small></h2>
+        <p>Casas de 125 a 155 m² en las colinas de Green City: doble altura, paneles solares, opción de summer terrace con piscina y un Club House de bienestar.</p>
+      </div>
+    </a>
+    <a class="card" href="vivendi-green/" style="--c:#3E7D33">
+      <div class="shot"><img src="assets/thumbs/vivendi-green.jpg" alt="VIVENDI" loading="lazy">
+        </div>
+      <div class="meta">
+        <h2>VIVENDI<small>GREEN · EDISON PARK</small></h2>
+        <p>Apartamentos de 82, 104 y 121 m² con dos áreas sociales, sky lounge panorámico, piscinas, gimnasio y spa, en Edison Park.</p>
+      </div>
+    </a>
+</div>
+
+<footer>
+  <div class="foot-in">
+    <p>19 landings de Pacific Hills.</p>
+    <img class="foot-logo" src="assets/logo.png" alt="Adnire Group" width="560" height="176">
+  </div>
+</footer>
+
+</body>
+</html>
