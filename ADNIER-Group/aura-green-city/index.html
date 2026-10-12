@@ -245,12 +245,13 @@ dialog::backdrop{background:rgba(27,34,29,.94)}
     </div>
 
     <form id="lead-form" novalidate>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
       <div class="row">
         <div><label for="nombre" data-i18n="form.nombre">Nombre *</label><input id="nombre" name="nombre" required autocomplete="given-name"></div>
         <div><label for="apellido" data-i18n="form.apellido">Apellido *</label><input id="apellido" name="apellido" required autocomplete="family-name"></div>
       </div>
       <div class="row">
-        <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required autocomplete="email"></div>
         <div><label for="telefono" data-i18n="form.telefono">Teléfono / WhatsApp</label><input id="telefono" name="telefono" type="tel" autocomplete="tel"></div>
       </div>
       <div class="row">
@@ -404,26 +405,27 @@ playHero();
 /* nav sólido al bajar */
 addEventListener('scroll', () => document.getElementById('nav').classList.toggle('solid', scrollY > 80));
 
-/* ---------- formulario → Google Sheet ---------- */
-// PENDIENTE: pegar acá la URL del Web App de Apps Script (Implementar > Nueva implementación >
-// Aplicación web, ejecutar como "yo", acceso "cualquier persona"). El script del Sheet está en apps-script.gs.
-const SHEET_ENDPOINT = '';
+/* ---------- formulario → leads.adniregroup.com (Worker adnire-app, base D1) ---------- */
+// La URL se configura en "leadsEndpoint" de _kit/homepage_content.json.
+const LEADS_ENDPOINT = 'https://leads.adniregroup.com/lead';
 
-async function submitToSheet(data) {
-  if (!SHEET_ENDPOINT) {
+async function submitLead(data) {
+  if (!LEADS_ENDPOINT) {
     // ponytail: sin endpoint todavía; guardamos local para no perder el lead durante las pruebas.
     const q = JSON.parse(localStorage.getItem('leads') || '[]');
     q.push(data); localStorage.setItem('leads', JSON.stringify(q));
-    console.warn('SHEET_ENDPOINT vacío — lead guardado en localStorage:', data);
+    console.warn('LEADS_ENDPOINT vacío — lead guardado en localStorage:', data);
     return;
   }
-  // text/plain evita el preflight CORS que Apps Script no responde.
-  const res = await fetch(SHEET_ENDPOINT, {
+  // text/plain: pedido simple, sin preflight CORS
+  const res = await fetch(LEADS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(data)
   });
   if (!res.ok) throw new Error('HTTP ' + res.status);
+  // solo vale un {ok:true}: cualquier otra respuesta es un lead que no se guardó
+  if (!(await res.json()).ok) throw new Error('el servidor rechazó el lead');
 }
 
 const form = document.getElementById('lead-form');
@@ -438,12 +440,12 @@ form.addEventListener('submit', async e => {
   const data = Object.fromEntries(new FormData(form));
   data.fecha = new Date().toISOString();
   data.idioma = lang;
-  data.proyecto = 'AURA';
+  data.proyecto = "Aura - Green City";   // la carpeta: dos landings comparten la marca EDISON
   data.origen = location.href;
 
   btn.disabled = true; btn.textContent = t('form.sending');
   try {
-    await submitToSheet(data);
+    await submitLead(data);
     form.hidden = true;
     msg.className = 'msg ok';
     msg.innerHTML = `${t('form.thanks').replace('{nombre}', data.nombre)}<br><br>

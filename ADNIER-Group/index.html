@@ -485,9 +485,10 @@ footer{background:var(--green-dd);color:var(--cream);padding:64px 0 40px}
     </div>
     <div class="contact-form">
       <form id="lead-form" method="post" novalidate>
+        <div style="position:absolute;left:-9999px" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off"></div>
         <div class="row">
           <div><label for="name" data-i18n="form.name">Nombre *</label><input id="name" name="name" required autocomplete="name"></div>
-          <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+          <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" pattern="[^@\s]+@[^@\s]+\.[^@\s]+" required autocomplete="email"></div>
         </div>
         <div class="row">
           <div><label for="phone" data-i18n="form.phone">Teléfono / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
@@ -614,26 +615,28 @@ playHero();
     ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => removeEventListener(e, once));
   }, { passive: true }));
 
-/* ---------- formulario → Google Sheet ---------- */
-// PENDIENTE: pegar acá la URL del Web App de Apps Script (mismo script que las landings).
-const SHEET_ENDPOINT = '';
+/* ---------- formulario → leads.adniregroup.com (Worker adnire-app, base D1) ---------- */
+// La URL se configura en "leadsEndpoint" de _kit/homepage_content.json.
+const LEADS_ENDPOINT = 'https://leads.adniregroup.com/lead';
 
 async function submitLead(data) {
-  if (!SHEET_ENDPOINT) {
+  if (!LEADS_ENDPOINT) {
     // sin endpoint todavía: se guarda local para no perder el lead durante las pruebas.
     const queue = JSON.parse(store.get('adnire-leads') || '[]');
     queue.push(data);
     store.set('adnire-leads', JSON.stringify(queue));
-    console.warn('SHEET_ENDPOINT vacío — lead guardado en localStorage:', data);
+    console.warn('LEADS_ENDPOINT vacío — lead guardado en localStorage:', data);
     return;
   }
-  // text/plain evita el preflight CORS que Apps Script no responde.
-  const response = await fetch(SHEET_ENDPOINT, {
+  // text/plain: pedido simple, sin preflight CORS
+  const response = await fetch(LEADS_ENDPOINT, {
     method: 'POST',
     headers: { 'Content-Type': 'text/plain;charset=utf-8' },
     body: JSON.stringify(data)
   });
   if (!response.ok) throw new Error('HTTP ' + response.status);
+  // solo vale un {ok:true}: cualquier otra respuesta es un lead que no se guardó
+  if (!(await response.json()).ok) throw new Error('el servidor rechazó el lead');
 }
 
 const form = document.getElementById('lead-form');
@@ -645,9 +648,9 @@ form.addEventListener('submit', async event => {
   msg.className = 'msg';
   if (!form.reportValidity()) return;
   const data = Object.fromEntries(new FormData(form));
-  data.date = new Date().toISOString();
   data.lang = lang;
-  data.source = 'adnire-institucional';
+  data.project = 'Adnire Group';
+  data.page = location.href;
   submitButton.disabled = true;
   submitButton.textContent = t('form.sending');
   try {
