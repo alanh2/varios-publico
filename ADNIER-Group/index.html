@@ -3,219 +3,667 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pacific Hills · Landings de proyectos</title>
-<meta name="description" content="Índice de las landings de los proyectos de Pacific Hills.">
+<title>Adnire Group · Tu nexo al lujo y la tranquilidad</title>
+<meta name="description" content="Acercamos a cada persona el proyecto inmobiliario que realmente es de su interés en Panamá: la más alta calidad, al mejor precio.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-:root{--dark:#23282B;--bg:#F2F1ED;--muted:#7E8386}
+:root{
+  --green:#2F4F42; --green-d:#1E352B; --green-dd:#142620;
+  --cream:#F4F1E8; --sand:#E8E1CF; --brass:#B08D57; --brass-d:#8A6C3E;
+  --ink:#1D2420; --muted:#6E756F; --line:rgba(29,36,32,.12);
+  --display:"Jost",Futura,"Avenir Next",sans-serif;
+  --body:"Inter",-apple-system,"Segoe UI",sans-serif;
+}
 *{box-sizing:border-box}
-body{margin:0;font-family:"Inter",-apple-system,Segoe UI,sans-serif;font-weight:300;
-  color:var(--dark);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:var(--body);font-weight:300;color:var(--ink);background:var(--cream);
+  line-height:1.65;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
-a{color:inherit;text-decoration:none}
-header{max-width:1240px;margin:0 auto;padding:64px 24px 34px}
-.eyebrow{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--muted);margin:0}
-h1{font-family:"Jost",Futura,sans-serif;font-weight:200;letter-spacing:.04em;
-   font-size:clamp(2rem,5vw,3.2rem);margin:.25em 0 .1em}
-header p{max-width:62ch;margin:0;color:var(--muted);font-size:.95rem}
-.grid{max-width:1240px;margin:0 auto;padding:0 24px 80px;display:grid;gap:22px;
-  grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
-.card{background:#fff;overflow:hidden;display:flex;flex-direction:column;
-  box-shadow:0 1px 2px rgba(0,0,0,.06);transition:transform .25s,box-shadow .25s}
-.card:hover{transform:translateY(-3px);box-shadow:0 14px 34px rgba(0,0,0,.14)}
-.shot{position:relative;overflow:hidden;background:#ddd}
-.shot img{aspect-ratio:16/10;object-fit:cover;width:100%;transition:transform .6s ease}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:300;letter-spacing:.01em;line-height:1.12;margin:0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+section{padding:110px 0}
+section[id]{scroll-margin-top:72px}
+.eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--display);font-weight:500;
+  font-size:.74rem;letter-spacing:.32em;text-transform:uppercase;color:var(--brass-d);margin:0 0 22px}
+.eyebrow::before{content:"";width:34px;height:1px;background:currentColor}
+.on-dark .eyebrow{color:var(--brass)}
+.title{font-size:clamp(2rem,4.4vw,3.3rem)}
+.lead{font-size:1.06rem;color:var(--muted);max-width:58ch}
+:focus-visible{outline:2px solid var(--brass);outline-offset:3px}
+
+/* --- botones --- */
+.btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--body);font-weight:500;font-size:.76rem;
+  letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:15px 30px;cursor:pointer;
+  border:1px solid var(--brass);background:var(--brass);color:#fff;transition:.25s}
+.btn:hover{background:var(--brass-d);border-color:var(--brass-d)}
+.btn.ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.6)}
+.btn.ghost:hover{background:#fff;color:var(--green-d);border-color:#fff}
+.btn.wa{background:#fff;color:var(--green-d);border-color:#fff}
+.btn.wa:hover{background:var(--cream)}
+.btn svg{width:17px;height:17px;flex:none}
+
+/* --- nav --- */
+nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;
+  gap:20px;padding:18px 28px;color:#fff;transition:background .35s,padding .35s,box-shadow .35s}
+nav.solid{background:var(--green-d);padding:12px 28px;box-shadow:0 2px 24px rgba(0,0,0,.18)}
+.logo{height:30px;width:auto}
+.nav-links{display:flex;gap:30px;list-style:none;margin:0;padding:0;font-size:.82rem;letter-spacing:.06em}
+.nav-links a{text-decoration:none;opacity:.85;transition:opacity .2s}
+.nav-links a:hover{opacity:1}
+.nav-right{display:flex;align-items:center;gap:20px}
+.langs{display:flex;gap:2px;font-size:.7rem;letter-spacing:.16em}
+.langs button{background:none;border:0;color:inherit;font-family:var(--body);cursor:pointer;padding:6px 7px;
+  opacity:.55;text-transform:uppercase}
+.langs button[aria-pressed="true"]{opacity:1;border-bottom:1px solid var(--brass)}
+nav .btn{padding:11px 20px}
+
+/* --- hero --- */
+.hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:0}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero .poster{background:var(--green-dd) center/cover}
+.hero::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(20,38,32,.55) 0%,rgba(20,38,32,.25) 40%,rgba(20,38,32,.88) 100%)}
+@media(prefers-reduced-motion:reduce){.hero video{display:none}}
+.hero-pause{position:absolute;right:22px;bottom:22px;z-index:3;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(0,0,0,.25);color:#fff;cursor:pointer;font-size:.8rem}
+.hero-pause[hidden]{display:none}
+.hero-inner{position:relative;z-index:2;padding:0 28px 110px;max-width:1180px;margin:0 auto;width:100%}
+.hero h1{font-size:clamp(2.5rem,6.4vw,5.1rem);font-weight:200;max-width:15ch}
+.hero .lead{color:rgba(255,255,255,.86);font-size:clamp(1rem,1.6vw,1.2rem);margin:26px 0 38px;max-width:52ch}
+.hero .eyebrow{color:var(--sand)}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* --- nosotros --- */
+.about-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:72px;align-items:start}
+.about-grid p{margin:0 0 20px;font-size:1.04rem;color:#3E4641}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:90px;border-top:1px solid var(--line)}
+.pillar{padding:34px 28px 10px 0}
+.pillar+.pillar{padding-left:28px;border-left:1px solid var(--line)}
+.pillar .num{font-family:var(--display);font-size:.9rem;color:var(--brass-d);letter-spacing:.1em}
+.pillar h3{font-size:1.32rem;margin:14px 0 12px;font-weight:400}
+.pillar p{margin:0;font-size:.92rem;color:var(--muted)}
+
+/* --- números --- */
+.stats{background:var(--green);color:var(--cream);padding:74px 0}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+.stat b{display:block;font-family:var(--display);font-weight:200;font-size:clamp(2.4rem,4.5vw,3.6rem);line-height:1}
+.stat span{display:block;margin-top:12px;font-size:.84rem;opacity:.75;max-width:22ch}
+
+/* --- cómo trabajamos --- */
+.how{background:var(--sand)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:64px;counter-reset:step;list-style:none;padding:0}
+.steps li{position:relative;padding-top:44px}
+.steps li::before{counter-increment:step;content:"0" counter(step);position:absolute;top:0;left:0;
+  font-family:var(--display);font-size:1.6rem;font-weight:200;color:var(--green)}
+.steps li::after{content:"";position:absolute;top:18px;left:52px;right:-16px;height:1px;background:rgba(47,79,66,.3)}
+.steps li:last-child::after{display:none}
+.steps h3{font-size:1.22rem;font-weight:400;margin-bottom:10px}
+.steps p{margin:0;font-size:.92rem;color:#4F5751}
+
+/* --- proyectos --- */
+.filters{display:flex;flex-wrap:wrap;gap:10px;margin:40px 0 36px}
+.filters button{font-family:var(--body);font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;cursor:pointer;
+  background:none;border:1px solid var(--line);color:var(--ink);padding:11px 22px;transition:.2s}
+.filters button:hover{border-color:var(--green)}
+.filters button[aria-pressed="true"]{background:var(--green);border-color:var(--green);color:var(--cream)}
+.grid{display:grid;gap:26px;grid-template-columns:repeat(auto-fill,minmax(310px,1fr))}
+.card{background:#fff;text-decoration:none;display:flex;flex-direction:column;
+  box-shadow:0 1px 2px rgba(0,0,0,.05);transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,38,32,.16)}
+.card[hidden]{display:none}
+.shot{position:relative;overflow:hidden;background:var(--sand)}
+.shot img{aspect-ratio:4/3;object-fit:cover;width:100%;transition:transform .7s ease}
 .card:hover .shot img{transform:scale(1.05)}
-.badge{position:absolute;top:10px;right:10px;background:rgba(0,0,0,.55);color:#fff;
-  font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;padding:4px 9px}
-.meta{padding:18px 20px 22px;border-top:3px solid var(--c);flex:1}
-.meta h2{font-family:"Jost",Futura,sans-serif;font-weight:300;font-size:1.3rem;
-  letter-spacing:.1em;margin:0 0 10px;line-height:1.15}
-.meta h2 small{display:block;font-family:inherit;font-size:.56rem;letter-spacing:.34em;
-  color:var(--muted);margin-top:4px}
-.meta p{margin:0;font-size:.85rem;color:var(--muted);line-height:1.55}
-footer{border-top:1px solid rgba(0,0,0,.1);padding:26px 24px 44px;
-  color:var(--muted);font-size:.75rem}
-.foot-in{max-width:1240px;margin:0 auto;display:flex;align-items:center;
-  justify-content:space-between;gap:24px}
-.foot-in p{margin:0}
-/* el PNG del logo viene en blanco: acá va sobre fondo claro, así que se invierte */
-.foot-logo{width:116px;height:auto;flex:none;filter:brightness(0);opacity:.38}
-@media(max-width:640px){header{padding:44px 20px 26px}.grid{padding:0 20px 56px}
-  .foot-in{flex-direction:column-reverse;text-align:center;gap:18px}}
+.tag{position:absolute;left:14px;top:14px;background:rgba(20,38,32,.72);color:#fff;font-size:.62rem;
+  letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;backdrop-filter:blur(4px)}
+.card-body{padding:22px 24px 24px;border-top:3px solid var(--c,var(--brass));flex:1;display:flex;flex-direction:column}
+.card h3{font-size:1.3rem;letter-spacing:.08em;font-weight:400}
+.card h3 small{display:block;font-family:var(--body);font-size:.6rem;letter-spacing:.3em;color:var(--muted);margin-top:5px}
+.card p{margin:12px 0 18px;font-size:.88rem;color:var(--muted);flex:1}
+.more{font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--green);font-weight:500}
+.more::after{content:" →"}
+
+/* --- contacto --- */
+.contact{padding:0}
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr}
+.contact-side{background:var(--green);color:var(--cream);padding:100px 64px}
+.contact-side .lead{color:rgba(244,241,232,.78);margin:22px 0 34px}
+.contact-form{padding:100px 64px;background:#fff}
+form{display:grid;gap:18px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+label{display:block;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input,select,textarea{width:100%;font-family:var(--body);font-size:.96rem;font-weight:300;color:var(--ink);
+  background:transparent;border:0;border-bottom:1px solid rgba(29,36,32,.28);padding:9px 0;border-radius:0}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom-color:var(--brass)}
+textarea{resize:vertical;min-height:80px}
+.legal{font-size:.74rem;color:var(--muted);margin:0}
+.msg{display:none;padding:16px 18px;font-size:.92rem}
+.msg.ok{display:block;background:rgba(47,79,66,.07);border-left:3px solid var(--green)}
+.msg.err{display:block;background:#F6E4DE;border-left:3px solid #A8432B;color:#7A2D1B}
+
+/* --- footer --- */
+footer{background:var(--green-dd);color:var(--cream);padding:64px 0 40px}
+.foot{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap}
+.foot .logo{height:46px}
+.foot-tag{font-family:var(--display);font-weight:300;font-size:1.25rem;margin:18px 0 0;opacity:.9}
+.foot-legal{margin-top:44px;padding-top:24px;border-top:1px solid rgba(244,241,232,.14);
+  font-size:.74rem;opacity:.55}
+
+/* --- responsive --- */
+@media(max-width:980px){
+  .nav-links{display:none}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:40px}
+  .pillars,.stats-grid,.steps{grid-template-columns:1fr 1fr}
+  .pillar:nth-child(3){padding-left:0;border-left:0}
+  .steps li::after{display:none}
+  .contact-side,.contact-form{padding:72px 28px}
+}
+@media(max-width:600px){
+  section{padding:76px 0}
+  nav .btn{display:none}
+  .pillars,.stats-grid,.steps,.row{grid-template-columns:1fr}
+  .pillar,.pillar+.pillar{padding:26px 0 6px;border-left:0}
+  .hero-inner{padding-bottom:80px}
+}
 </style>
 </head>
 <body>
 
-<header>
-  <p class="eyebrow">Pacific Hills</p>
-  <h1>Landings de proyectos</h1>
-  <p>19 proyectos. Cada landing es una carpeta autocontenida y se puede publicar por separado.</p>
+<nav id="nav" aria-label="Principal">
+  <a href="#top"><img class="logo" src="assets/logo.png" alt="Adnire Group" width="560" height="176"></a>
+  <ul class="nav-links">
+    <li><a href="#nosotros" data-i18n="nav.about">Nosotros</a></li>
+    <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+    <li><a href="#como-trabajamos" data-i18n="nav.how">Cómo trabajamos</a></li>
+    <li><a href="#contacto" data-i18n="nav.contact">Contacto</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="langs" id="langs" role="group" aria-label="Idioma"></div>
+    <a class="btn" href="#contacto" data-i18n="nav.cta">Hablemos</a>
+  </div>
+</nav>
+
+<header class="hero on-dark" id="top">
+  <div class="poster" style="background-image:url('costanera-aqua/img/amen-90-21-costanera-e-rooftop-piscina-atardecer-actualizacion-skyline-1.jpg')"></div>
+  <video muted loop playsinline preload="metadata" poster="costanera-aqua/img/amen-90-21-costanera-e-rooftop-piscina-atardecer-actualizacion-skyline-1.jpg" aria-hidden="true">
+    <source src="costanera-aqua/video/hero.mp4" type="video/mp4">
+    <source src="costanera-aqua/video/hero.webm" type="video/webm">
+  </video>
+  <button type="button" class="hero-pause" id="hero-pause" hidden>❚❚</button>
+  <div class="hero-inner">
+    <p class="eyebrow" data-i18n="hero.eyebrow">Adnire Group · Panamá</p>
+    <h1 data-i18n="hero.title">Tu nexo al lujo y la tranquilidad, donde quieras estar.</h1>
+    <p class="lead" data-i18n="hero.lead">Acercamos a cada persona el proyecto que realmente es de su interés: la más alta calidad, al mejor precio.</p>
+    <div class="cta-row">
+      <a class="btn" href="#proyectos" data-i18n="hero.cta1">Ver proyectos</a>
+      <a class="btn ghost" href="#contacto" data-i18n="hero.cta2">Hablar con un asesor</a>
+    </div>
+  </div>
 </header>
 
-<div class="grid">
-    <a class="card" href="costanera-aqua/" style="--c:#4FA3DC">
-      <div class="shot"><img src="assets/thumbs/costanera-aqua.jpg" alt="AQUA" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>AQUA<small>COSTANERA</small></h2>
-        <p>COSTANERA AQUA — Everyday wanderlust. Residencias de 85 a 350 m² frente al mar en la Cinta Costera, con 4 pisos de amenidades.</p>
+<section id="nosotros">
+  <div class="wrap">
+    <div class="about-grid">
+      <div>
+        <p class="eyebrow" data-i18n="about.eyebrow">Quiénes somos</p>
+        <h2 class="title" data-i18n="about.title">No vendemos propiedades. Encontramos la tuya.</h2>
       </div>
-    </a>
-    <a class="card" href="aura-green-city/" style="--c:#6E8B57">
-      <div class="shot"><img src="assets/thumbs/aura-green-city.jpg" alt="AURA" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>AURA<small>GREEN CITY</small></h2>
-        <p>AURA — Vive la energía. Casas de 152 a 211 m² en una eco comunidad de Green City, a 20 minutos de la ciudad de Panamá.</p>
+      <div>
+        <p data-i18n="about.p1">En Adnire Group seleccionamos, entre los desarrollos más sólidos de Panamá, solo aquellos que cumplen nuestro estándar de calidad. Después hacemos lo más importante: escucharte, para acercarte únicamente los que encajan con lo que buscas.</p>
+        <p data-i18n="about.p2">Frente al mar, en el corazón de la ciudad o rodeado de naturaleza; para vivir, para invertir o para ambas cosas. Sea cual sea tu idea de lujo y tranquilidad, nuestro trabajo es conectarte con ella, sin ruido y al mejor precio.</p>
       </div>
-    </a>
-    <a class="card" href="deluxe/" style="--c:#B4985D">
-      <div class="shot"><img src="assets/thumbs/deluxe.jpg" alt="DELUXE" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>DELUXE<small>PUNTA PAITILLA</small></h2>
-        <p>DELUXE Residences — Lujo a tu medida. Apartamentos de 177 m² y penthouses de 307 m² en el corazón de Punta Paitilla.</p>
-      </div>
-    </a>
-    <a class="card" href="edison-corporate-center/" style="--c:#9C7A16">
-      <div class="shot"><img src="assets/thumbs/edison-corporate-center.jpg" alt="EDISON" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>EDISON<small>CORPORATE CENTER</small></h2>
-        <p>Edificio boutique corporativo de baja densidad entre la Ricardo J. Alfaro y la Transístmica. Oficinas desde 60 m² hasta 697 m², en venta y alquiler.</p>
-      </div>
-    </a>
-    <a class="card" href="edison-gardens/" style="--c:#5C8A33">
-      <div class="shot"><img src="assets/thumbs/edison-gardens.jpg" alt="EDISON" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>EDISON<small>GARDENS</small></h2>
-        <p>EDISON GARDENS — Lujo accesible. Apartamentos y penthouses loft de 47 a 221 m² con vida tipo resort en el corazón de la ciudad.</p>
-      </div>
-    </a>
-    <a class="card" href="elite-400/" style="--c:#4C7EA6">
-      <div class="shot"><img src="assets/thumbs/elite-400.jpg" alt="ELITE 400" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>ELITE 400<small>PENTHOUSE 37</small></h2>
-        <p>Último penthouse de Elite 400: 590 m², 4 recámaras + den, 4½ baños, 4 estacionamientos y vista de 360 grados sobre la ciudad de Panamá.</p>
-      </div>
-    </a>
-    <a class="card" href="elite-500/" style="--c:#4C7EA6">
-      <div class="shot"><img src="assets/thumbs/elite-500.jpg" alt="ELITE 500" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>ELITE 500<small>LOCAL COMERCIAL</small></h2>
-        <p>Local comercial de 204,05 m² con 3 estacionamientos en la torre ELITE 500. Se entrega en crudo, en venta o alquiler.</p>
-      </div>
-    </a>
-    <a class="card" href="greenwood-plaza/" style="--c:#C0264A">
-      <div class="shot"><img src="assets/thumbs/greenwood-plaza.jpg" alt="GREENWOOD" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>GREENWOOD<small>PLAZA</small></h2>
-        <p>Locales comerciales en alquiler frente a la Ricardo J. Alfaro, en la entrada de Greenwood District. Desde 75 m², con opción de mezzanine.</p>
-      </div>
-    </a>
-    <a class="card" href="luxor-500/" style="--c:#8A8A8A">
-      <div class="shot"><img src="assets/thumbs/luxor-500.jpg" alt="LUXOR 500" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>LUXOR 500<small>EL CANGREJO</small></h2>
-        <p>LUXOR 500 — La obra maestra de El Cangrejo. Residencias de 64 a 136 m² con amenidades de resort en el corazón de Panamá.</p>
-      </div>
-    </a>
-    <a class="card" href="ocean-front/" style="--c:#A5851A">
-      <div class="shot"><img src="assets/thumbs/ocean-front.jpg" alt="OCEAN FRONT" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>OCEAN FRONT<small>PUNTA PAITILLA</small></h2>
-        <p>A living masterpiece. 67 residencias de 320 a 610 m² frente al mar en Punta Paitilla, con amenidades de resort y vistas panorámicas.</p>
-      </div>
-    </a>
-    <a class="card" href="ocean-waves/" style="--c:#2F7BAB">
-      <div class="shot"><img src="assets/thumbs/ocean-waves.jpg" alt="OCEAN WAVES" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>OCEAN WAVES<small>PLAYA MALIBÚ</small></h2>
-        <p>Luxury beachfront residences. Apartamentos, lofts y penthouses de 81 a 445 m² en primera línea frente al mar, a 45 minutos de la ciudad de Panamá.</p>
-      </div>
-    </a>
-    <a class="card" href="pacific-park/" style="--c:#C0392B">
-      <div class="shot"><img src="assets/thumbs/pacific-park.jpg" alt="PACIFIC PARK" loading="lazy">
-        <span class="badge">video</span></div>
-      <div class="meta">
-        <h2>PACIFIC PARK<small>TOWERS</small></h2>
-        <p>Elegancia, comodidad y ubicación. Apartamentos de 89 a 244 m² con más de 5,000 m² de zonas verdes y áreas sociales con vistas panorámicas.</p>
-      </div>
-    </a>
-    <a class="card" href="panorama-360-green-city/" style="--c:#2E7D4F">
-      <div class="shot"><img src="assets/thumbs/panorama-360-green-city.jpg" alt="PANORAMA 360" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>PANORAMA 360<small>GREEN CITY</small></h2>
-        <p>El perfecto equilibrio entre diseño y funcionalidad. Apartamentos de 52 y 70 m², de 2 y 3 recámaras, en el corazón verde de Green City.</p>
-      </div>
-    </a>
-    <a class="card" href="riverwalk-villas-green-city/" style="--c:#2F7A57">
-      <div class="shot"><img src="assets/thumbs/riverwalk-villas-green-city.jpg" alt="RIVERWALK" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>RIVERWALK<small>VILLAS · GREEN CITY</small></h2>
-        <p>Villas de 175 a 277 m² junto al río, dentro del master plan Green City, con Club House, piscinas, gimnasio y spa.</p>
-      </div>
-    </a>
-    <a class="card" href="senza/" style="--c:#6E7439">
-      <div class="shot"><img src="assets/thumbs/senza.jpg" alt="SENZA" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>SENZA<small>GREEN CITY</small></h2>
-        <p>Less noise, more life. Apartamentos de 2 y 3 recámaras desde 73 m² alrededor de The Halo, con 25 amenidades de wellness en Green City.</p>
-      </div>
-    </a>
-    <a class="card" href="sky-point/" style="--c:#17787D">
-      <div class="shot"><img src="assets/thumbs/sky-point.jpg" alt="SKY POINT" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>SKY POINT<small>TOWER</small></h2>
-        <p>Apartamentos de 82, 99 y 110 m² con áreas sociales, piscina panorámica y locales comerciales, sobre la Vía Ricardo J. Alfaro.</p>
-      </div>
-    </a>
-    <a class="card" href="edificio-comercial-en-transistmica/" style="--c:#2F6FA8">
-      <div class="shot"><img src="assets/thumbs/edificio-comercial-en-transistmica.jpg" alt="TRANSÍSTMICA" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>TRANSÍSTMICA<small>EDIFICIO COMERCIAL</small></h2>
-        <p>3,337 m² de superficie en dos plantas sobre Vía Transístmica. Ideal para multinacionales, escuelas, universidades y oficinas. $15,00/m².</p>
-      </div>
-    </a>
-    <a class="card" href="vida/" style="--c:#B4552F">
-      <div class="shot"><img src="assets/thumbs/vida.jpg" alt="VIDA" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>VIDA<small>GREEN CITY</small></h2>
-        <p>Casas de 125 a 155 m² en las colinas de Green City: doble altura, paneles solares, opción de summer terrace con piscina y un Club House de bienestar.</p>
-      </div>
-    </a>
-    <a class="card" href="vivendi-green/" style="--c:#3E7D33">
-      <div class="shot"><img src="assets/thumbs/vivendi-green.jpg" alt="VIVENDI" loading="lazy">
-        </div>
-      <div class="meta">
-        <h2>VIVENDI<small>GREEN · EDISON PARK</small></h2>
-        <p>Apartamentos de 82, 104 y 121 m² con dos áreas sociales, sky lounge panorámico, piscinas, gimnasio y spa, en Edison Park.</p>
-      </div>
-    </a>
+    </div>
+    <div class="pillars">
+      <div class="pillar"><span class="num">01</span><h3 data-i18n="pillar1.title">Curaduría a tu medida</h3><p data-i18n="pillar1.text">No te mostramos todo: te mostramos lo que te interesa. Cada recomendación parte de lo que nos cuentas.</p></div>
+      <div class="pillar"><span class="num">02</span><h3 data-i18n="pillar2.title">La más alta calidad</h3><p data-i18n="pillar2.text">Trabajamos solo con desarrolladoras de trayectoria comprobada y con proyectos que conocemos a fondo.</p></div>
+      <div class="pillar"><span class="num">03</span><h3 data-i18n="pillar3.title">El mejor precio</h3><p data-i18n="pillar3.text">Accedes a las condiciones de la desarrolladora y a oportunidades de preventa, sin intermediarios innecesarios.</p></div>
+      <div class="pillar"><span class="num">04</span><h3 data-i18n="pillar4.title">Acompañamiento total</h3><p data-i18n="pillar4.text">Desde la primera conversación hasta la entrega de llaves, estés en Panamá o en cualquier parte del mundo.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat"><b>19</b><span data-i18n="stats.projects">proyectos seleccionados</span></div>
+    <div class="stat"><b>3</b><span data-i18n="stats.places">destinos: ciudad, mar y naturaleza</span></div>
+    <div class="stat"><b>47–610</b><span data-i18n="stats.sizes">m², de lofts a penthouses</span></div>
+    <div class="stat"><b>35+</b><span data-i18n="stats.years">años de trayectoria de nuestros desarrolladores aliados</span></div>
+  </div>
 </div>
 
+<section class="how" id="como-trabajamos">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="how.eyebrow">Cómo trabajamos</p>
+    <h2 class="title" data-i18n="how.title">Cuatro pasos hasta tu lugar</h2>
+    <ol class="steps">
+      <li><h3 data-i18n="how1.title">Te escuchamos</h3><p data-i18n="how1.text">Qué buscas, para qué y con qué presupuesto. Sin formularios eternos: una conversación.</p></li>
+      <li><h3 data-i18n="how2.title">Seleccionamos</h3><p data-i18n="how2.text">Filtramos los proyectos y te acercamos solo los que realmente encajan contigo.</p></li>
+      <li><h3 data-i18n="how3.title">Conoces cada opción</h3><p data-i18n="how3.text">Brochures, plantas, recorridos y visitas, presenciales o virtuales.</p></li>
+      <li><h3 data-i18n="how4.title">Te acompañamos</h3><p data-i18n="how4.text">Negociación, reserva y todo el proceso de compra, hasta la entrega.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section id="proyectos">
+  <div class="wrap">
+    <p class="eyebrow" data-i18n="projects.eyebrow">Proyectos</p>
+    <h2 class="title" data-i18n="projects.title">Una selección pensada para ti</h2>
+    <p class="lead" style="margin-top:18px" data-i18n="projects.lead">Filtra por lo que buscas y descubre cada proyecto en detalle.</p>
+    <div class="filters" id="filters" role="group">
+      <button type="button" data-filter="all" aria-pressed="true" data-i18n="cat.all">Todos</button>
+      <button type="button" data-filter="sea" aria-pressed="false" data-i18n="cat.sea">Frente al mar</button>
+      <button type="button" data-filter="city" aria-pressed="false" data-i18n="cat.city">Ciudad</button>
+      <button type="button" data-filter="nature" aria-pressed="false" data-i18n="cat.nature">Naturaleza</button>
+      <button type="button" data-filter="commercial" aria-pressed="false" data-i18n="cat.commercial">Comercial</button>
+    </div>
+    <div class="grid" id="grid">
+      <a class="card" href="costanera-aqua/" data-category="sea" style="--c:#4FA3DC">
+        <div class="shot">
+          <img src="assets/thumbs/costanera-aqua.jpg" alt="AQUA" loading="lazy">
+          <span class="tag" data-i18n="cat.sea">Frente al mar</span>
+        </div>
+        <div class="card-body">
+          <h3>AQUA<small>COSTANERA</small></h3>
+          <p data-i18n="project.costanera-aqua.tag">Ave. Balboa · vista directa al mar</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="aura-green-city/" data-category="nature" style="--c:#6E8B57">
+        <div class="shot">
+          <img src="assets/thumbs/aura-green-city.jpg" alt="AURA" loading="lazy">
+          <span class="tag" data-i18n="cat.nature">Naturaleza</span>
+        </div>
+        <div class="card-body">
+          <h3>AURA<small>GREEN CITY</small></h3>
+          <p data-i18n="project.aura-green-city.tag">Una eco comunidad en el corazón de Green City</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="deluxe/" data-category="city" style="--c:#B4985D">
+        <div class="shot">
+          <img src="assets/thumbs/deluxe.jpg" alt="DELUXE" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>DELUXE<small>PUNTA PAITILLA</small></h3>
+          <p data-i18n="project.deluxe.tag">El lujo de Punta Paitilla, a tu escala</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="edison-corporate-center/" data-category="commercial" style="--c:#9C7A16">
+        <div class="shot">
+          <img src="assets/thumbs/edison-corporate-center.jpg" alt="EDISON" loading="lazy">
+          <span class="tag" data-i18n="cat.commercial">Comercial</span>
+        </div>
+        <div class="card-body">
+          <h3>EDISON<small>CORPORATE CENTER</small></h3>
+          <p data-i18n="project.edison-corporate-center.tag">Desde 60 m² hasta 697 m²</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="edison-gardens/" data-category="city" style="--c:#5C8A33">
+        <div class="shot">
+          <img src="assets/thumbs/edison-gardens.jpg" alt="EDISON" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>EDISON<small>GARDENS</small></h3>
+          <p data-i18n="project.edison-gardens.tag">Vida tipo resort en el corazón de la ciudad</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="elite-400/" data-category="city" style="--c:#4C7EA6">
+        <div class="shot">
+          <img src="assets/thumbs/elite-400.jpg" alt="ELITE 400" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>ELITE 400<small>PENTHOUSE 37</small></h3>
+          <p data-i18n="project.elite-400.tag">590 m² con vista de 360 grados</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="elite-500/" data-category="commercial" style="--c:#4C7EA6">
+        <div class="shot">
+          <img src="assets/thumbs/elite-500.jpg" alt="ELITE 500" loading="lazy">
+          <span class="tag" data-i18n="cat.commercial">Comercial</span>
+        </div>
+        <div class="card-body">
+          <h3>ELITE 500<small>LOCAL COMERCIAL</small></h3>
+          <p data-i18n="project.elite-500.tag">204 m² con 3 estacionamientos</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="greenwood-plaza/" data-category="commercial" style="--c:#C0264A">
+        <div class="shot">
+          <img src="assets/thumbs/greenwood-plaza.jpg" alt="GREENWOOD" loading="lazy">
+          <span class="tag" data-i18n="cat.commercial">Comercial</span>
+        </div>
+        <div class="card-body">
+          <h3>GREENWOOD<small>PLAZA</small></h3>
+          <p data-i18n="project.greenwood-plaza.tag">Locales comerciales en alquiler sobre la Ricardo J. Alfaro</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="luxor-500/" data-category="city" style="--c:#8A8A8A">
+        <div class="shot">
+          <img src="assets/thumbs/luxor-500.jpg" alt="LUXOR 500" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>LUXOR 500<small>EL CANGREJO</small></h3>
+          <p data-i18n="project.luxor-500.tag">La obra maestra de El Cangrejo</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="ocean-front/" data-category="sea" style="--c:#A5851A">
+        <div class="shot">
+          <img src="assets/thumbs/ocean-front.jpg" alt="OCEAN FRONT" loading="lazy">
+          <span class="tag" data-i18n="cat.sea">Frente al mar</span>
+        </div>
+        <div class="card-body">
+          <h3>OCEAN FRONT<small>PUNTA PAITILLA</small></h3>
+          <p data-i18n="project.ocean-front.tag">We know how to live better in Paitilla</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="ocean-waves/" data-category="sea" style="--c:#2F7BAB">
+        <div class="shot">
+          <img src="assets/thumbs/ocean-waves.jpg" alt="OCEAN WAVES" loading="lazy">
+          <span class="tag" data-i18n="cat.sea">Frente al mar</span>
+        </div>
+        <div class="card-body">
+          <h3>OCEAN WAVES<small>PLAYA MALIBÚ</small></h3>
+          <p data-i18n="project.ocean-waves.tag">Primera línea frente al mar en Playa Malibú</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="pacific-park/" data-category="city" style="--c:#C0392B">
+        <div class="shot">
+          <img src="assets/thumbs/pacific-park.jpg" alt="PACIFIC PARK" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>PACIFIC PARK<small>TOWERS</small></h3>
+          <p data-i18n="project.pacific-park.tag">La mejor calidad de vida para tu familia</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="panorama-360-green-city/" data-category="nature" style="--c:#2E7D4F">
+        <div class="shot">
+          <img src="assets/thumbs/panorama-360-green-city.jpg" alt="PANORAMA 360" loading="lazy">
+          <span class="tag" data-i18n="cat.nature">Naturaleza</span>
+        </div>
+        <div class="card-body">
+          <h3>PANORAMA 360<small>GREEN CITY</small></h3>
+          <p data-i18n="project.panorama-360-green-city.tag">El perfecto equilibrio entre diseño y funcionalidad</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="riverwalk-villas-green-city/" data-category="nature" style="--c:#2F7A57">
+        <div class="shot">
+          <img src="assets/thumbs/riverwalk-villas-green-city.jpg" alt="RIVERWALK" loading="lazy">
+          <span class="tag" data-i18n="cat.nature">Naturaleza</span>
+        </div>
+        <div class="card-body">
+          <h3>RIVERWALK<small>VILLAS · GREEN CITY</small></h3>
+          <p data-i18n="project.riverwalk-villas-green-city.tag">Una nueva calidad de vida en Green City</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="senza/" data-category="nature" style="--c:#6E7439">
+        <div class="shot">
+          <img src="assets/thumbs/senza.jpg" alt="SENZA" loading="lazy">
+          <span class="tag" data-i18n="cat.nature">Naturaleza</span>
+        </div>
+        <div class="card-body">
+          <h3>SENZA<small>GREEN CITY</small></h3>
+          <p data-i18n="project.senza.tag">Awake your senses</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="sky-point/" data-category="city" style="--c:#17787D">
+        <div class="shot">
+          <img src="assets/thumbs/sky-point.jpg" alt="SKY POINT" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>SKY POINT<small>TOWER</small></h3>
+          <p data-i18n="project.sky-point.tag">Disfruta vivir todo el lujo de Sky Point</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="edificio-comercial-en-transistmica/" data-category="commercial" style="--c:#2F6FA8">
+        <div class="shot">
+          <img src="assets/thumbs/edificio-comercial-en-transistmica.jpg" alt="TRANSÍSTMICA" loading="lazy">
+          <span class="tag" data-i18n="cat.commercial">Comercial</span>
+        </div>
+        <div class="card-body">
+          <h3>TRANSÍSTMICA<small>EDIFICIO COMERCIAL</small></h3>
+          <p data-i18n="project.edificio-comercial-en-transistmica.tag">3,337 m² sobre la Vía Transístmica</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="vida/" data-category="nature" style="--c:#B4552F">
+        <div class="shot">
+          <img src="assets/thumbs/vida.jpg" alt="VIDA" loading="lazy">
+          <span class="tag" data-i18n="cat.nature">Naturaleza</span>
+        </div>
+        <div class="card-body">
+          <h3>VIDA<small>GREEN CITY</small></h3>
+          <p data-i18n="project.vida.tag">En las coronas de las colinas de Green City</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+      <a class="card" href="vivendi-green/" data-category="city" style="--c:#3E7D33">
+        <div class="shot">
+          <img src="assets/thumbs/vivendi-green.jpg" alt="VIVENDI" loading="lazy">
+          <span class="tag" data-i18n="cat.city">Ciudad</span>
+        </div>
+        <div class="card-body">
+          <h3>VIVENDI<small>GREEN · EDISON PARK</small></h3>
+          <p data-i18n="project.vivendi-green.tag">Edison Park, una de las mejores ubicaciones de Panamá</p>
+          <span class="more" data-i18n="projects.cta">Ver proyecto</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contacto">
+  <div class="contact-grid">
+    <div class="contact-side on-dark">
+      <p class="eyebrow" data-i18n="contact.eyebrow">Contacto</p>
+      <h2 class="title" data-i18n="contact.title">Cuéntanos qué buscas</h2>
+      <p class="lead" data-i18n="contact.lead">Déjanos tus datos y un asesor te contactará con los proyectos que encajan contigo. Si prefieres, escríbenos directo.</p>
+      <a class="btn wa" href="https://wa.me/50762046321" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.7-.8-2-.9-.3-.1-.5-.1-.7.1-.2.3-.8.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6l.4-.5c.2-.2.2-.3.3-.5.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.6-.1 1.7-.7 1.9-1.3.2-.7.2-1.2.2-1.3-.1-.2-.3-.3-.6-.4zM12 21.8c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4c-1-1.6-1.5-3.4-1.5-5.2C2.2 6.6 6.6 2.2 12 2.2c2.6 0 5.1 1 7 2.9 1.9 1.9 2.9 4.3 2.9 7 0 5.4-4.4 9.7-9.9 9.7zM12 0C5.4 0 0 5.4 0 12c0 2.1.6 4.2 1.6 6L0 24l6.2-1.6c1.8 1 3.8 1.5 5.8 1.5 6.6 0 12-5.4 12-12S18.6 0 12 0z"/></svg>
+        <span data-i18n="contact.whatsapp">Escribir por WhatsApp</span>
+      </a>
+    </div>
+    <div class="contact-form">
+      <form id="lead-form" method="post" novalidate>
+        <div class="row">
+          <div><label for="name" data-i18n="form.name">Nombre *</label><input id="name" name="name" required autocomplete="name"></div>
+          <div><label for="email" data-i18n="form.email">Email *</label><input id="email" name="email" type="email" required autocomplete="email"></div>
+        </div>
+        <div class="row">
+          <div><label for="phone" data-i18n="form.phone">Teléfono / WhatsApp</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+          <div>
+            <label for="country" data-i18n="form.country">País *</label>
+            <input id="country" name="country" list="countries" required autocomplete="country-name">
+            <datalist id="countries"></datalist>
+          </div>
+        </div>
+        <div>
+          <label for="interest" data-i18n="form.interest">Me interesa *</label>
+          <select id="interest" name="interest" required>
+            <option value="" data-i18n="opt.placeholder">Selecciona una opción</option>
+            <option value="sea" data-i18n="opt.sea">Vivir frente al mar</option>
+            <option value="city" data-i18n="opt.city">Vivir en la ciudad</option>
+            <option value="nature" data-i18n="opt.nature">Vivir rodeado de naturaleza</option>
+            <option value="invest" data-i18n="opt.invest">Invertir</option>
+            <option value="commercial" data-i18n="opt.commercial">Locales u oficinas</option>
+            <option value="unsure" data-i18n="opt.unsure">Todavía no lo sé</option>
+          </select>
+        </div>
+        <div>
+          <label for="message" data-i18n="form.message">Cuéntanos qué buscas</label>
+          <textarea id="message" name="message" data-i18n-ph="form.messagePh"></textarea>
+        </div>
+        <p class="legal" data-i18n="form.legal">Al enviar aceptas ser contactado por Adnire Group.</p>
+        <div><button class="btn" type="submit" id="submit-btn" data-i18n="form.submit">Enviar</button></div>
+        <div class="msg" id="msg" role="status"></div>
+      </form>
+    </div>
+  </div>
+</section>
+
 <footer>
-  <div class="foot-in">
-    <p>19 landings de Pacific Hills.</p>
-    <img class="foot-logo" src="assets/logo.png" alt="Adnire Group" width="560" height="176">
+  <div class="wrap">
+    <div class="foot">
+      <div>
+        <img class="logo" src="assets/logo.png" alt="Adnire Group" width="560" height="176" loading="lazy">
+        <p class="foot-tag" data-i18n="footer.tagline">Tu nexo al lujo y la tranquilidad.</p>
+      </div>
+      <a class="btn wa" href="https://wa.me/50762046321" target="_blank" rel="noopener" data-i18n="contact.whatsapp">Escribir por WhatsApp</a>
+    </div>
+    <p class="foot-legal" data-i18n="footer.legal">Las imágenes son representaciones artísticas de los proyectos. Precios, disponibilidad y condiciones sujetos a cambio sin previo aviso.</p>
   </div>
 </footer>
 
+<script>
+const I18N = {"es": {"meta.title": "Adnire Group · Tu nexo al lujo y la tranquilidad", "meta.desc": "Acercamos a cada persona el proyecto inmobiliario que realmente es de su interés en Panamá: la más alta calidad, al mejor precio.", "nav.about": "Nosotros", "nav.projects": "Proyectos", "nav.how": "Cómo trabajamos", "nav.contact": "Contacto", "nav.cta": "Hablemos", "hero.eyebrow": "Adnire Group · Panamá", "hero.title": "Tu nexo al lujo y la tranquilidad, donde quieras estar.", "hero.lead": "Acercamos a cada persona el proyecto que realmente es de su interés: la más alta calidad, al mejor precio.", "hero.cta1": "Ver proyectos", "hero.cta2": "Hablar con un asesor", "about.eyebrow": "Quiénes somos", "about.title": "No vendemos propiedades. Encontramos la tuya.", "about.p1": "En Adnire Group seleccionamos, entre los desarrollos más sólidos de Panamá, solo aquellos que cumplen nuestro estándar de calidad. Después hacemos lo más importante: escucharte, para acercarte únicamente los que encajan con lo que buscas.", "about.p2": "Frente al mar, en el corazón de la ciudad o rodeado de naturaleza; para vivir, para invertir o para ambas cosas. Sea cual sea tu idea de lujo y tranquilidad, nuestro trabajo es conectarte con ella, sin ruido y al mejor precio.", "pillar1.title": "Curaduría a tu medida", "pillar1.text": "No te mostramos todo: te mostramos lo que te interesa. Cada recomendación parte de lo que nos cuentas.", "pillar2.title": "La más alta calidad", "pillar2.text": "Trabajamos solo con desarrolladoras de trayectoria comprobada y con proyectos que conocemos a fondo.", "pillar3.title": "El mejor precio", "pillar3.text": "Accedes a las condiciones de la desarrolladora y a oportunidades de preventa, sin intermediarios innecesarios.", "pillar4.title": "Acompañamiento total", "pillar4.text": "Desde la primera conversación hasta la entrega de llaves, estés en Panamá o en cualquier parte del mundo.", "stats.projects": "proyectos seleccionados", "stats.places": "destinos: ciudad, mar y naturaleza", "stats.sizes": "m², de lofts a penthouses", "stats.years": "años de trayectoria de nuestros desarrolladores aliados", "how.eyebrow": "Cómo trabajamos", "how.title": "Cuatro pasos hasta tu lugar", "how1.title": "Te escuchamos", "how1.text": "Qué buscas, para qué y con qué presupuesto. Sin formularios eternos: una conversación.", "how2.title": "Seleccionamos", "how2.text": "Filtramos los proyectos y te acercamos solo los que realmente encajan contigo.", "how3.title": "Conoces cada opción", "how3.text": "Brochures, plantas, recorridos y visitas, presenciales o virtuales.", "how4.title": "Te acompañamos", "how4.text": "Negociación, reserva y todo el proceso de compra, hasta la entrega.", "projects.eyebrow": "Proyectos", "projects.title": "Una selección pensada para ti", "projects.lead": "Filtra por lo que buscas y descubre cada proyecto en detalle.", "projects.cta": "Ver proyecto", "cat.all": "Todos", "cat.sea": "Frente al mar", "cat.city": "Ciudad", "cat.nature": "Naturaleza", "cat.commercial": "Comercial", "contact.eyebrow": "Contacto", "contact.title": "Cuéntanos qué buscas", "contact.lead": "Déjanos tus datos y un asesor te contactará con los proyectos que encajan contigo. Si prefieres, escríbenos directo.", "contact.whatsapp": "Escribir por WhatsApp", "form.name": "Nombre *", "form.email": "Email *", "form.phone": "Teléfono / WhatsApp", "form.country": "País *", "form.interest": "Me interesa *", "form.message": "Cuéntanos qué buscas", "form.messagePh": "Tipo de propiedad, zona, presupuesto, plazos…", "form.legal": "Al enviar aceptas ser contactado por Adnire Group.", "form.submit": "Enviar", "form.sending": "Enviando…", "form.thanks": "¡Gracias, {name}! Un asesor te contactará muy pronto.", "form.error": "No pudimos enviar el formulario. Escríbenos por WhatsApp.", "opt.placeholder": "Selecciona una opción", "opt.sea": "Vivir frente al mar", "opt.city": "Vivir en la ciudad", "opt.nature": "Vivir rodeado de naturaleza", "opt.invest": "Invertir", "opt.commercial": "Locales u oficinas", "opt.unsure": "Todavía no lo sé", "country.other": "Otro", "footer.tagline": "Tu nexo al lujo y la tranquilidad.", "footer.legal": "Las imágenes son representaciones artísticas de los proyectos. Precios, disponibilidad y condiciones sujetos a cambio sin previo aviso.", "video.pause": "Pausar video", "video.play": "Reproducir video", "project.costanera-aqua.tag": "Ave. Balboa · vista directa al mar", "project.aura-green-city.tag": "Una eco comunidad en el corazón de Green City", "project.deluxe.tag": "El lujo de Punta Paitilla, a tu escala", "project.edison-corporate-center.tag": "Desde 60 m² hasta 697 m²", "project.edison-gardens.tag": "Vida tipo resort en el corazón de la ciudad", "project.elite-400.tag": "590 m² con vista de 360 grados", "project.elite-500.tag": "204 m² con 3 estacionamientos", "project.greenwood-plaza.tag": "Locales comerciales en alquiler sobre la Ricardo J. Alfaro", "project.luxor-500.tag": "La obra maestra de El Cangrejo", "project.ocean-front.tag": "We know how to live better in Paitilla", "project.ocean-waves.tag": "Primera línea frente al mar en Playa Malibú", "project.pacific-park.tag": "La mejor calidad de vida para tu familia", "project.panorama-360-green-city.tag": "El perfecto equilibrio entre diseño y funcionalidad", "project.riverwalk-villas-green-city.tag": "Una nueva calidad de vida en Green City", "project.senza.tag": "Awake your senses", "project.sky-point.tag": "Disfruta vivir todo el lujo de Sky Point", "project.edificio-comercial-en-transistmica.tag": "3,337 m² sobre la Vía Transístmica", "project.vida.tag": "En las coronas de las colinas de Green City", "project.vivendi-green.tag": "Edison Park, una de las mejores ubicaciones de Panamá"}, "en": {"meta.title": "Adnire Group · Your link to luxury and peace of mind", "meta.desc": "We bring each person the real estate project that truly matters to them in Panama: the highest quality, at the best price.", "nav.about": "About", "nav.projects": "Projects", "nav.how": "How we work", "nav.contact": "Contact", "nav.cta": "Let's talk", "hero.eyebrow": "Adnire Group · Panama", "hero.title": "Your link to luxury and peace of mind, wherever you want to be.", "hero.lead": "We bring each person the project that truly matters to them: the highest quality, at the best price.", "hero.cta1": "See projects", "hero.cta2": "Talk to an advisor", "about.eyebrow": "Who we are", "about.title": "We don't sell properties. We find yours.", "about.p1": "At Adnire Group we select, among Panama's most solid developments, only those that meet our quality standard. Then we do what matters most: we listen, so we only bring you the ones that fit what you're looking for.", "about.p2": "On the waterfront, in the heart of the city or surrounded by nature; to live in, to invest, or both. Whatever your idea of luxury and peace of mind, our job is to connect you with it — without the noise, and at the best price.", "pillar1.title": "Tailored curation", "pillar1.text": "We don't show you everything: we show you what you care about. Every recommendation starts from what you tell us.", "pillar2.title": "The highest quality", "pillar2.text": "We only work with developers with a proven track record and projects we know inside out.", "pillar3.title": "The best price", "pillar3.text": "You get the developer's terms and pre-sale opportunities, without unnecessary middlemen.", "pillar4.title": "End-to-end support", "pillar4.text": "From the first conversation to the handover of the keys, whether you're in Panama or anywhere in the world.", "stats.projects": "selected projects", "stats.places": "destinations: city, sea and nature", "stats.sizes": "m², from lofts to penthouses", "stats.years": "years of track record of our partner developers", "how.eyebrow": "How we work", "how.title": "Four steps to your place", "how1.title": "We listen", "how1.text": "What you're looking for, what for, and your budget. No endless forms: a conversation.", "how2.title": "We select", "how2.text": "We filter the projects and bring you only the ones that truly fit you.", "how3.title": "You explore each option", "how3.text": "Brochures, floor plans, tours and visits, in person or virtual.", "how4.title": "We stay with you", "how4.text": "Negotiation, reservation and the whole purchase process, all the way to handover.", "projects.eyebrow": "Projects", "projects.title": "A selection made for you", "projects.lead": "Filter by what you're looking for and explore each project in detail.", "projects.cta": "See project", "cat.all": "All", "cat.sea": "Oceanfront", "cat.city": "City", "cat.nature": "Nature", "cat.commercial": "Commercial", "contact.eyebrow": "Contact", "contact.title": "Tell us what you're looking for", "contact.lead": "Leave your details and an advisor will reach out with the projects that fit you. If you prefer, message us directly.", "contact.whatsapp": "Message us on WhatsApp", "form.name": "Name *", "form.email": "Email *", "form.phone": "Phone / WhatsApp", "form.country": "Country *", "form.interest": "I'm interested in *", "form.message": "Tell us what you're looking for", "form.messagePh": "Property type, area, budget, timing…", "form.legal": "By submitting you agree to be contacted by Adnire Group.", "form.submit": "Send", "form.sending": "Sending…", "form.thanks": "Thank you, {name}! An advisor will be in touch very soon.", "form.error": "We couldn't send the form. Message us on WhatsApp.", "opt.placeholder": "Select an option", "opt.sea": "Living by the sea", "opt.city": "Living in the city", "opt.nature": "Living surrounded by nature", "opt.invest": "Investing", "opt.commercial": "Retail or offices", "opt.unsure": "I'm not sure yet", "country.other": "Other", "footer.tagline": "Your link to luxury and peace of mind.", "footer.legal": "Images are artistic representations of the projects. Prices, availability and terms are subject to change without notice.", "video.pause": "Pause video", "video.play": "Play video", "project.costanera-aqua.tag": "Ave. Balboa · direct ocean views", "project.aura-green-city.tag": "An eco community at the heart of Green City", "project.deluxe.tag": "The luxury of Punta Paitilla, at your scale", "project.edison-corporate-center.tag": "From 60 m² up to 697 m²", "project.edison-gardens.tag": "Resort living in the heart of the city", "project.elite-400.tag": "590 m² with 360-degree views", "project.elite-500.tag": "204 m² with 3 parking spaces", "project.greenwood-plaza.tag": "Retail units for rent on Ricardo J. Alfaro", "project.luxor-500.tag": "The masterpiece of El Cangrejo", "project.ocean-front.tag": "We know how to live better in Paitilla", "project.ocean-waves.tag": "Front row on Playa Malibú", "project.pacific-park.tag": "The best life for your family", "project.panorama-360-green-city.tag": "The perfect balance between design and functionality", "project.riverwalk-villas-green-city.tag": "A new quality of life in Green City", "project.senza.tag": "Awake your senses", "project.sky-point.tag": "Enjoy all the luxury of Sky Point", "project.edificio-comercial-en-transistmica.tag": "3,337 m² on Vía Transístmica", "project.vida.tag": "Atop the hills of Green City", "project.vivendi-green.tag": "Edison Park, one of the best locations in Panama"}, "pt": {"meta.title": "Adnire Group · Sua ponte para o luxo e a tranquilidade", "meta.desc": "Aproximamos cada pessoa do projeto imobiliário que realmente lhe interessa no Panamá: a mais alta qualidade, pelo melhor preço.", "nav.about": "Quem somos", "nav.projects": "Projetos", "nav.how": "Como trabalhamos", "nav.contact": "Contato", "nav.cta": "Vamos conversar", "hero.eyebrow": "Adnire Group · Panamá", "hero.title": "Sua ponte para o luxo e a tranquilidade, onde quiser estar.", "hero.lead": "Aproximamos cada pessoa do projeto que realmente lhe interessa: a mais alta qualidade, pelo melhor preço.", "hero.cta1": "Ver projetos", "hero.cta2": "Falar com um consultor", "about.eyebrow": "Quem somos", "about.title": "Não vendemos imóveis. Encontramos o seu.", "about.p1": "Na Adnire Group selecionamos, entre os empreendimentos mais sólidos do Panamá, apenas aqueles que cumprem nosso padrão de qualidade. Depois fazemos o mais importante: ouvir você, para apresentar somente os que combinam com o que você procura.", "about.p2": "De frente para o mar, no coração da cidade ou cercado de natureza; para morar, para investir ou para as duas coisas. Seja qual for a sua ideia de luxo e tranquilidade, nosso trabalho é conectar você a ela, sem ruído e pelo melhor preço.", "pillar1.title": "Curadoria sob medida", "pillar1.text": "Não mostramos tudo: mostramos o que interessa a você. Cada recomendação parte do que você nos conta.", "pillar2.title": "A mais alta qualidade", "pillar2.text": "Trabalhamos apenas com incorporadoras de trajetória comprovada e com projetos que conhecemos a fundo.", "pillar3.title": "O melhor preço", "pillar3.text": "Você tem acesso às condições da incorporadora e a oportunidades de pré-venda, sem intermediários desnecessários.", "pillar4.title": "Acompanhamento completo", "pillar4.text": "Da primeira conversa à entrega das chaves, esteja você no Panamá ou em qualquer lugar do mundo.", "stats.projects": "projetos selecionados", "stats.places": "destinos: cidade, mar e natureza", "stats.sizes": "m², de lofts a penthouses", "stats.years": "anos de trajetória das nossas incorporadoras parceiras", "how.eyebrow": "Como trabalhamos", "how.title": "Quatro passos até o seu lugar", "how1.title": "Ouvimos você", "how1.text": "O que você procura, para quê e com qual orçamento. Sem formulários intermináveis: uma conversa.", "how2.title": "Selecionamos", "how2.text": "Filtramos os projetos e apresentamos apenas os que realmente combinam com você.", "how3.title": "Você conhece cada opção", "how3.text": "Brochures, plantas, tours e visitas, presenciais ou virtuais.", "how4.title": "Acompanhamos você", "how4.text": "Negociação, reserva e todo o processo de compra, até a entrega.", "projects.eyebrow": "Projetos", "projects.title": "Uma seleção pensada para você", "projects.lead": "Filtre pelo que você procura e conheça cada projeto em detalhe.", "projects.cta": "Ver projeto", "cat.all": "Todos", "cat.sea": "Frente ao mar", "cat.city": "Cidade", "cat.nature": "Natureza", "cat.commercial": "Comercial", "contact.eyebrow": "Contato", "contact.title": "Conte o que você procura", "contact.lead": "Deixe seus dados e um consultor entrará em contato com os projetos que combinam com você. Se preferir, fale direto com a gente.", "contact.whatsapp": "Falar pelo WhatsApp", "form.name": "Nome *", "form.email": "E-mail *", "form.phone": "Telefone / WhatsApp", "form.country": "País *", "form.interest": "Tenho interesse em *", "form.message": "Conte o que você procura", "form.messagePh": "Tipo de imóvel, região, orçamento, prazos…", "form.legal": "Ao enviar, você aceita ser contatado pela Adnire Group.", "form.submit": "Enviar", "form.sending": "Enviando…", "form.thanks": "Obrigado, {name}! Um consultor entrará em contato muito em breve.", "form.error": "Não conseguimos enviar o formulário. Fale conosco pelo WhatsApp.", "opt.placeholder": "Selecione uma opção", "opt.sea": "Morar de frente para o mar", "opt.city": "Morar na cidade", "opt.nature": "Morar cercado de natureza", "opt.invest": "Investir", "opt.commercial": "Lojas ou escritórios", "opt.unsure": "Ainda não sei", "country.other": "Outro", "footer.tagline": "Sua ponte para o luxo e a tranquilidade.", "footer.legal": "As imagens são representações artísticas dos projetos. Preços, disponibilidade e condições sujeitos a alteração sem aviso prévio.", "video.pause": "Pausar vídeo", "video.play": "Reproduzir vídeo", "project.costanera-aqua.tag": "Ave. Balboa · vista direta para o mar", "project.aura-green-city.tag": "Uma eco comunidade no coração da Green City", "project.deluxe.tag": "O luxo de Punta Paitilla, na sua escala", "project.edison-corporate-center.tag": "De 60 m² até 697 m²", "project.edison-gardens.tag": "Vida tipo resort no coração da cidade", "project.elite-400.tag": "590 m² com vista de 360 graus", "project.elite-500.tag": "204 m² com 3 vagas", "project.greenwood-plaza.tag": "Lojas comerciais para alugar na Ricardo J. Alfaro", "project.luxor-500.tag": "A obra-prima de El Cangrejo", "project.ocean-front.tag": "We know how to live better in Paitilla", "project.ocean-waves.tag": "Primeira linha de frente para o mar em Playa Malibú", "project.pacific-park.tag": "A melhor qualidade de vida para sua família", "project.panorama-360-green-city.tag": "O equilíbrio perfeito entre design e funcionalidade", "project.riverwalk-villas-green-city.tag": "Uma nova qualidade de vida na Green City", "project.senza.tag": "Awake your senses", "project.sky-point.tag": "Desfrute todo o luxo do Sky Point", "project.edificio-comercial-en-transistmica.tag": "3.337 m² na Vía Transístmica", "project.vida.tag": "No alto das colinas da Green City", "project.vivendi-green.tag": "Edison Park, uma das melhores localizações do Panamá"}};
+const LANGS = ['es', 'en', 'pt'];
+// Los nombres de país los genera el navegador (Intl), no hace falta traducirlos a mano.
+const COUNTRIES = ['PA','AR','BO','BR','CA','CL','CO','CR','DO','EC','SV','ES','US','GT','HN','IT','MX','NI','PY','PE','PT','PR','UY','VE'];
+
+// localStorage lanza SecurityError con cookies bloqueadas: sin esto se corta todo el script.
+const store = {
+  get: key => { try { return localStorage.getItem(key); } catch { return null; } },
+  set: (key, value) => { try { localStorage.setItem(key, value); } catch {} }
+};
+
+let lang = store.get('lang')
+        || (LANGS.includes(navigator.language.slice(0, 2)) ? navigator.language.slice(0, 2) : 'es');
+let heroPaused = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const t = key => (I18N[lang] || I18N.es)[key] ?? I18N.es[key] ?? key;
+
+const langsEl = document.getElementById('langs');
+LANGS.forEach(code => {
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = code;
+  button.onclick = () => setLang(code);
+  langsEl.append(button);
+});
+
+function updatePauseLabel() {
+  const button = document.getElementById('hero-pause');
+  button.textContent = heroPaused ? '▶' : '❚❚';
+  button.setAttribute('aria-label', t(heroPaused ? 'video.play' : 'video.pause'));
+}
+
+function setLang(code) {
+  lang = code;
+  store.set('lang', code);
+  document.documentElement.lang = code;
+  document.title = t('meta.title');
+  document.querySelector('meta[name="description"]').content = t('meta.desc');
+  document.querySelectorAll('[data-i18n]').forEach(el => el.textContent = t(el.dataset.i18n));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => el.placeholder = t(el.dataset.i18nPh));
+  langsEl.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b.textContent === code));
+  updatePauseLabel();
+  if (!window.Intl?.DisplayNames) return;   // Safari < 14.1: el campo país queda sin sugerencias
+  const names = new Intl.DisplayNames([code], { type: 'region' });
+  document.getElementById('countries').innerHTML =
+    COUNTRIES.map(c => `<option value="${names.of(c)}">`).join('') + `<option value="${t('country.other')}">`;
+}
+setLang(lang);
+
+/* filtro de proyectos: el visitante ve solo lo que le interesa */
+const filterButtons = document.querySelectorAll('#filters button');
+filterButtons.forEach(button => button.onclick = () => {
+  const category = button.dataset.filter;
+  filterButtons.forEach(b => b.setAttribute('aria-pressed', b === button));
+  document.querySelectorAll('#grid .card').forEach(card => {
+    card.hidden = category !== 'all' && card.dataset.category !== category;
+  });
+});
+
+/* nav sólido al bajar */
+const nav = document.getElementById('nav');
+addEventListener('scroll', () => nav.classList.toggle('solid', scrollY > 60), { passive: true });
+
+/* el hero arranca solo (salvo movimiento reducido); si el navegador lo bloquea, reintenta al primer gesto */
+const heroVideo = document.querySelector('.hero video');
+const pauseButton = document.getElementById('hero-pause');
+const playHero = () => { if (!heroPaused) heroVideo.play().catch(() => {}); };
+pauseButton.hidden = heroPaused;
+pauseButton.onclick = () => {
+  heroPaused = !heroPaused;
+  heroPaused ? heroVideo.pause() : playHero();
+  updatePauseLabel();
+};
+playHero();
+['click', 'touchstart', 'scroll', 'keydown'].forEach(eventName =>
+  addEventListener(eventName, function once(event) {
+    if (event.target !== pauseButton) playHero();
+    ['click', 'touchstart', 'scroll', 'keydown'].forEach(e => removeEventListener(e, once));
+  }, { passive: true }));
+
+/* ---------- formulario → Google Sheet ---------- */
+// PENDIENTE: pegar acá la URL del Web App de Apps Script (mismo script que las landings).
+const SHEET_ENDPOINT = '';
+
+async function submitLead(data) {
+  if (!SHEET_ENDPOINT) {
+    // sin endpoint todavía: se guarda local para no perder el lead durante las pruebas.
+    const queue = JSON.parse(store.get('adnire-leads') || '[]');
+    queue.push(data);
+    store.set('adnire-leads', JSON.stringify(queue));
+    console.warn('SHEET_ENDPOINT vacío — lead guardado en localStorage:', data);
+    return;
+  }
+  // text/plain evita el preflight CORS que Apps Script no responde.
+  const response = await fetch(SHEET_ENDPOINT, {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(data)
+  });
+  if (!response.ok) throw new Error('HTTP ' + response.status);
+}
+
+const form = document.getElementById('lead-form');
+const msg = document.getElementById('msg');
+const submitButton = document.getElementById('submit-btn');
+
+form.addEventListener('submit', async event => {
+  event.preventDefault();
+  msg.className = 'msg';
+  if (!form.reportValidity()) return;
+  const data = Object.fromEntries(new FormData(form));
+  data.date = new Date().toISOString();
+  data.lang = lang;
+  data.source = 'adnire-institucional';
+  submitButton.disabled = true;
+  submitButton.textContent = t('form.sending');
+  try {
+    await submitLead(data);
+    form.reset();
+    msg.className = 'msg ok';
+    msg.textContent = t('form.thanks').replace('{name}', () => data.name);
+  } catch (error) {
+    msg.className = 'msg err';
+    msg.textContent = t('form.error');
+    console.error(error);
+  } finally {
+    submitButton.disabled = false;
+    submitButton.textContent = t('form.submit');
+  }
+});
+</script>
 </body>
 </html>
