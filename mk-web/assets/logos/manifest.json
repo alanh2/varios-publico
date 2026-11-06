@@ -1,0 +1,218 @@
+[
+  {
+    "name": "Disney",
+    "file": "disney.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Walt_Disney_wordmark.svg",
+    "notes": "Wordmark clásico 'Walt Disney' (sin 'The ... Company'). Un solo color, reconocible en silueta.",
+    "group": "tv"
+  },
+  {
+    "name": "Televisa",
+    "file": "televisa.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Televisa_Black_logo.svg",
+    "notes": "Versión negra. viewBox recortado al contenido. Usa una clase CSS interna para el relleno.",
+    "group": "tv"
+  },
+  {
+    "name": "Nickelodeon",
+    "file": "nickelodeon.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Nickelodeon_2023_logo_(horizontal).svg",
+    "notes": "Logo 2023 horizontal (splat + wordmark).",
+    "group": "tv"
+  },
+  {
+    "name": "Cartoon Network",
+    "file": "cartoon-network.svg",
+    "status": "dudoso",
+    "source_url": "https://cdn.worldvectorlogo.com/logos/cartoon-network.svg",
+    "notes": "Logo de tablero de ajedrez (estilo 1992-2004) de worldvectorlogo; las letras son huecos reales, así que se lee en silueta. No es el logo vigente. El de Commons (Cartoon_Network_2010_logo.svg) se descartó: es un bloque sólido con letras caladas, no sirve en un color. Confirmar con el cliente cuál versión quiere.",
+    "group": "tv"
+  },
+  {
+    "name": "Telefe",
+    "file": "telefe.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Logo_telefe_argentina.svg",
+    "notes": "Versión horizontal (tres círculos + 'telefe'). Alternativa en Commons: Telefe_logo_black_2018.svg (apilado).",
+    "group": "tv"
+  },
+  {
+    "name": "Univision",
+    "file": "univision.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Logo_Univision_2019.svg",
+    "notes": "Logo 2019 (U + wordmark). Usa una clase CSS interna para el relleno.",
+    "group": "tv"
+  },
+  {
+    "name": "Telemundo",
+    "file": "telemundo.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Telemundo_logo_2018.svg",
+    "notes": "Logo 2018 (T + wordmark).",
+    "group": "tv"
+  },
+  {
+    "name": "Sony Music",
+    "file": "sony-music.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Sony_Music_Group_logo_2023.svg",
+    "notes": "Logo 2023 de Sony Music Group (puntos + wordmark).",
+    "group": "music"
+  },
+  {
+    "name": "Warner Music",
+    "file": "warner-music.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Warner_Music_Group_logo_(2021).svg",
+    "notes": "Logo 2021 de Warner Music Group. La 'W' está calada (transparente). Color azul embebido por clase CSS interna.",
+    "group": "music"
+  },
+  {
+    "name": "Universal Music",
+    "file": "universal-music.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Universal_Music_Group_logo.svg",
+    "notes": "Globo + 'UNIVERSAL MUSIC GROUP'. Es más alto que ancho respecto al resto.",
+    "group": "music"
+  },
+  {
+    "name": "Paramount Pictures",
+    "file": "paramount-pictures.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Paramount_Pictures_Wordmark.svg",
+    "notes": "Wordmark en cursiva. Se eligió en vez del logo de la montaña (Paramount_Pictures_Corporation_logo.svg) porque éste usa degradados y rellenos blancos que no sirven en un color.",
+    "group": "film"
+  },
+  {
+    "name": "DreamWorks",
+    "file": "dreamworks.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:DreamWorks_Pictures.svg",
+    "notes": "'DREAMWORKS PICTURES'. Se descartó DreamWorks-Logo.svg por traer un rect de fondo.",
+    "group": "film"
+  },
+  {
+    "name": "Universal Pictures",
+    "file": "universal-pictures.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Universal_Pictures_logo.svg",
+    "notes": "Globo + 'UNIVERSAL'. Archivo pesado (~180 KB) por el detalle del globo.",
+    "group": "film"
+  },
+  {
+    "name": "Sony Pictures",
+    "file": "sony-pictures.svg",
+    "status": "dudoso",
+    "source_url": "https://cdn.worldvectorlogo.com/logos/sony-pictures-1.svg",
+    "notes": "De worldvectorlogo, no de Commons (Commons devolvió 429, intentar Sony_Pictures_logo.svg). Un solo path, sin fondo. Es vertical (alto ~1.6x el ancho), se verá más chico que el resto en la franja.",
+    "group": "film"
+  },
+  {
+    "name": "MGM",
+    "file": "mgm.svg",
+    "status": "dudoso",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Metro-Goldwyn-Mayer_logo.svg",
+    "notes": "Sólo el wordmark en script 'Metro Goldwyn Mayer' sin el león. Es un logo real de MGM pero no el más reconocible; confirmar.",
+    "group": "film"
+  },
+  {
+    "name": "Pampa Films",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable. Mostrar como texto hasta que lo pase el cliente.",
+    "group": "film"
+  },
+  {
+    "name": "RGB Entertainment",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable. Mostrar como texto hasta que lo pase el cliente.",
+    "group": "producers"
+  },
+  {
+    "name": "Cris Morena Group",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable (en Commons sólo hay un logo de Floricienta, que no corresponde). Mostrar como texto.",
+    "group": "producers"
+  },
+  {
+    "name": "MP Producciones",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable. Mostrar como texto hasta que lo pase el cliente.",
+    "group": "producers"
+  },
+  {
+    "name": "Once Loops",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable. Mostrar como texto hasta que lo pase el cliente.",
+    "group": "producers"
+  },
+  {
+    "name": "Colgate",
+    "file": "colgate.svg",
+    "status": "dudoso",
+    "source_url": "https://cdn.worldvectorlogo.com/logos/colgate.svg",
+    "notes": "De worldvectorlogo (Commons devolvió 429; probar Colgate_logo.svg). El archivo original trae dos variantes ('Colgate' y 'COLGATE'); el viewBox se recortó a la de arriba y la de abajo queda fuera de vista pero sigue en el archivo. Tiene trazos blancos finos. Revisar.",
+    "group": "brands"
+  },
+  {
+    "name": "Ayudín",
+    "file": null,
+    "status": "missing",
+    "source_url": null,
+    "notes": "No se encontró un logo fiable. Mostrar como texto hasta que lo pase el cliente.",
+    "group": "brands"
+  },
+  {
+    "name": "Coca-Cola",
+    "file": "coca-cola.svg",
+    "status": "ok",
+    "source_url": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/cocacola.svg",
+    "notes": "Simple Icons (CC0). viewBox recortado a la franja del wordmark.",
+    "group": "brands"
+  },
+  {
+    "name": "Claro",
+    "file": "claro.svg",
+    "status": "dudoso",
+    "source_url": "https://cdn.worldvectorlogo.com/logos/claro-3.svg",
+    "notes": "Wordmark 'Claro' con destellos (versión anterior a 2017), de worldvectorlogo. El logo vigente (círculo rojo con texto blanco, Commons: Claro_logo_(2017).svg) se descartó: depende del fondo rojo y en un color queda un círculo liso. Confirmar versión.",
+    "group": "brands"
+  },
+  {
+    "name": "Banco Francés (BBVA Francés)",
+    "file": "bbva-frances.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:BBVA_Franc%C3%A9s_logo.svg",
+    "notes": "Marca histórica BBVA Francés, de Wikimedia Commons.",
+    "group": "brands"
+  },
+  {
+    "name": "American Express",
+    "file": "american-express.svg",
+    "status": "ok",
+    "source_url": "https://raw.githubusercontent.com/simple-icons/simple-icons/develop/icons/americanexpress.svg",
+    "notes": "Simple Icons (CC0). Cuadrado sólido con las letras caladas (huecos reales): en un color se ve como cuadrado con texto transparente; depende del color de fondo de la página.",
+    "group": "brands"
+  },
+  {
+    "name": "Santander Río",
+    "file": "santander-rio.svg",
+    "status": "ok",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Santanderrio_logo.svg",
+    "notes": "Marca histórica. Se quitó el fondo rojo para usarla en un solo color.",
+    "group": "brands"
+  }
+]

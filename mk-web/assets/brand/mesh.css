@@ -1,0 +1,11 @@
+/* Gradiente del isologo, en CSS para que escale sin perder calidad. Usar: background: var(--mk-mesh); */
+:root {
+  --magenta: #ff46ff; --violet: #b230ff; --blue: #3cc2ff; --green: #44f343; --yellow: #f7f829;
+  --mk-mesh:
+    radial-gradient(52% 50% at 38% 98%, #f7f829 0 26%, #f7f82900 100%),
+    radial-gradient(50% 50% at 82% 78%, #44f343 0 34%, #44f34300 100%),
+    radial-gradient(58% 58% at 6% 55%, #ff46ff 0 38%, #ff46ff00 100%),
+    radial-gradient(55% 55% at 32% 6%, #b230ff 0 40%, #b230ff00 100%),
+    radial-gradient(60% 60% at 90% 26%, #3cc2ff 0 45%, #3cc2ff00 100%),
+    #a79bd6;
+}

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MK Media Group</title>
+<meta name="description" content="Agencia creativa, productora y Startup Builder. Entretenimiento. Deporte. Tecnología. Nuevos negocios.">
+<style>
+@font-face{font-family:"Gotham Rounded";font-weight:300;font-display:swap;src:url("../assets/fonts/gotham-rounded-light.woff2") format("woff2")}
+@font-face{font-family:"Gotham Rounded";font-weight:400;font-display:swap;src:url("../assets/fonts/gotham-rounded-book.woff2") format("woff2")}
+@font-face{font-family:"Gotham Rounded";font-weight:500;font-display:swap;src:url("../assets/fonts/gotham-rounded-medium.woff2") format("woff2")}
+@font-face{font-family:"Gotham Rounded";font-weight:700;font-display:swap;src:url("../assets/fonts/gotham-rounded-bold.woff2") format("woff2")}
+
+:root{
+  --magenta:#ff46ff;--violet:#b230ff;--blue:#3cc2ff;--green:#44f343;--yellow:#f7f829;
+  --mk-mesh:
+    radial-gradient(52% 50% at 38% 98%, #f7f829 0 26%, #f7f82900 100%),
+    radial-gradient(50% 50% at 82% 78%, #44f343 0 34%, #44f34300 100%),
+    radial-gradient(58% 58% at 6% 55%, #ff46ff 0 38%, #ff46ff00 100%),
+    radial-gradient(55% 55% at 32% 6%, #b230ff 0 40%, #b230ff00 100%),
+    radial-gradient(60% 60% at 90% 26%, #3cc2ff 0 45%, #3cc2ff00 100%),
+    #a79bd6;
+  --pad:1.5rem;
+  --tile:62vw;
+  --k:1.1;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:#fff}
+body{margin:0;font-family:"Gotham Rounded",system-ui,sans-serif;font-weight:400;font-size:1rem;line-height:1.5;color:#000;overflow-x:clip}
+h1,h2,h3,p,ul{margin:0}
+ul{padding:0;list-style:none}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:2px solid #000;outline-offset:3px}
+.skip{position:fixed;left:.75rem;top:-4rem;z-index:100;background:#000;color:#fff;padding:.75rem 1rem;border-radius:999px;text-decoration:none}
+.skip:focus{top:.75rem}
+
+/* Sol */
+.sun{position:fixed;left:0;top:0;width:340px;height:340px;border-radius:50%;background:var(--mk-mesh);z-index:-1;pointer-events:none;will-change:transform;transform:translate3d(calc(100vw - 150px),calc(100svh - 150px),0)}
+
+/* Navegación */
+.nav{position:fixed;inset:0 0 auto 0;z-index:60;display:flex;justify-content:space-between;align-items:center;padding:.75rem var(--pad);pointer-events:none}
+.nav>*{pointer-events:auto}
+.brand{display:grid;place-items:center;min-width:48px;height:48px;padding:0 .5rem;background:#fff;border-radius:999px}
+.brand img{height:34px;width:34px}
+.menu-btn{width:48px;height:48px;border:0;border-radius:50%;background:#fff;cursor:pointer;display:grid;place-items:center;padding:0;color:#000}
+.dots{display:flex;gap:5px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#000;display:block;transition:transform .2s}
+.menu-btn[aria-expanded="true"] .dots{display:none}
+.x{display:none;width:20px;height:20px;position:relative}
+.menu-btn[aria-expanded="true"] .x{display:block}
+.x::before,.x::after{content:"";position:absolute;left:0;top:9px;width:20px;height:2px;background:#000;border-radius:2px}
+.x::before{transform:rotate(45deg)}.x::after{transform:rotate(-45deg)}
+.menu{position:fixed;inset:0;z-index:50;background:#fff;display:flex;flex-direction:column;justify-content:center;padding:6rem var(--pad) 3rem;visibility:hidden;opacity:0;transition:opacity .25s,visibility .25s}
+.menu.open{visibility:visible;opacity:1}
+.menu a{display:block;font-weight:300;font-size:clamp(2rem,1rem + 6vw,4.5rem);line-height:1.2;padding:.15em 0;text-decoration:none;min-height:44px}
+.menu a:hover{text-decoration:underline;text-underline-offset:.12em;text-decoration-thickness:1.5px}
+
+/* Secciones */
+section{position:relative;padding:5rem var(--pad)}
+.title-pill{width:fit-content;border-radius:999px;white-space:nowrap;line-height:1.1;padding:.6em 1.15em;border:1.5px solid #000;font-weight:400;font-size:1.25rem;background:transparent}
+.head{margin-bottom:3rem}
+
+/* Portada */
+.hero{height:100svh;min-height:560px;display:grid;grid-template-rows:auto minmax(0,1fr);gap:1.5rem;padding:5.25rem var(--pad) 0}
+.hero h1{font-weight:300;font-size:clamp(2.6rem,12vw,7rem);line-height:.98;letter-spacing:-.025em}
+.verticals{margin-top:1.25rem;font-weight:400;font-size:1.125rem;line-height:1.4;max-width:24em}
+.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;min-height:0;overflow:hidden}
+.col{overflow:hidden;min-height:0}
+.col .track{display:flex;flex-direction:column;animation:up var(--dur,60s) linear infinite}
+.col .group{display:flex;flex-direction:column}
+.col li{margin-bottom:.75rem;border-radius:24px;overflow:hidden}
+.col img{width:100%;height:100%;object-fit:cover;border-radius:24px}
+@keyframes up{to{transform:translateY(-50%)}}
+
+/* Cifras */
+.stats li{padding:1rem 0 1.25rem;border-top:1px solid rgba(0,0,0,.2);padding-left:calc(var(--i) * 2rem)}
+.stat-n{font-weight:300;font-size:clamp(3.4rem,17vw,5rem);line-height:1;letter-spacing:-.02em}
+.stat-d{margin-top:.5rem;font-size:1.125rem;line-height:1.35;max-width:15em}
+
+/* Sobre nosotros */
+.about-col{max-width:34rem}
+.about-col .lead{font-weight:300;font-size:clamp(1.6rem,1.1rem + 2.2vw,2.8rem);line-height:1.2;letter-spacing:-.01em}
+.about-col .lead+p{margin-top:2rem;font-size:1.125rem;line-height:1.55;max-width:34em}
+
+/* Marquee */
+.marquee{overflow:hidden}
+.marquee .track{display:flex;width:max-content;animation:slide var(--dur,60s) linear infinite}
+.marquee.rev .track{animation-direction:reverse}
+.marquee:is(:hover,:focus,:focus-within) .track{animation-play-state:paused}
+.marquee .group{display:flex;align-items:center}
+@keyframes slide{to{transform:translateX(-50%)}}
+.trust p{max-width:36em;font-size:1.125rem;line-height:1.55;margin-bottom:3rem}
+.logos-wrap{display:grid;gap:2rem;margin-inline:calc(var(--pad) * -1)}
+.logos li{margin-right:3rem;display:flex;align-items:center}
+.logo{height:calc(var(--lh) * 1px * var(--k));width:auto;filter:brightness(0)}
+.logo-text{font-weight:700;font-size:1rem;line-height:1.2;white-space:nowrap}
+
+/* Trabajos */
+.works-wrap{margin-inline:calc(var(--pad) * -1)}
+.work-row{margin-bottom:3.25rem}
+.row-label{font-weight:500;font-size:1.25rem;line-height:1.2;padding:0 var(--pad);margin-bottom:1.25rem}
+.works .group{align-items:flex-start}
+.tile{margin-right:1rem;width:var(--tile)}
+.tile.film{width:calc(var(--tile) * .66)}
+.tile.celeb{width:calc(var(--tile) * .58)}
+.tile img{width:100%;object-fit:cover;border-radius:24px}
+.tile.sq img{aspect-ratio:1/1}
+.tile.film img{aspect-ratio:2/3}
+.tile.celeb img{aspect-ratio:3/4}
+.cap{display:block;margin-top:.6rem;font-size:.875rem;line-height:1.3;padding-inline:.25rem}
+
+/* Servicios */
+.services li{display:flex;gap:.45em;font-weight:300;font-size:clamp(2rem,1rem + 5vw,4.5rem);line-height:1.12;letter-spacing:-.02em;margin-bottom:1.25rem}
+.services li::before{content:"-";flex:none}
+
+/* Contacto */
+.contact{min-height:100svh;display:flex;flex-direction:column;padding-top:5.5rem;padding-bottom:2.5rem}
+.contact-main{flex:1;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:2rem;padding-block:2rem}
+.contact h2{font-weight:300;font-size:clamp(3rem,13vw,8rem);line-height:.98;letter-spacing:-.03em}
+.pill{display:inline-flex;align-items:center;justify-content:center;min-height:56px;padding:0 2.25rem;background:#000;color:#fff;border-radius:999px;font-weight:500;font-size:1.25rem;text-decoration:none}
+.contact-links{display:flex;flex-wrap:wrap;gap:.25rem 2rem;font-size:1.125rem}
+.contact-links a{display:inline-flex;align-items:center;min-height:44px;text-underline-offset:.2em}
+.foot{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;padding-top:1.5rem}
+.foot img{height:48px;width:auto}
+.foot a{display:inline-flex;align-items:center;min-height:44px}
+
+@media (min-width:900px){
+  :root{--pad:6vw;--tile:clamp(240px,21vw,340px);--k:1.25}
+  section{padding-block:7rem}
+  .nav{padding:1.25rem var(--pad)}
+  .title-pill{font-size:1.75rem}
+  .hero{grid-template-columns:minmax(0,1fr) minmax(0,40vw);grid-template-rows:1fr;gap:3vw;padding:0 5vw 0 var(--pad);align-items:center}
+  .hero-text{padding-top:3rem}
+  .verticals{font-size:1.35rem;margin-top:2rem;max-width:40em}
+  .cols{height:100%;gap:1rem}
+  .col li{margin-bottom:1rem}
+  .stats{display:grid;grid-template-columns:repeat(5,1fr);align-items:end;gap:0}
+  .stats li{padding:1.25rem 1rem 1.5rem 1.25rem;border-top:0;border-left:1px solid #000;min-height:calc(11rem + var(--i) * 4rem)}
+  .stat-n{font-size:clamp(3rem,4.6vw,5.5rem)}
+  .stat-d{font-size:1.125rem}
+  .about-col{margin-left:24vw;max-width:56rem}
+  .about-col .lead+p{font-size:1.25rem;max-width:30em}
+  .trust p{font-size:1.25rem}
+  .logos-wrap{gap:2.5rem}
+  .logos li{margin-right:4.5rem}
+  .logo-text{font-size:1.125rem}
+  .tile{margin-right:1.5rem}
+  .row-label{font-size:1.5rem}
+  .work-row{margin-bottom:4.5rem}
+  .services li{margin-bottom:1.5rem}
+  .contact-main{gap:1.5rem;padding-block:1rem}
+  .foot{padding-top:1rem}
+  .contact{padding-block:5.5rem 2.5rem}
+}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .sun{display:none}
+  .contact{background:var(--mk-mesh)}
+  .marquee .track,.col .track{animation:none}
+  .marquee{overflow-x:auto}
+  .dup{display:none}
+  .col{overflow:hidden}
+  .menu{transition:none}
+}
+
+.brand{transition:opacity .2s}
+.brand-away .brand{opacity:0;pointer-events:none}
+.brand-away .brand:focus-visible{opacity:1;pointer-events:auto}
+</style>
+</head>
+<body>
+<a class="skip" href="#cifras">Ir al contenido</a>
+
+<header class="nav">
+  <a class="brand" href="#portada" aria-label="MK Media Group, inicio"><img src="../assets/brand/mark-black.png" alt="" width="34" height="34"></a>
+  <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+    <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="x" aria-hidden="true"></span>
+  </button>
+</header>
+
+<div class="menu" id="menu" role="dialog" aria-modal="true" aria-label="Secciones" inert>
+  <nav aria-label="Secciones">
+    <a href="#portada">Portada</a>
+    <a href="#cifras">En cifras</a>
+    <a href="#nosotros">Sobre nosotros</a>
+    <a href="#confiaron">Quiénes confiaron</a>
+    <a href="#trabajos">Trabajos destacados</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#contacto">Contacto</a>
+  </nav>
+</div>
+
+<div class="sun" id="sun" aria-hidden="true"></div>
+
+<main id="main">
+<section class="hero" id="portada" aria-label="Portada">
+  <div class="hero-text">
+    <h1>Agencia creativa, productora y Startup Builder.</h1>
+    <p class="verticals">Entretenimiento. Deporte. Tecnología. Nuevos negocios.</p>
+  </div>
+  <!-- Reel: cuando esté el video, reemplazar este bloque .cols por
+       <video class="reel" src="..." autoplay muted loop playsinline poster="../assets/img/hero/chayanne.webp"></video>
+       con object-fit: cover y el mismo radio de 24 px. Mientras tanto, las fotos suben en columnas para simular movimiento. -->
+  <div class="cols" aria-hidden="true"><div class="col" style="--dur:60s"><div class="track"><ul class="group"><li style="aspect-ratio:4/5"><img src="../assets/img/hero/chayanne.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/enrique-iglesias.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/violetta.webp" alt="" decoding="async"></li><li style="aspect-ratio:5/6"><img src="../assets/img/hero/ricardo-arjona.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/julieta-venegas.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/family/paw-patrol.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/hero/violetta.webp" alt="" decoding="async"></li></ul><ul class="group dup"><li style="aspect-ratio:4/5"><img src="../assets/img/hero/chayanne.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/enrique-iglesias.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/violetta.webp" alt="" decoding="async"></li><li style="aspect-ratio:5/6"><img src="../assets/img/hero/ricardo-arjona.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/julieta-venegas.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/family/paw-patrol.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/hero/violetta.webp" alt="" decoding="async"></li></ul></div></div><div class="col" style="--dur:80s"><div class="track"><ul class="group"><li style="aspect-ratio:5/6"><img src="../assets/img/family/my-little-pony.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/julieta-venegas.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/music/ricky-martin.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/aliados.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/hero/enrique-iglesias.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/chayanne.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/rock-bones.webp" alt="" decoding="async"></li></ul><ul class="group dup"><li style="aspect-ratio:5/6"><img src="../assets/img/family/my-little-pony.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/julieta-venegas.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/music/ricky-martin.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/aliados.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/hero/enrique-iglesias.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/music/chayanne.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/family/rock-bones.webp" alt="" decoding="async"></li></ul></div></div><div class="col" style="--dur:68s"><div class="track"><ul class="group"><li style="aspect-ratio:4/5"><img src="../assets/img/music/ricardo-arjona.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/hero/paw-patrol.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/family/los-polinesios.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/my-little-pony.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/music/cesar-millan.webp" alt="" decoding="async"></li><li style="aspect-ratio:5/6"><img src="../assets/img/family/go-vive-a-tu-manera.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/chayanne.webp" alt="" decoding="async"></li></ul><ul class="group dup"><li style="aspect-ratio:4/5"><img src="../assets/img/music/ricardo-arjona.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/hero/paw-patrol.webp" alt="" decoding="async"></li><li style="aspect-ratio:4/5"><img src="../assets/img/family/los-polinesios.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/my-little-pony.webp" alt="" decoding="async"></li><li style="aspect-ratio:3/4"><img src="../assets/img/music/cesar-millan.webp" alt="" decoding="async"></li><li style="aspect-ratio:5/6"><img src="../assets/img/family/go-vive-a-tu-manera.webp" alt="" decoding="async"></li><li style="aspect-ratio:1/1"><img src="../assets/img/hero/chayanne.webp" alt="" decoding="async"></li></ul></div></div></div>
+</section>
+
+<section id="cifras" aria-labelledby="t-cifras">
+  <div class="head"><h2 class="title-pill" id="t-cifras">En cifras</h2></div>
+  <ul class="stats">
+    <li style="--i:0"><p class="stat-n">+25</p><p class="stat-d">años de experiencia.</p></li>
+    <li style="--i:1"><p class="stat-n">+40</p><p class="stat-d">países.</p></li>
+    <li style="--i:2"><p class="stat-n">+1000</p><p class="stat-d">shows, funciones, eventos y activaciones con marcas.</p></li>
+    <li style="--i:3"><p class="stat-n">+100</p><p class="stat-d">artistas, deportistas, influencers y creadores de contenido.</p></li>
+    <li style="--i:4"><p class="stat-n">+80</p><p class="stat-d">lanzamientos de películas y series.</p></li>
+  </ul>
+</section>
+
+<section id="nosotros" aria-labelledby="t-nosotros">
+  <div class="head"><h2 class="title-pill" id="t-nosotros">Sobre nosotros</h2></div>
+  <div class="about-col">
+    <p class="lead">Somos una compañía especializada en la industria del entretenimiento, con más de 25 años de trayectoria en la creación, ejecución y comunicación de proyectos en Argentina y mercados clave de América, Europa y Asia.</p>
+    <p>Combinamos creatividad, innovación y visión estratégica para desarrollar propuestas disruptivas, explorar nuevos formatos y generar experiencias que trascienden, redefiniendo las formas de conectar, interactuar y sorprender. Potenciamos alianzas estratégicas e identificamos oportunidades de negocio.</p>
+  </div>
+</section>
+
+<section id="confiaron" class="trust" aria-labelledby="t-confiaron">
+  <div class="head"><h2 class="title-pill" id="t-confiaron">Quiénes confiaron</h2></div>
+  <p>Nuestra trayectoria incluye trabajos junto a los principales canales de televisión, plataformas de streaming, sellos discográficos, estudios cinematográficos, productoras líderes de espectáculos y reconocidos artistas, deportistas, influencers y creadores de contenido, así como importantes marcas nacionales e internacionales.</p>
+  <div class="logos-wrap"><div class="marquee logos" tabindex="0" role="group" aria-label="Canales, plataformas y sellos" style="--dur:70s"><div class="track"><ul class="group"><li><img class="logo" src="../assets/logos/disney.svg" alt="Disney" style="--lh:28.0" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/televisa.svg" alt="Televisa" style="--lh:22.1" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/sony-music.svg" alt="Sony Music" style="--lh:20.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/nickelodeon.svg" alt="Nickelodeon" style="--lh:21.7" loading="lazy" decoding="async"></li><li><span class="logo-text">Cris Morena Group</span></li><li><img class="logo" src="../assets/logos/telefe.svg" alt="Telefe" style="--lh:21.2" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/warner-music.svg" alt="Warner Music" style="--lh:32.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/univision.svg" alt="Univision" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">Once Loops</span></li><li><img class="logo" src="../assets/logos/cartoon-network.svg" alt="Cartoon Network" style="--lh:27.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/universal-music.svg" alt="Universal Music" style="--lh:31.6" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/telemundo.svg" alt="Telemundo" style="--lh:38.0" loading="lazy" decoding="async"></li></ul><ul class="group dup" aria-hidden="true"><li><img class="logo" src="../assets/logos/disney.svg" alt="" style="--lh:28.0" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/televisa.svg" alt="" style="--lh:22.1" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/sony-music.svg" alt="" style="--lh:20.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/nickelodeon.svg" alt="" style="--lh:21.7" loading="lazy" decoding="async"></li><li><span class="logo-text">Cris Morena Group</span></li><li><img class="logo" src="../assets/logos/telefe.svg" alt="" style="--lh:21.2" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/warner-music.svg" alt="" style="--lh:32.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/univision.svg" alt="" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">Once Loops</span></li><li><img class="logo" src="../assets/logos/cartoon-network.svg" alt="" style="--lh:27.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/universal-music.svg" alt="" style="--lh:31.6" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/telemundo.svg" alt="" style="--lh:38.0" loading="lazy" decoding="async"></li></ul></div></div><div class="marquee logos rev" tabindex="0" role="group" aria-label="Estudios, productoras y marcas" style="--dur:80s"><div class="track"><ul class="group"><li><img class="logo" src="../assets/logos/paramount-pictures.svg" alt="Paramount Pictures" style="--lh:20.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/coca-cola.svg" alt="Coca-Cola" style="--lh:29.2" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/dreamworks.svg" alt="DreamWorks" style="--lh:24.0" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/santander-rio.svg" alt="Santander Río" style="--lh:24" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/universal-pictures.svg" alt="Universal Pictures" style="--lh:37.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/claro.svg" alt="Claro" style="--lh:31.1" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/sony-pictures.svg" alt="Sony Pictures" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">RGB Entertainment</span></li><li><img class="logo" src="../assets/logos/mgm.svg" alt="MGM" style="--lh:25.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/colgate.svg" alt="Colgate" style="--lh:24.8" loading="lazy" decoding="async"></li><li><span class="logo-text">Pampa Films</span></li><li><img class="logo" src="../assets/logos/american-express.svg" alt="American Express" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">MP Producciones</span></li><li><img class="logo" src="../assets/logos/bbva-frances.svg" alt="Banco Francés (BBVA Francés)" style="--lh:20" loading="lazy" decoding="async"></li><li><span class="logo-text">Ayudín</span></li></ul><ul class="group dup" aria-hidden="true"><li><img class="logo" src="../assets/logos/paramount-pictures.svg" alt="" style="--lh:20.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/coca-cola.svg" alt="" style="--lh:29.2" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/dreamworks.svg" alt="" style="--lh:24.0" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/santander-rio.svg" alt="" style="--lh:24" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/universal-pictures.svg" alt="" style="--lh:37.4" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/claro.svg" alt="" style="--lh:31.1" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/sony-pictures.svg" alt="" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">RGB Entertainment</span></li><li><img class="logo" src="../assets/logos/mgm.svg" alt="" style="--lh:25.9" loading="lazy" decoding="async"></li><li><img class="logo" src="../assets/logos/colgate.svg" alt="" style="--lh:24.8" loading="lazy" decoding="async"></li><li><span class="logo-text">Pampa Films</span></li><li><img class="logo" src="../assets/logos/american-express.svg" alt="" style="--lh:38.0" loading="lazy" decoding="async"></li><li><span class="logo-text">MP Producciones</span></li><li><img class="logo" src="../assets/logos/bbva-frances.svg" alt="" style="--lh:20" loading="lazy" decoding="async"></li><li><span class="logo-text">Ayudín</span></li></ul></div></div></div>
+</section>
+
+<section id="trabajos" aria-labelledby="t-trabajos">
+  <div class="head"><h2 class="title-pill" id="t-trabajos">Trabajos destacados</h2></div>
+  <div class="works-wrap"><div class="work-row"><h3 class="row-label">Música</h3><div class="marquee works" tabindex="0" role="group" aria-label="Música, carrusel de trabajos" style="--dur:42s"><div class="track"><ul class="group"><li class="tile sq"><img src="../assets/img/music/ricky-martin.webp" alt="Ricky Martin" loading="lazy" decoding="async"><span class="cap">Ricky Martin</span></li><li class="tile sq"><img src="../assets/img/music/enrique-iglesias.webp" alt="Enrique Iglesias" loading="lazy" decoding="async"><span class="cap">Enrique Iglesias</span></li><li class="tile sq"><img src="../assets/img/music/ricardo-arjona.webp" alt="Ricardo Arjona" loading="lazy" decoding="async"><span class="cap">Ricardo Arjona</span></li><li class="tile sq"><img src="../assets/img/music/chayanne.webp" alt="Chayanne" loading="lazy" decoding="async"><span class="cap">Chayanne</span></li><li class="tile sq"><img src="../assets/img/music/cesar-millan.webp" alt="César Millán" loading="lazy" decoding="async"><span class="cap">César Millán</span></li><li class="tile sq"><img src="../assets/img/music/julieta-venegas.webp" alt="Julieta Venegas" loading="lazy" decoding="async"><span class="cap">Julieta Venegas</span></li></ul><ul class="group dup" aria-hidden="true"><li class="tile sq"><img src="../assets/img/music/ricky-martin.webp" alt="" loading="lazy" decoding="async"><span class="cap">Ricky Martin</span></li><li class="tile sq"><img src="../assets/img/music/enrique-iglesias.webp" alt="" loading="lazy" decoding="async"><span class="cap">Enrique Iglesias</span></li><li class="tile sq"><img src="../assets/img/music/ricardo-arjona.webp" alt="" loading="lazy" decoding="async"><span class="cap">Ricardo Arjona</span></li><li class="tile sq"><img src="../assets/img/music/chayanne.webp" alt="" loading="lazy" decoding="async"><span class="cap">Chayanne</span></li><li class="tile sq"><img src="../assets/img/music/cesar-millan.webp" alt="" loading="lazy" decoding="async"><span class="cap">César Millán</span></li><li class="tile sq"><img src="../assets/img/music/julieta-venegas.webp" alt="" loading="lazy" decoding="async"><span class="cap">Julieta Venegas</span></li></ul></div></div></div><div class="work-row"><h3 class="row-label">Espectáculos infantojuveniles</h3><div class="marquee works rev" tabindex="0" role="group" aria-label="Espectáculos infantojuveniles, carrusel de trabajos" style="--dur:49s"><div class="track"><ul class="group"><li class="tile sq"><img src="../assets/img/family/violetta.webp" alt="Violetta" loading="lazy" decoding="async"><span class="cap">Violetta</span></li><li class="tile sq"><img src="../assets/img/family/aliados.webp" alt="Aliados" loading="lazy" decoding="async"><span class="cap">Aliados</span></li><li class="tile sq"><img src="../assets/img/family/go-vive-a-tu-manera.webp" alt="Go! Vive a tu manera" loading="lazy" decoding="async"><span class="cap">Go! Vive a tu manera</span></li><li class="tile sq"><img src="../assets/img/family/los-polinesios.webp" alt="Los Polinesios" loading="lazy" decoding="async"><span class="cap">Los Polinesios</span></li><li class="tile sq"><img src="../assets/img/family/paw-patrol.webp" alt="Paw Patrol" loading="lazy" decoding="async"><span class="cap">Paw Patrol</span></li><li class="tile sq"><img src="../assets/img/family/my-little-pony.webp" alt="My Little Pony" loading="lazy" decoding="async"><span class="cap">My Little Pony</span></li><li class="tile sq"><img src="../assets/img/family/rock-bones.webp" alt="Rock Bones" loading="lazy" decoding="async"><span class="cap">Rock Bones</span></li></ul><ul class="group dup" aria-hidden="true"><li class="tile sq"><img src="../assets/img/family/violetta.webp" alt="" loading="lazy" decoding="async"><span class="cap">Violetta</span></li><li class="tile sq"><img src="../assets/img/family/aliados.webp" alt="" loading="lazy" decoding="async"><span class="cap">Aliados</span></li><li class="tile sq"><img src="../assets/img/family/go-vive-a-tu-manera.webp" alt="" loading="lazy" decoding="async"><span class="cap">Go! Vive a tu manera</span></li><li class="tile sq"><img src="../assets/img/family/los-polinesios.webp" alt="" loading="lazy" decoding="async"><span class="cap">Los Polinesios</span></li><li class="tile sq"><img src="../assets/img/family/paw-patrol.webp" alt="" loading="lazy" decoding="async"><span class="cap">Paw Patrol</span></li><li class="tile sq"><img src="../assets/img/family/my-little-pony.webp" alt="" loading="lazy" decoding="async"><span class="cap">My Little Pony</span></li><li class="tile sq"><img src="../assets/img/family/rock-bones.webp" alt="" loading="lazy" decoding="async"><span class="cap">Rock Bones</span></li></ul></div></div></div><div class="work-row"><h3 class="row-label">Televisión</h3><div class="marquee works" tabindex="0" role="group" aria-label="Televisión, carrusel de trabajos" style="--dur:49s"><div class="track"><ul class="group"><li class="tile sq"><img src="../assets/img/tv/floricienta.webp" alt="Floricienta" loading="lazy" decoding="async"><span class="cap">Floricienta</span></li><li class="tile sq"><img src="../assets/img/tv/casi-angeles.webp" alt="Casi Ángeles" loading="lazy" decoding="async"><span class="cap">Casi Ángeles</span></li><li class="tile sq"><img src="../assets/img/tv/chiquititas.webp" alt="Chiquititas" loading="lazy" decoding="async"><span class="cap">Chiquititas</span></li><li class="tile sq"><img src="../assets/img/tv/rebelde-way.webp" alt="Rebelde Way" loading="lazy" decoding="async"><span class="cap">Rebelde Way</span></li><li class="tile sq"><img src="../assets/img/tv/alma-pirata.webp" alt="Alma Pirata" loading="lazy" decoding="async"><span class="cap">Alma Pirata</span></li><li class="tile sq"><img src="../assets/img/tv/supertorpe.webp" alt="Supertorpe" loading="lazy" decoding="async"><span class="cap">Supertorpe</span></li><li class="tile sq"><img src="../assets/img/tv/jake-and-blake.webp" alt="Jake & Blake" loading="lazy" decoding="async"><span class="cap">Jake & Blake</span></li></ul><ul class="group dup" aria-hidden="true"><li class="tile sq"><img src="../assets/img/tv/floricienta.webp" alt="" loading="lazy" decoding="async"><span class="cap">Floricienta</span></li><li class="tile sq"><img src="../assets/img/tv/casi-angeles.webp" alt="" loading="lazy" decoding="async"><span class="cap">Casi Ángeles</span></li><li class="tile sq"><img src="../assets/img/tv/chiquititas.webp" alt="" loading="lazy" decoding="async"><span class="cap">Chiquititas</span></li><li class="tile sq"><img src="../assets/img/tv/rebelde-way.webp" alt="" loading="lazy" decoding="async"><span class="cap">Rebelde Way</span></li><li class="tile sq"><img src="../assets/img/tv/alma-pirata.webp" alt="" loading="lazy" decoding="async"><span class="cap">Alma Pirata</span></li><li class="tile sq"><img src="../assets/img/tv/supertorpe.webp" alt="" loading="lazy" decoding="async"><span class="cap">Supertorpe</span></li><li class="tile sq"><img src="../assets/img/tv/jake-and-blake.webp" alt="" loading="lazy" decoding="async"><span class="cap">Jake & Blake</span></li></ul></div></div></div><div class="work-row"><h3 class="row-label">Películas</h3><div class="marquee works rev" tabindex="0" role="group" aria-label="Películas, carrusel de trabajos" style="--dur:42s"><div class="track"><ul class="group"><li class="tile film"><img src="../assets/img/film/rapidos-y-furiosos-x.webp" alt="Rápidos y Furiosos X" loading="lazy" decoding="async"><span class="cap">Rápidos y Furiosos X</span></li><li class="tile film"><img src="../assets/img/film/mision-imposible-2.webp" alt="Misión Imposible 2" loading="lazy" decoding="async"><span class="cap">Misión Imposible 2</span></li><li class="tile film"><img src="../assets/img/film/gladiator.webp" alt="Gladiator" loading="lazy" decoding="async"><span class="cap">Gladiator</span></li><li class="tile film"><img src="../assets/img/film/shrek.webp" alt="Shrek" loading="lazy" decoding="async"><span class="cap">Shrek</span></li><li class="tile film"><img src="../assets/img/film/jurassic-park-3.webp" alt="Jurassic Park III" loading="lazy" decoding="async"><span class="cap">Jurassic Park III</span></li><li class="tile film"><img src="../assets/img/film/the-grinch.webp" alt="The Grinch" loading="lazy" decoding="async"><span class="cap">The Grinch</span></li></ul><ul class="group dup" aria-hidden="true"><li class="tile film"><img src="../assets/img/film/rapidos-y-furiosos-x.webp" alt="" loading="lazy" decoding="async"><span class="cap">Rápidos y Furiosos X</span></li><li class="tile film"><img src="../assets/img/film/mision-imposible-2.webp" alt="" loading="lazy" decoding="async"><span class="cap">Misión Imposible 2</span></li><li class="tile film"><img src="../assets/img/film/gladiator.webp" alt="" loading="lazy" decoding="async"><span class="cap">Gladiator</span></li><li class="tile film"><img src="../assets/img/film/shrek.webp" alt="" loading="lazy" decoding="async"><span class="cap">Shrek</span></li><li class="tile film"><img src="../assets/img/film/jurassic-park-3.webp" alt="" loading="lazy" decoding="async"><span class="cap">Jurassic Park III</span></li><li class="tile film"><img src="../assets/img/film/the-grinch.webp" alt="" loading="lazy" decoding="async"><span class="cap">The Grinch</span></li></ul></div></div></div><div class="work-row"><h3 class="row-label">Celebrities</h3><div class="marquee works" tabindex="0" role="group" aria-label="Celebrities, carrusel de trabajos" style="--dur:124s"><div class="track"><ul class="group"><li class="tile celeb"><img src="../assets/img/celebrities/a1.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b1.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a2.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b2.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a3.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b3.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a4.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b4.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a5.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b5.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a6.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b6.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a7.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b7.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a8.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b8.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a9.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b9.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a10.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b10.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a11.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b11.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a12.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b12.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a13.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b13.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a14.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b14.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a15.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b15.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/c1.webp" alt="Invitada o invitado en una avant premiere" loading="lazy" decoding="async"></li></ul><ul class="group dup" aria-hidden="true"><li class="tile celeb"><img src="../assets/img/celebrities/a1.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b1.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a2.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b2.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a3.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b3.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a4.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b4.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a5.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b5.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a6.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b6.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a7.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b7.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a8.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b8.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a9.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b9.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a10.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b10.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a11.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b11.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a12.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b12.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a13.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b13.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a14.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b14.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/a15.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/b15.webp" alt="" loading="lazy" decoding="async"></li><li class="tile celeb"><img src="../assets/img/celebrities/c1.webp" alt="" loading="lazy" decoding="async"></li></ul></div></div></div></div>
+</section>
+
+<section id="servicios" aria-labelledby="t-servicios">
+  <div class="head"><h2 class="title-pill" id="t-servicios">Servicios</h2></div>
+  <ul class="services">
+    <li>Influencer Marketing</li>
+    <li>Branded Content</li>
+    <li>Eventos &amp; Activaciones</li>
+    <li>Sponsorships &amp; Alianzas Estratégicas</li>
+    <li>Prensa &amp; Comunicación</li>
+  </ul>
+</section>
+
+<section id="contacto" class="contact" aria-labelledby="t-contacto">
+  <div class="contact-main">
+    <p class="title-pill" id="t-contacto" role="heading" aria-level="2">Contacto</p>
+    <h2>¿Hacemos equipo?</h2>
+    <a class="pill" href="mailto:info@mkmediagroup.com.ar">Hablemos</a>
+    <div class="contact-links">
+      <a href="#" data-pending="linkedin-url">LinkedIn</a>
+      <a href="mailto:info@mkmediagroup.com.ar">info@mkmediagroup.com.ar</a>
+    </div>
+  </div>
+  <footer class="foot">
+    <img src="../assets/brand/logo-black.png" alt="MK Media Group" width="129" height="48">
+    <span>#siemprearriba</span>
+    <a href="https://www.mkmediagroup.com.ar">www.mkmediagroup.com.ar</a>
+  </footer>
+</section>
+</main>
+
+<script>
+(function(){
+  var btn=document.getElementById('menu-btn'),menu=document.getElementById('menu'),main=document.getElementById('main');
+  var brand=document.querySelector('.brand'),links=menu.querySelectorAll('a');
+  function setOpen(open,restore){
+    btn.setAttribute('aria-expanded',open);
+    btn.setAttribute('aria-label',open?'Cerrar menú':'Abrir menú');
+    menu.classList.toggle('open',open);
+    menu.inert=!open; main.inert=open;
+    if(open){setTimeout(function(){links[0].focus();},50);}else if(restore){btn.focus();}
+  }
+  btn.addEventListener('click',function(){setOpen(btn.getAttribute('aria-expanded')!=='true',true);});
+  links.forEach(function(a){a.addEventListener('click',function(){setOpen(false,false);});});
+  document.addEventListener('keydown',function(e){
+    if(btn.getAttribute('aria-expanded')!=='true')return;
+    if(e.key==='Escape'){e.preventDefault();setOpen(false,true);return;}
+    if(e.key==='Tab'){
+      var f=[brand,btn].concat([].slice.call(links)),i=f.indexOf(document.activeElement);
+      if(e.shiftKey&&i<=0){e.preventDefault();f[f.length-1].focus();}
+      else if(!e.shiftKey&&(i===f.length-1||i<0)){e.preventDefault();f[0].focus();}
+    }
+  });
+
+  /* El sol: sólo transform, scroll pasivo, rAF. */
+  var sun=document.getElementById('sun'),contact=document.getElementById('contacto');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)');
+  var vw,vh,D,endY,queued=false;
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v));}
+  function lerp(a,b,t){return a+(b-a)*t;}
+  function measure(){
+    vw=window.innerWidth;vh=window.innerHeight;
+    D=Math.ceil(Math.hypot(vw,vh)*1.06);
+    sun.style.width=sun.style.height=D+'px';
+    var top=contact.getBoundingClientRect().top+window.scrollY;
+    endY=Math.max(1,Math.min(top,document.documentElement.scrollHeight-vh)-2);
+    draw();
+  }
+  function draw(){
+    queued=false;
+    if(reduce.matches)return;
+    var y=window.scrollY,wide=vw>=900;
+    var t=clamp((y-(endY-vh*1.1))/(vh*1.1),0,1);
+    var e=t*t*(3-2*t);
+    var a=clamp(y/Math.max(1,endY-vh*1.1),0,1);
+    var d0=wide?420:220,d1=wide?620:280,dA=lerp(d0,d1,a);
+    var xA=vw+dA*.2;
+    var yA=vh*lerp(1.0,.5,a);
+    var x=lerp(xA,vw/2,e),yy=lerp(yA,vh/2,e),d=lerp(dA,D,e);
+    sun.style.transform='translate3d('+(x-D/2)+'px,'+(yy-D/2)+'px,0) scale('+(d/D)+')';
+  }
+  function onScroll(){if(!queued){queued=true;requestAnimationFrame(draw);}}
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',measure);
+  window.addEventListener('load',measure);
+  if(reduce.addEventListener)reduce.addEventListener('change',function(){sun.style.display=reduce.matches?'none':'';measure();});
+  measure();
+})();
+
+/* El logo se oculta al bajar y vuelve al subir, para no tapar el texto. */
+(function(){var last=window.scrollY,bar=document.querySelector('.nav');
+addEventListener('scroll',function(){var y=window.scrollY;bar.classList.toggle('brand-away',y>120&&y>last);last=y;},{passive:true});})();
+</script>
+</body>
+</html>
