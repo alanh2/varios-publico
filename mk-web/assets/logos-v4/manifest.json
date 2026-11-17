@@ -23,11 +23,11 @@
   {
    "name": "American Express",
    "file": "a03-american-express.webp",
-   "lh": 34.3,
+   "lh": 33.4,
    "bg": [
-    1,
-    111,
-    208
+    255,
+    255,
+    255
    ]
   },
   {
