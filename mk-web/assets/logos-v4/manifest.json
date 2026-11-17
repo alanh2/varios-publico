@@ -1,0 +1,326 @@
+{
+ "a": [
+  {
+   "name": "Disney",
+   "file": "a01-disney.webp",
+   "lh": 36.7,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Coca-Cola",
+   "file": "a02-coca-cola.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "American Express",
+   "file": "a03-american-express.webp",
+   "lh": 34.3,
+   "bg": [
+    1,
+    111,
+    208
+   ]
+  },
+  {
+   "name": "Telemundo",
+   "file": "a04-telemundo.webp",
+   "lh": 28.6,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Televisa",
+   "file": "a05-televisa.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Warner Music Group",
+   "file": "a06-warner-music-group.webp",
+   "lh": 35.5,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Universal Pictures",
+   "file": "a07-universal-pictures.webp",
+   "lh": 41.2,
+   "bg": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "Santander Río",
+   "file": "a08-santander-rio.webp",
+   "lh": 21.0,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Nickelodeon",
+   "file": "a09-nickelodeon.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Colgate",
+   "file": "a10-colgate.webp",
+   "lh": 36.2,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Telefe",
+   "file": "a11-telefe.webp",
+   "lh": 41.3,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Pepsi",
+   "file": "a12-pepsi.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "MP Producciones",
+   "file": "a13-mp-producciones.webp",
+   "lh": 31.6,
+   "bg": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "YouTube",
+   "file": "a14-youtube.webp",
+   "lh": 26.8,
+   "bg": [
+    242,
+    242,
+    242
+   ]
+  },
+  {
+   "name": "Paramount Pictures",
+   "file": "a15-paramount-pictures.webp",
+   "lh": 21.5,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Panini",
+   "file": "a16-panini.webp",
+   "lh": 25.3,
+   "bg": [
+    247,
+    235,
+    27
+   ]
+  }
+ ],
+ "b": [
+  {
+   "name": "Sony Music",
+   "file": "b01-sony-music.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "McDonald's",
+   "file": "b02-mcdonalds.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Univision",
+   "file": "b03-univision.webp",
+   "lh": 25.0,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Banco Francés",
+   "file": "b04-banco-frances.webp",
+   "lh": 22.2,
+   "bg": [
+    0,
+    84,
+    159
+   ]
+  },
+  {
+   "name": "Cartoon Network",
+   "file": "b05-cartoon-network.webp",
+   "lh": 44.0,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "RGB Entertainment",
+   "file": "b06-rgb-entertainment.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Claro",
+   "file": "b07-claro.webp",
+   "lh": 34.7,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Cris Morena Group",
+   "file": "b08-cris-morena-group.webp",
+   "lh": 44.8,
+   "bg": [
+    247,
+    247,
+    247
+   ]
+  },
+  {
+   "name": "Visa",
+   "file": "b09-visa.webp",
+   "lh": 32.2,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "DreamWorks",
+   "file": "b10-dreamworks.webp",
+   "lh": 43.4,
+   "bg": [
+    236,
+    232,
+    233
+   ]
+  },
+  {
+   "name": "Macro",
+   "file": "b11-macro.webp",
+   "lh": 26.8,
+   "bg": [
+    0,
+    43,
+    85
+   ]
+  },
+  {
+   "name": "Pampa Films",
+   "file": "b12-pampa-films.webp",
+   "lh": 30.3,
+   "bg": [
+    0,
+    0,
+    0
+   ]
+  },
+  {
+   "name": "Google",
+   "file": "b13-google.webp",
+   "lh": 32.5,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Netflix",
+   "file": "b14-netflix.webp",
+   "lh": 29.6,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Movistar",
+   "file": "b15-movistar.webp",
+   "lh": 46,
+   "bg": [
+    255,
+    255,
+    255
+   ]
+  },
+  {
+   "name": "Personal",
+   "file": "b16-personal.webp",
+   "lh": 27.4,
+   "bg": [
+    1,
+    190,
+    240
+   ]
+  }
+ ]
+}
